@@ -1,17 +1,16 @@
 import React from 'react';
-import account from '../assets/user.png';
-import login from '../assets/login.png';
+import conpass from '../assets/conpass.png';
 
-const Login = () => {
+const ConfirmPass = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const email = formData.get('email');
     const password = formData.get('password');
+    const confirmPassword = formData.get('confirmPassword');
 
     // Handle form data (e.g., send to an API)
-    console.log('Email:', email);
     console.log('Password:', password);
+    console.log('Confirm Password:', confirmPassword);
 
     // Navigate to another page if needed
     // navigate('/some-other-page');
@@ -20,27 +19,13 @@ const Login = () => {
   return (
     <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6">
       <div className="title flex flex-col items-center text-center font-dmMono">
-        <img className="w-24 h-24" src={login} alt="User Icon" />
-        <h1 className="text-3xl font-bold">Log <span className='text-[#FFD700]'>In</span></h1>
-        <p className="text-base tracking-[0.29em] py-2 text-gray-400">Welcome back to beat!</p>
+        <img className="w-24 h-24" src={conpass} alt="User Icon" />
+        <h1 className="text-3xl font-bold">Confirm <span className='text-[#FFD700]'>Password</span></h1>
       </div>
 
       {/* Box */}
-      <div className="box h-[45vh] w-[80vh] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
+      <div className="box h-[40vh] w-[70vh] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
-
-          {/* Email Input */}
-          <FormItem
-            name="email"
-            label="Email"
-            rules={[{ required: false, message: 'Email is required' }]}
-          >
-            <input
-              type="email"
-              placeholder="example@gmail.com"
-              className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
-            />
-          </FormItem>
 
           {/* Password Input */}
           <FormItem
@@ -50,17 +35,27 @@ const Login = () => {
           >
             <input
               type="password"
-              placeholder="Enter your Password"
+              placeholder="Enter Password"
               className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
             />
           </FormItem>
 
-          {/* Button + Forgot Password Text */}
+          {/* Confirm Password Input */}
+          <FormItem
+            name="confirmPassword"
+            label="Verify"
+            rules={[{ required: false, message: 'Confirm Password is required' }]}
+          >
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
+            />
+          </FormItem>
+
+          {/* Button */}
           <div className="flex flex-col items-center">
             <button type="submit" className="p-2 rounded-md bg-[#FFD700] text-black w-full">Continue</button>
-            <p className="text-xs mt-2 cursor-pointer hover:underline underline-offset-3">
-              Forgot Password?
-            </p>
           </div>
         </form>
       </div>
@@ -85,4 +80,4 @@ const FormItem = ({ name, label, rules, children }) => {
   );
 };
 
-export default Login;
+export default ConfirmPass;
