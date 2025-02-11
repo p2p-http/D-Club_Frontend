@@ -1,8 +1,11 @@
 import React from 'react'
 import conpass from '../assets/conpass.png';
-
+import { useNavigate, useNavigation } from 'react-router-dom'
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 const ForgotPass = () => {
+  const navigate = useNavigate()
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,7 +40,7 @@ const ForgotPass = () => {
           >
             <input
               type="Email"
-              placeholder="Enter Email"
+              placeholder="example@gmail.com"
               className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
             />
           </FormItem>
@@ -47,6 +50,10 @@ const ForgotPass = () => {
           {/* Button */}
           <div className="flex flex-col items-center">
             <button type="submit" className="p-2 rounded-md bg-[#FFD700] text-black w-full">Continue</button>
+            <p className="text-xs mt-2 flex">
+              Back to {'-->'}
+              <span onClick={() => navigate('/login')} className="text-[#FFD700] cursor-pointer hover:underline">          Log In</span>
+            </p>
           </div>
         </form>
       </div>

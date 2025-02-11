@@ -15,11 +15,11 @@ const Navbar = () => {
                 </span>
             </div>
             <div className="flex items-center justify-center space-x-6 text-lg">
+                <span className="hover:underline underline-offset-4 decoration-[#FFD700] cursor-pointer hover:scale-105 duration-300">we</span>
                 <span className="hover:underline underline-offset-4 decoration-[#FFD700] cursor-pointer hover:scale-105 duration-300">Support</span>
                 <span className="hover:underline underline-offset-4 decoration-[#FFD700] cursor-pointer hover:scale-105 duration-300">Event</span>
-                <span className="hover:underline underline-offset-4 decoration-[#FFD700] cursor-pointer hover:scale-105 duration-300">Find Partner</span>
                 <span className="hover:underline underline-offset-4 decoration-[#FFD700] cursor-pointer hover:scale-105 duration-300">Chat</span>
-                <img onClick={()=>navigate('/signup')}  className="w-10 h-10 cursor-pointer" src={login} alt="Login Icon" />
+                <img onClick={()=>navigate('/login')}  className="w-10 h-10 cursor-pointer" src={login} alt="Login Icon" />
             </div>
         </div>
     )
