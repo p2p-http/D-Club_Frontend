@@ -1,7 +1,6 @@
 import React from 'react'
 import conpass from '../assets/conpass.png';
-import { useNavigate, useNavigation } from 'react-router-dom'
-import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { useNavigate } from 'react-router-dom'
 
 const ForgotPass = () => {
   const navigate = useNavigate()
