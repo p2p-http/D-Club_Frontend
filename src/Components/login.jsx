@@ -1,9 +1,26 @@
 import React from 'react';
 import login from '../assets/login.png';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { loginEnd } from '../http/api';
+
+const loginUser = async (credentials) => {
+  console.log("Credentials => ", credentials);
+  const { data } = await loginEnd(credentials);
+  return data;
+};
+
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { mutate } = useMutation({
+    mutationKey: ["login"],
+    mutationFn: loginUser,
+    onSuccess: async () => {
+      console.log("Logging successful");
+    },
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -11,12 +28,10 @@ const Login = () => {
     const email = formData.get('email');
     const password = formData.get('password');
 
-    // Handle form data (e.g., send to an API)
     console.log('Email:', email);
     console.log('Password:', password);
 
-    // Navigate to another page if needed
-    // navigate('/dashboard');
+    mutate({ email, password });
   };
 
   return (
