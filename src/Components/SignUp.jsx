@@ -20,11 +20,11 @@ const SignUp = () => {
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6 ">
       <div className="title flex flex-col items-center text-center font-dmMono">
         <img className="w-24 h-24" src={account} alt="User Icon" />
-        <h1 className="text-3xl font-bold">Create <span className='text-[#FFD700]'>Account</span></h1>
-        <p className="text-base tracking-[0.29em] py-2 text-gray-400 ">Sign Up and Create your account 💜</p>
+        <h1 className="text-3xl font-bold ">Create <span className='text-[#FFD700]'>Account</span></h1>
+        <p className="text-base tracking-[0.29em] py-2 text-gray-400  ">Sign Up and Create your account 💜</p>
       </div>
 
       {/* Box */}
@@ -32,7 +32,7 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
 
           {/* Full Name Input */}
-          <FormItem
+          <FormItem 
             name="fullName"
             label="Full Name"
             rules={[{ required: false, message: 'Full Name is required' }]}

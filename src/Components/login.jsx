@@ -40,7 +40,7 @@ const Login = () => {
       <div className="title flex flex-col items-center text-center font-dmMono">
         <img className="w-24 h-24" src={login} alt="User Icon" />
         <h1 className="text-3xl font-bold">Log <span className='text-[#FFD700]'>In</span></h1>
-        <p className="text-base tracking-[0.29em] py-2 text-gray-400">Welcome back to the beat!</p>
+        <p className="text-base tracking-[0.29em] py-2 text-gray-400">Welcome back to the beat! 💛</p>
       </div>
 
       {/* Login Box */}
