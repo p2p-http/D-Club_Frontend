@@ -22,8 +22,8 @@ function App() {
         <Route path='/forgotpass' element={<ForgotPass/>}  />
     
       </Routes>
-      
-      <ConfirmPass/>
+
+      {/* <ConfirmPass/> */}
      
       
       </div>
