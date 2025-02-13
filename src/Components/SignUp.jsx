@@ -1,6 +1,6 @@
-import React from 'react';
-import account from '../assets/user.png';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import account from "../assets/user.png";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -8,68 +8,64 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const fullName = formData.get('fullName');
-    const email = formData.get('email');
+    const fullName = formData.get("fullName");
+    const email = formData.get("email");
 
-    // Handle form data (e.g., send to an API)
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-
-    // Navigate to another page if needed
-    // navigate('/some-other-page');
+    console.log("Full Name:", fullName);
+    console.log("Email:", email);
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6 ">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-4 sm:gap-6 px-4 sm:px-6 md:px-8">
+      {/* Title Section */}
       <div className="title flex flex-col items-center text-center font-dmMono">
-        <img className="w-24 h-24" src={account} alt="User Icon" />
-        <h1 className="text-3xl font-bold ">Create <span className='text-[#FFD700]'>Account</span></h1>
-        <p className="text-base tracking-[0.29em] py-2 text-gray-400  ">Sign Up and Create your account 💜</p>
+        <img className="w-20 h-20 sm:w-24 sm:h-24" src={account} alt="User Icon" />
+        <h1 className="text-2xl sm:text-3xl font-bold">
+          Create <span className="text-[#FFD700]">Account</span>
+        </h1>
+        <p className="text-sm sm:text-base tracking-widest py-2 text-gray-400">
+          Sign Up and Create your account 💜
+        </p>
       </div>
 
-      {/* Box */}
-      <div className="box h-[45vh] w-[80vh] bg-[#312F2F] flex justify-center items-center rounded-xl  shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
+      {/* Sign Up Box */}
+      <div className="box w-full max-w-[90%] md:max-w-[70%] lg:max-w-[50%] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 sm:p-6 md:p-12 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
-
           {/* Full Name Input */}
-          <FormItem 
-            name="fullName"
-            label="Full Name"
-            rules={[{ required: false, message: 'Full Name is required' }]}
-          >
+          <FormItem name="fullName" label="Full Name">
             <input
               type="text"
+              name="fullName"
               placeholder="Enter your full name"
-              className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
             />
           </FormItem>
 
           {/* Email Input */}
-          <FormItem
-            name="email"
-            label="Email"
-            rules={[{ required: false, message: 'Email is required' }]}
-          >
+          <FormItem name="email" label="Email">
             <input
               type="email"
+              name="email"
               placeholder="example@gmail.com"
-              className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
             />
           </FormItem>
 
-          {/* Button + Login Text */}
+          {/* Submit Button */}
           <div className="flex flex-col items-center">
-            <button type="submit" className="p-2 rounded-md bg-[#FFD700] text-black w-full">Continue</button>
-            
+            <button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
+              Continue
+            </button>
           </div>
         </form>
       </div>
 
-      <div className="text-sm text-gray-400">
+      {/* Login Redirect */}
+      <div className="text-sm sm:text-base text-gray-400 mt-2">
         <p>
-        Already have an account?{' '}
-          <span onClick={() => navigate('/login')} className="text-[#FFD700] cursor-pointer hover:underline">
-          Log In
+          Already have an account?{" "}
+          <span onClick={() => navigate("/login")} className="text-[#FFD700] cursor-pointer hover:underline">
+            Log In
           </span>
         </p>
       </div>
@@ -78,14 +74,11 @@ const SignUp = () => {
 };
 
 // Custom FormItem Component
-const FormItem = ({ name, label, rules, children }) => {
+const FormItem = ({ name, label, children }) => {
   return (
     <div className="w-full">
       <label className="text-[#c2c2cb] font-medium">{label}</label>
       {children}
-      {rules?.some((rule) => rule.required) && (
-        <span className="text-red-500 text-sm">{rules.find((rule) => rule.required)?.message}</span>
-      )}
     </div>
   );
 };

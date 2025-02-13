@@ -41,7 +41,7 @@ const Login = () => {
         <h1 className="text-2xl sm:text-3xl font-bold">
           Log <span className="text-[#FFD700]">In</span>
         </h1>
-        <p className="text-sm sm:text-base tracking-wide py-2 text-gray-400">
+        <p className="text-sm sm:text-base tracking-widest py-2 text-gray-400">
           Welcome back to the beat! 💛
         </p>
       </div>
@@ -55,7 +55,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="example@gmail.com"
-              className="mt-2 p-2 sm:p-3 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1  "
             />
           </FormItem>
 
@@ -65,13 +65,13 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Enter your Password"
-              className="mt-2 p-2 sm:p-3 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-2 focus:ring-[#FFD700]"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
             />
           </FormItem>
 
           {/* Buttons + Links */}
           <div className="flex flex-col items-center">
-            <button type="submit" className="p-2 sm:p-3 rounded-md bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
+            <button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
               Continue
             </button>
             <p
