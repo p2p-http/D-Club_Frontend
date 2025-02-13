@@ -9,6 +9,7 @@ export default {
   	extend: {
 		fontFamily: {
 			dmMono: ["DM Mono", "monospace"],
+			poppins: ["Poppins", "sans-serif"],
 		  },
   		borderRadius: {
   			lg: 'var(--radius)',

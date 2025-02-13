@@ -28,7 +28,7 @@ const SignUp = () => {
       </div>
 
       {/* Box */}
-      <div className="box h-[45vh] w-[80vh] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
+      <div className="box h-[45vh] w-[80vh] bg-[#312F2F] flex justify-center items-center rounded-xl  shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
 
           {/* Full Name Input */}
@@ -60,16 +60,18 @@ const SignUp = () => {
           {/* Button + Login Text */}
           <div className="flex flex-col items-center">
             <button type="submit" className="p-2 rounded-md bg-[#FFD700] text-black w-full">Continue</button>
-            <p className="text-xs mt-2">
-              Already have an account?
-              <span onClick={() => navigate('/login')} className="text-[#FFD700] cursor-pointer"> Log In</span>
-            </p>
+            
           </div>
         </form>
       </div>
 
-      <div className="already">
-        {/* Other Content */}
+      <div className="text-sm text-gray-400">
+        <p>
+        Already have an account?{' '}
+          <span onClick={() => navigate('/login')} className="text-[#FFD700] cursor-pointer hover:underline">
+          Log In
+          </span>
+        </p>
       </div>
     </div>
   );
