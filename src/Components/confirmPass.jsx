@@ -2,7 +2,7 @@ import React from 'react';
 import conpass from '../assets/conpass.png';
 import { createPassword } from '../http/api';
 import toast from 'react-hot-toast';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 
 
@@ -12,6 +12,8 @@ const createPasswordEndPt = async (credentials) => {
 };
 
 const ConfirmPass = () => {
+
+  const navigate = useNavigate();
 
   const [search] = useSearchParams();
   const token = search.get("token");
@@ -23,6 +25,7 @@ const ConfirmPass = () => {
     mutationFn: createPasswordEndPt,
     onSuccess: async () => {
       toast.success("Registration is Done!!!")
+      navigate("/home")
     },
   });
 
