@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import login from "../assets/login.png";
-import { FiMenu, FiX } from "react-icons/fi"; // Import icons for mobile menu
+import { FiMenu, FiX } from "react-icons/fi"; // Import icons - mobile menu
 
 const Navbar = () => {
   const navigate = useNavigate();
