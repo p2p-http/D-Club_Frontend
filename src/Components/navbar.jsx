@@ -12,11 +12,11 @@ const Navbar = () => {
     <nav className="fixed bg-black top-0 left-0 w-full text-white z-50 shadow-[5px_5px_15px_rgba(0,0,0,0.3)]   shadow-gray-700 drop-shadow-xl">
       <div className="flex items-center justify-between px-6 md:px-10 lg:px-16 py-2">
         {/* Logo */}
-        <div className="flex flex-col cursor-pointer -space-y-1" onClick={() => navigate("/")}>
+        <div className="flex flex-col cursor-pointer spacey-1" onClick={() => navigate("/")}>
           <span className="text-3xl font-medium">
             D-<span className="text-[#FFD700] font-medium">Club</span>
           </span>
-          <span className="font-poppins text-[6.5px] tracking-[0.3em]">Discover. Dance. Duo.</span>
+          <span className="font-poppins text-[5.5px] tracking-[0.4em]">Discover. Dance. Duo.</span>
         </div>
 
         {/* Desktop Menu */}

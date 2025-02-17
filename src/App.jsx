@@ -1,34 +1,40 @@
-import Navbar from './Components/navbar'
-import Home from './Components/home'
-import SignUp from './Components/SignUp'
-import Login from './Components/login'
-import ConfirmPass from './Components/confirmPass'
-import { Route, Routes } from 'react-router-dom'
-import ForgotPass from './Components/forgotpass'
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css"; // Import NProgress styles
+import Navbar from "./Components/navbar";
+import Home from "./Components/home";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/login";
+import ConfirmPass from "./Components/confirmPass";
+import ForgotPass from "./Components/forgotpass";
 
 function App() {
-
-
   return (
-
-    <div className=' bg-black h-screen w-screen'>
-
+    <div className="bg-black min-h-screen w-screen">
       <Navbar />
+      <LoadingBar /> {/* ✅ Inject Loader */}
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/auth/create-password' element={<ConfirmPass />} />
-        <Route path='/forgotpass' element={<ForgotPass />} />
-
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/auth/create-password" element={<ConfirmPass />} />
+        <Route path="/forgotpass" element={<ForgotPass />} />
       </Routes>
-
-      {/* <ConfirmPass/> */}
-
-
     </div>
-
-  )
+  );
 }
 
-export default App
+// ✅ Component to show loader on page change
+const LoadingBar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    NProgress.start(); // Start loading bar
+    setTimeout(() => NProgress.done(), 500); // End loading after short delay
+  }, [location.pathname]); // Runs when route changes
+
+  return null;
+};
+
+export default App;

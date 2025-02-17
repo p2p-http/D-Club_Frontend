@@ -17,7 +17,11 @@ const Login = () => {
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async () => {
-      toast.success("Login Successful")
+      toast.success("Login Successful");
+      navigate("/");  // ✅ Redirects user to home page after successful login
+    },
+    onError: (error) => {
+      toast.error("Login Failed: " + (error?.message || "Something went wrong"));
     },
   });
 
@@ -55,7 +59,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="example@gmail.com"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1  "
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
             />
           </FormItem>
 
@@ -65,7 +69,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Enter your Password"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
             />
           </FormItem>
 
