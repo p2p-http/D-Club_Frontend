@@ -3,9 +3,9 @@ import login from "../assets/login.png";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { loginEnd } from "../http/api";
+import toast from "react-hot-toast";
 
 const loginUser = async (credentials) => {
-  console.log("Credentials => ", credentials);
   const { data } = await loginEnd(credentials);
   return data;
 };
@@ -17,7 +17,7 @@ const Login = () => {
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async () => {
-      console.log("Logging successful");
+      toast.success("Login Successful")
     },
   });
 

@@ -10,24 +10,24 @@ function App() {
 
 
   return (
-    
+
     <div className=' bg-black h-screen w-screen'>
 
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}  />
-        <Route path='/signup' element={<SignUp/>}  />
-        <Route path='/login' element={<Login/>}  />
-        <Route path='/confirmpass' element={<ConfirmPass/>}  />
-        <Route path='/forgotpass' element={<ForgotPass/>}  />
-    
+        <Route path='/' element={<Home />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/auth/create-password' element={<ConfirmPass />} />
+        <Route path='/forgotpass' element={<ForgotPass />} />
+
       </Routes>
 
       {/* <ConfirmPass/> */}
-     
-      
-      </div>
-    
+
+
+    </div>
+
   )
 }
 

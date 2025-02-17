@@ -1,9 +1,11 @@
 import { api } from "./client";
 
-export const loginEnd = (credentials) => {
-  return api.post('/auth/login', credentials)
-}
+export const loginEnd = (credentials) => api.post('/auth/login', credentials)
 
-export const sendVerificationEmail = (credentials) => {
-  return api.post('/auth/sendVerificationEmailForRegistration', credentials);
-}
+export const sendVerificationEmail = (credentials) => api.post('/auth/sendVerificationEmailForRegistration', credentials);
+
+export const createPassword = (credentials) => api.post('/auth/createPassword', credentials)
+
+export const sendForgotPasswordEmail = (credentials) => api.post('/auth/forgotPassword', credentials)
+
+export const resetPassword = (credentials) => api.post('/auth/resetPassword', credentials)

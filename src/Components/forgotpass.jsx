@@ -1,9 +1,28 @@
 import React from 'react';
 import conpass from '../assets/conpass.png';
 import { useNavigate } from 'react-router-dom';
+import { sendForgotPasswordEmail } from '../http/api';
+import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+
+
+const sendForgotPassEmail = async (credentials) => {
+  const { data } = await sendForgotPasswordEmail(credentials);
+  return data;
+};
+
 
 const ForgotPass = () => {
   const navigate = useNavigate();
+
+
+  const { mutate } = useMutation({
+    mutationKey: ["sendForgotPassEmail"],
+    mutationFn: sendForgotPassEmail,
+    onSuccess: async () => {
+      toast.success("Email send check your email");
+    },
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,8 +32,7 @@ const ForgotPass = () => {
     // Handle form data (e.g., send to an API)
     console.log('Email:', email);
 
-    // Navigate to another page if needed
-    // navigate('/some-other-page');
+    mutate({ email })
   };
 
   return (

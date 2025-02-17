@@ -1,7 +1,31 @@
 import React from 'react';
 import conpass from '../assets/conpass.png';
+import { createPassword } from '../http/api';
+import toast from 'react-hot-toast';
+import { useSearchParams } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+
+
+const createPasswordEndPt = async (credentials) => {
+  const { data } = await createPassword(credentials);
+  return data;
+};
 
 const ConfirmPass = () => {
+
+  const [search] = useSearchParams();
+  const token = search.get("token");
+
+  console.log("Token => ", token)
+
+  const { mutate } = useMutation({
+    mutationKey: ['createPassword'],
+    mutationFn: createPasswordEndPt,
+    onSuccess: async () => {
+      toast.success("Registration is Done!!!")
+    },
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -12,8 +36,7 @@ const ConfirmPass = () => {
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
 
-    // Navigate to another page if needed
-    // navigate('/some-other-page');
+    mutate({ password, confirmPassword, token })
   };
 
   return (
@@ -30,11 +53,11 @@ const ConfirmPass = () => {
           {/* Password Input */}
           <FormItem
             name="password"
-            label="Password"
             rules={[{ required: false, message: 'Password is required' }]}
           >
             <input
               type="password"
+              name="password"
               placeholder="Enter Password"
               className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
             />
@@ -48,6 +71,7 @@ const ConfirmPass = () => {
           >
             <input
               type="password"
+              name="confirmPassword"
               placeholder="Confirm Password"
               className="mt-2 p-2 rounded-md bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
             />

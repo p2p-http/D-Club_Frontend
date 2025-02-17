@@ -1,9 +1,29 @@
 import React from "react";
 import account from "../assets/user.png";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { sendVerificationEmail } from "../http/api";
+import toast from "react-hot-toast";
+
+
+
+const sendVeficationEmail = async (credentials) => {
+  const { data } = await sendVerificationEmail(credentials);
+  return data;
+};
+
 
 const SignUp = () => {
   const navigate = useNavigate();
+
+
+  const { mutate } = useMutation({
+    mutationKey: ['sendVerificationEmail'],
+    mutationFn: sendVeficationEmail,
+    onSuccess: async () => {
+      toast.success("Email sent check your email")
+    },
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -11,8 +31,7 @@ const SignUp = () => {
     const fullName = formData.get("fullName");
     const email = formData.get("email");
 
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
+    mutate({ fullName, email });
   };
 
   return (
