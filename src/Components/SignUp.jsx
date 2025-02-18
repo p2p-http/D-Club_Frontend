@@ -21,8 +21,12 @@ const SignUp = () => {
     mutationKey: ['sendVerificationEmail'],
     mutationFn: sendVeficationEmail,
     onSuccess: async () => {
-      toast.success("Email sent check your email")
+      navigate("/sendemail");
     },
+    onError: (error) => {
+      console.log(error)
+      toast.error("Something went wrong check email or password");
+    }
   });
 
   const handleSubmit = (event) => {
