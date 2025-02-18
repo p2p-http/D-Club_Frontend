@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { loginEnd } from "../http/api";
 import toast from "react-hot-toast";
+import { setAuth } from "../store/slice/auth-slice.js";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -16,9 +17,14 @@ const Login = () => {
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
-    onSuccess: async () => {
+    onSuccess: async (data) => {
+      console.log(data)
+      setAuth({
+        user: data.message.user,
+        authToken: data.message.authToken
+      })
       toast.success("Login Successful");
-      navigate("/");  // ✅ Redirects user to home page after successful login
+      navigate("/");
     },
     onError: (error) => {
       toast.error("Login Failed: " + (error?.message || "Something went wrong"));
