@@ -8,6 +8,7 @@ import SignUp from "./Components/SignUp";
 import Login from "./Components/login";
 import ConfirmPass from "./Components/confirmPass";
 import ForgotPass from "./Components/forgotpass";
+import Sendemail from "./Components/sendemail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/auth/create-password" element={<ConfirmPass />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
+        <Route path="/sendemail" element={<Sendemail />} />
       </Routes>
     </div>
   );
@@ -30,6 +32,7 @@ const LoadingBar = () => {
   const location = useLocation();
 
   useEffect(() => {
+    NProgress.configure({ showSpinner: false }); 
     NProgress.start(); // Start loading bar
     setTimeout(() => NProgress.done(), 500); // End loading after short delay
   }, [location.pathname]); // Runs when route changes
