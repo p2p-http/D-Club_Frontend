@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginEnd } from "../http/api";
 import toast from "react-hot-toast";
 import { setAuth } from "../store/slice/auth-slice.js";
+import { Button, Input } from "antd";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -61,29 +62,32 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
           {/* Email Input */}
           <FormItem name="email" label="Email">
-            <input
+            <Input
               type="email"
               name="email"
               placeholder="example@gmail.com"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl !bg-[#312F2F] border-[#4F4F4F] border text-white 
+               placeholder:text-gray-400 w-full focus:outline-none focus:ring-1
+               hover:bg-[#312F2F] hover:border-[#4F4F4F] hover:text-white"
             />
           </FormItem>
 
           {/* Password Input */}
           <FormItem name="password" label="Password">
-            <input
+            <Input.Password
               type="password"
-              name="password"
               placeholder="Enter your Password"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl !bg-[#312F2F] border-[#4F4F4F] border text-white 
+               ! placeholder:text-gray-400 w-full focus:outline-none focus:ring-1
+               hover:bg-[#312F2F] hover:border-[#4F4F4F] hover:text-white"
             />
           </FormItem>
 
           {/* Buttons + Links */}
           <div className="flex flex-col items-center">
-            <button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
+            <Button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
               Continue
-            </button>
+            </Button>
             <p
               onClick={() => navigate("/forgotpass")}
               className="text-xs sm:text-sm mt-2 cursor-pointer hover:underline underline-offset-3"
