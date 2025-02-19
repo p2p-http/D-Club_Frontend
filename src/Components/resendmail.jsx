@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import emailAnimation from '../assets/email.json';
 
-const Sendemail = () => {
+const Resendmail = () => {
     const location = useLocation(); // Declare hooks before return
     const navigate = useNavigate();
     const email = location.state?.email || 'your email';
@@ -22,7 +22,7 @@ const Sendemail = () => {
                     loop={true}
                     className="w-44 h-44 mx-auto"
                 />
-                <h1 className="text-3xl font-bold font-dmMono text-white">Create <span className='text-[#FFD700]'>Password</span></h1>
+                <h1 className="text-3xl font-semibold text-white font-dmMono">Reset <span className='text-[#FFD700]'>Password</span></h1>
 
 
             </div>
@@ -55,6 +55,6 @@ const Sendemail = () => {
             </div>
         </motion.div>
     );
-};
+}
 
-export default Sendemail;
+export default Resendmail

@@ -6,6 +6,7 @@ import { loginEnd } from "../http/api";
 import toast from "react-hot-toast";
 import { setAuth } from "../store/slice/auth-slice.js";
 import { Button, Input } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -19,11 +20,11 @@ const Login = () => {
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async (data) => {
-      console.log(data)
+      console.log(data);
       setAuth({
         user: data.message.user,
-        authToken: data.message.authToken
-      })
+        authToken: data.message.authToken,
+      });
       toast.success("Login Successful");
       navigate("/");
     },
@@ -58,29 +59,28 @@ const Login = () => {
       </div>
 
       {/* Login Box */}
-      <div className="box w-full max-w-[90%] md:max-w-[70%] lg:max-w-[50%] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 sm:p-6 md:p-8 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
+      <div className="box w-full max-w-[90%] md:max-w-[70%] lg:max-w-[50%] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 sm:p-6 md:p-8 shadow-md shadow-gray-600">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm text-white">
           {/* Email Input */}
           <FormItem name="email" label="Email">
-            <Input
+            <input
               type="email"
               name="email"
               placeholder="example@gmail.com"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl !bg-[#312F2F] border-[#4F4F4F] border text-white 
-               placeholder:text-gray-400 w-full focus:outline-none focus:ring-1
-               hover:bg-[#312F2F] hover:border-[#4F4F4F] hover:text-white"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
             />
           </FormItem>
 
-          {/* Password Input */}
-          <FormItem name="password" label="Password">
-            <Input.Password
+          {/* Password Input with Eye Icon */}
+          <FormItem
+            name="password" label="Password"
+            rules={[{ required: false, message: 'Password is required' }]}
+          >
+            <input
               type="password"
               name="password"
-              placeholder="Enter your Password"
-              className="mt-2 p-2 sm:p-3 rounded-s-xl !bg-[#312F2F] border-[#4F4F4F] border text-white 
-               ! placeholder:text-gray-400 w-full focus:outline-none focus:ring-1
-               hover:bg-[#312F2F] hover:border-[#4F4F4F] hover:text-white"
+              placeholder="Enter Password"
+              className="mt-2 p-2 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
             />
           </FormItem>
 
@@ -91,7 +91,7 @@ const Login = () => {
             </button>
             <p
               onClick={() => navigate("/forgotpass")}
-              className="text-xs sm:text-sm mt-2 cursor-pointer hover:underline underline-offset-3"
+              className="text-xs sm:text-sm mt-2 cursor-pointer hover:underline underline-offset-3 text-gray-400"
             >
               Forgot Password?
             </p>

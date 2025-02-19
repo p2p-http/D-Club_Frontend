@@ -9,6 +9,8 @@ import Login from "./Components/login";
 import ConfirmPass from "./Components/confirmPass";
 import ForgotPass from "./Components/forgotpass";
 import Sendemail from "./Components/sendemail";
+import Resendmail from "./Components/resendmail";
+import Resetpass from "./Components/resetpass";
 
 function App() {
   return (
@@ -22,7 +24,10 @@ function App() {
         <Route path="/auth/create-password" element={<ConfirmPass />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/sendemail" element={<Sendemail />} />
+        <Route path="/resendemail" element={<Resendmail />} />
+        <Route path="/auth/reset-password" element={<Resetpass />} />
       </Routes>
+      
     </div>
   );
 }
