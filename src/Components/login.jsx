@@ -76,6 +76,7 @@ const Login = () => {
           <FormItem name="password" label="Password">
             <Input.Password
               type="password"
+              name="password"
               placeholder="Enter your Password"
               className="mt-2 p-2 sm:p-3 rounded-s-xl !bg-[#312F2F] border-[#4F4F4F] border text-white 
                ! placeholder:text-gray-400 w-full focus:outline-none focus:ring-1
@@ -85,9 +86,9 @@ const Login = () => {
 
           {/* Buttons + Links */}
           <div className="flex flex-col items-center">
-            <Button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
+            <button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
               Continue
-            </Button>
+            </button>
             <p
               onClick={() => navigate("/forgotpass")}
               className="text-xs sm:text-sm mt-2 cursor-pointer hover:underline underline-offset-3"
