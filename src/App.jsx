@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import AuthLayout from "./layouts/AuthLayout"
-import DashboardLayout from "./layouts/DashboardLayout"
+import AuthLayout from "./layouts/AuthLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 import SignUp from "./Components/auth/SignUp";
 import Login from "./Components/auth/login";
 import ConfirmPass from "./Components/auth/confirmPass";
@@ -20,6 +20,7 @@ function App() {
   return (
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
+      <LoadingBar /> {/* ✅ Added Loading Bar Here */}
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="dashboard" element={<DashboardLayout />}>
@@ -36,7 +37,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotPageFound />} />
       </Routes>
-    </div >
+    </div>
   );
 }
 
@@ -45,7 +46,7 @@ const LoadingBar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    NProgress.configure({ showSpinner: false });
+    NProgress.configure({ showSpinner: false, speed: 500, trickleSpeed: 200 });
     NProgress.start(); // Start loading bar
     setTimeout(() => NProgress.done(), 500); // End loading after short delay
   }, [location.pathname]); // Runs when route changes

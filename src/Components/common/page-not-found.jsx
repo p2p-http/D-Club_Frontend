@@ -5,8 +5,8 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex  items-center justify-center">
-      <Result
+    <div className="h-screen flex  items-center justify-center ">
+      <Result  
         status="404"
         title="404"
         subTitle="Sorry, the page you visited does not exist."
