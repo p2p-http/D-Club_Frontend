@@ -65,7 +65,7 @@ const ForgotPass = () => {
           {/* Back to Login */}
           <p className="text-xs mt-2 text-gray-400 flex justify-center">
             Back to {'-->'}
-            <span onClick={() => navigate('/login')} className="text-[#FFD700] cursor-pointer hover:underline ml-1">
+            <span onClick={() => navigate('/auth/login')} className="text-[#FFD700] cursor-pointer hover:underline ml-1">
               Log In
             </span>
           </p>
