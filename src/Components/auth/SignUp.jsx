@@ -87,7 +87,7 @@ const SignUp = () => {
       <div className="text-sm sm:text-base text-gray-400 mt-2">
         <p>
           Already have an account?{" "}
-          <span onClick={() => navigate("/login")} className="text-[#FFD700] cursor-pointer hover:underline">
+          <span onClick={() => navigate("/auth/login")} className="text-[#FFD700] cursor-pointer hover:underline">
             Log In
           </span>
         </p>

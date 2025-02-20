@@ -90,7 +90,7 @@ const Login = () => {
               Continue
             </button>
             <p
-              onClick={() => navigate("/forgotpass")}
+              onClick={() => navigate("/auth/forgotpass")}
               className="text-xs sm:text-sm mt-2 cursor-pointer hover:underline underline-offset-3 text-gray-400"
             >
               Forgot Password?
@@ -104,7 +104,7 @@ const Login = () => {
         <p>
           Don't have an account?{" "}
           <span
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/auth/signup")}
             className="text-[#FFD700] cursor-pointer hover:underline"
           >
             Sign Up

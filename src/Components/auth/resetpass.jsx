@@ -22,7 +22,7 @@ const ResetPass = () => {
     mutationFn: resetPasswordEndPt,
     onSuccess: async () => {
       toast.success("Password Reset Successful!");
-      navigate("/login");
+      navigate("/auth/login");
     },
   });
 

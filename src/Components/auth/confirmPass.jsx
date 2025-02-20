@@ -25,7 +25,7 @@ const ConfirmPass = () => {
     mutationFn: createPasswordEndPt,
     onSuccess: async () => {
       toast.success("Registration is Done!!!")
-      navigate("/home")
+      navigate("/")
     },
   });
 
