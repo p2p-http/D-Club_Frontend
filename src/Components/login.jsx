@@ -5,8 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginEnd } from "../http/api";
 import toast from "react-hot-toast";
 import { setAuth } from "../store/slice/auth-slice.js";
-import { Button, Input } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -15,16 +14,17 @@ const loginUser = async (credentials) => {
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async (data) => {
       console.log(data);
-      setAuth({
+      dispatch(setAuth({
         user: data.message.user,
         authToken: data.message.authToken,
-      });
+      }));
       toast.success("Login Successful");
       navigate("/");
     },

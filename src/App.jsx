@@ -11,24 +11,29 @@ import ForgotPass from "./Components/forgotpass";
 import Sendemail from "./Components/sendemail";
 import Resendmail from "./Components/resendmail";
 import Resetpass from "./Components/resetpass";
+import AuthLayout from "./layouts/AuthLayout"
+import DashboardLayout from "./layouts/DashboardLayout"
 
 function App() {
   return (
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
-      <LoadingBar /> {/* ✅ Inject Loader */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/auth/create-password" element={<ConfirmPass />} />
-        <Route path="/forgotpass" element={<ForgotPass />} />
-        <Route path="/sendemail" element={<Sendemail />} />
-        <Route path="/resendemail" element={<Resendmail />} />
-        <Route path="/auth/reset-password" element={<Resetpass />} />
+        <Route path="/" element={<DashboardLayout />}>
+          <Route path="" element={<Home />} />
+        </Route>
+        <Route path="auth" element={<AuthLayout />}>
+          <Route path="signup" element={<SignUp />} />
+          <Route path="login" element={<Login />} />
+          <Route path="create-password" element={<ConfirmPass />} />
+          <Route path="forgotpass" element={<ForgotPass />} />
+          <Route path="sendemail" element={<Sendemail />} />
+          <Route path="resendemail" element={<Resendmail />} />
+          <Route path="reset-password" element={<Resetpass />} />
+        </Route>
       </Routes>
-      
-    </div>
+
+    </div >
   );
 }
 
@@ -37,7 +42,7 @@ const LoadingBar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    NProgress.configure({ showSpinner: false }); 
+    NProgress.configure({ showSpinner: false });
     NProgress.start(); // Start loading bar
     setTimeout(() => NProgress.done(), 500); // End loading after short delay
   }, [location.pathname]); // Runs when route changes
