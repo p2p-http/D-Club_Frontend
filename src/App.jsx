@@ -14,14 +14,15 @@ import ResetPass from "./Components/auth/resetpass";
 import Navbar from "./Components/common/navbar";
 import Home from "./Components/common/home";
 import ProfilePage from "./Components/common/profile-page";
+import NotPageFound from "./Components/common/page-not-found";
 
 function App() {
   return (
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
       <Routes>
-        <Route path="" element={<DashboardLayout />}>
-          <Route path="" element={<Home />} />
+        <Route path="" element={<Home />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="profile" element={<ProfilePage />} />
         </Route>
         <Route path="auth" element={<AuthLayout />}>
@@ -33,8 +34,8 @@ function App() {
           <Route path="resendemail" element={<Resendmail />} />
           <Route path="reset-password" element={<ResetPass />} />
         </Route>
+        <Route path="*" element={<NotPageFound />} />
       </Routes>
-
     </div >
   );
 }
