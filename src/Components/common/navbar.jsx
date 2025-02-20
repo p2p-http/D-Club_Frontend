@@ -28,7 +28,7 @@ const Navbar = () => {
             Chat
           </span>
           {
-            authToken ? <img className="w-10 h-10 cursor-pointer" src={login} alt="Login Icon" /> : <button>Log in</button>
+            authToken ? <img onClick={() => navigate('/profile')} className="w-10 h-10 cursor-pointer" src={login} alt="Login Icon" /> : <button>Log in</button>
           }
 
         </div>

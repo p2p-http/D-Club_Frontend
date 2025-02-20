@@ -20,7 +20,7 @@ function App() {
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
       <Routes>
-        <Route path="/" element={<DashboardLayout />}>
+        <Route path="" element={<DashboardLayout />}>
           <Route path="" element={<Home />} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>
