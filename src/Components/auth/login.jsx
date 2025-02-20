@@ -1,10 +1,10 @@
 import React from "react";
-import login from "../assets/login.png";
+import login from "../../assets/login.png";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { loginEnd } from "../http/api";
+import { loginEnd } from "../../http/api";
 import toast from "react-hot-toast";
-import { setAuth } from "../store/slice/auth-slice.js";
+import { setAuth } from "../../store/slice/auth-slice.js";
 import { useDispatch } from "react-redux";
 
 const loginUser = async (credentials) => {

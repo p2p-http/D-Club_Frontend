@@ -1,9 +1,9 @@
 import React from 'react';
-import conpass from '../assets/conpass.png';
+import conpass from '../../assets/conpass.png';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { resetPassword } from '../http/api'; // Assuming resetPassword API function exists
+import { resetPassword } from '../../http/api';
 
 const resetPasswordEndPt = async (credentials) => {
   const { data } = await resetPassword(credentials);
@@ -22,7 +22,7 @@ const ResetPass = () => {
     mutationFn: resetPasswordEndPt,
     onSuccess: async () => {
       toast.success("Password Reset Successful!");
-      navigate("/login"); // Redirect to login page
+      navigate("/login");
     },
   });
 

@@ -1,8 +1,8 @@
 import React from "react";
-import account from "../assets/user.png";
+import account from "../../assets/user.png";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { sendVerificationEmail } from "../http/api";
+import { sendVerificationEmail } from "../../http/api";
 import toast from "react-hot-toast";
 
 

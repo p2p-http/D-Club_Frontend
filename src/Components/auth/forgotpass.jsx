@@ -1,7 +1,7 @@
 import React from 'react';
-import conpass from '../assets/conpass.png';
+import conpass from '../../assets/conpass.png';
 import { useNavigate } from 'react-router-dom';
-import { sendForgotPasswordEmail } from '../http/api';
+import { sendForgotPasswordEmail } from '../../http/api';
 import toast from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import conpass from '../assets/conpass.png';
-import { createPassword } from '../http/api';
+import conpass from '../../assets/conpass.png';
+import { createPassword } from '../../http/api';
 import toast from 'react-hot-toast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';

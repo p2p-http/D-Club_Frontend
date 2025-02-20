@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import emailAnimation from '../assets/email.json';
+import emailAnimation from '../../assets/email.json';
 
 const Sendemail = () => {
     const location = useLocation(); // Declare hooks before return
