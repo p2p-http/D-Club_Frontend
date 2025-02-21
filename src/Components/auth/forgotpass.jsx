@@ -20,8 +20,12 @@ const ForgotPass = () => {
     mutationKey: ["sendForgotPassEmail"],
     mutationFn: sendForgotPassEmail,
     onSuccess: async () => {
-      toast.success("Email send check your email");
+      navigate("/auth/resendemail");
     },
+    onError: (error) => {
+      console.log(error)
+      toast.error("Something went wrong check email or password");
+    }
   });
 
   const handleSubmit = (event) => {

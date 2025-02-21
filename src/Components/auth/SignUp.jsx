@@ -21,7 +21,7 @@ const SignUp = () => {
     mutationKey: ['sendVerificationEmail'],
     mutationFn: sendVeficationEmail,
     onSuccess: async () => {
-      navigate("/sendemail");
+      navigate("/auth/sendemail");
     },
     onError: (error) => {
       console.log(error)
