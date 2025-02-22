@@ -41,15 +41,16 @@ const Support = () => {
 
                 {/* Right Section (Form) */}
                 <div className="p-8">
-
-                    <form className="flex flex-col space-y-5 w-full max-w-sm">
+                    <form onSubmit={handleSubmit} className="flex flex-col space-y-5 w-full max-w-sm">
                         {/* Full Name Input */}
                         <FormItem name="fullName" label="Full Name">
                             <input
                                 type="text"
                                 name="fullName"
                                 placeholder="Enter your full name"
-                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
                             />
                         </FormItem>
 
@@ -59,34 +60,45 @@ const Support = () => {
                                 type="email"
                                 name="email"
                                 placeholder="example@gmail.com"
-                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
                             />
                         </FormItem>
 
                         {/* Subject Input */}
-                        <FormItem name="Subject" label="Subject">
+                        <FormItem name="subject" label="Subject">
                             <input
                                 type="text"
-                                name="Subject"
+                                name="subject"
                                 placeholder="Enter your Subject"
-                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 "
+                                value={formData.subject}
+                                onChange={handleChange}
+                                className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
                             />
                         </FormItem>
 
+                        {/* Message Textarea */}
+                        <label className="block mt-4 text-gray-300">Leave us a message</label>
+                        <textarea
+                            rows="7"
+                            name="message"
+                            placeholder="Content"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className="w-96 bg-[#312F2F] text-white p-3 rounded-xl mt-1 outline-none"
+                        ></textarea>
 
+                        {/* Submit Button */}
+                        <div className="flex flex-col mt-5">
+                            <button
+                                type="submit"
+                                className="w-96 p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black hover:bg-[#e6c000] transition"
+                            >
+                                Continue
+                            </button>
+                        </div>
                     </form>
-
-
-
-                    <label className="block mt-4 text-gray-300">Leave us a message</label>
-                    <textarea rows="7" placeholder="Content"
-                        className="w-96 bg-[#312F2F] text-white p-3 rounded-xl mt-1 outline-none"></textarea>
-
-                    <div className="flex flex-col  mt-5">
-                        <button type="submit" className=" w-96 p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black hover:bg-[#e6c000] transition">
-                            Continue
-                        </button>
-                    </div>
                 </div>
 
             </div>
