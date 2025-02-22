@@ -1,22 +1,10 @@
 import React from 'react'
 import { Mail } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-
-
-
-
 
 const Support = () => {
-
-
-
-
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black text-white px-6 mt-4">
+        <div className="min-h-screen flex items-center justify-center bg-black text-white p-16 mt-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-6xl">
-
-                {/* Left Section */}
                 <div className="bg-[#312F2F] p-8 rounded-2xl shadow-lg  space-y-8">
                     <h3 className="text-yellow-400 text-lg font-semibold">Get in Touch</h3>
                     <h1 className="text-3xl font-semibold mt-2">
@@ -26,10 +14,6 @@ const Support = () => {
                         Have Questions or feedback? We’re here to help. Send us an
                         <span className="text-[#c3897f] font-bold"> email</span> by submitting the form.
                     </p>
-
-                   
-
-                    {/*  Customer Support */}
                     <div className="flex flex-col">
                         <h1 className="text-xl font-semibold mt-2" >Customer Support :</h1>
                         <p className="text-gray-400 text-sm mt-2 mb-6">
@@ -37,7 +21,6 @@ const Support = () => {
                         </p>
                     </div>
 
-                    {/*  Customer Support */}
                     <div className="flex flex-col">
                         <h1 className="text-xl font-semibold mt-2" >Feedback & Suggestions :</h1>
                         <p className="text-gray-400 text-sm mt-2 mb-6">
