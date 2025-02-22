@@ -15,6 +15,7 @@ import Navbar from "./Components/common/navbar";
 import Home from "./Components/common/home";
 import ProfilePage from "./Components/common/profile-page";
 import NotPageFound from "./Components/common/page-not-found";
+import Support from "./Components/common/support";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="profile" element={<ProfilePage />} />
         </Route>
+        <Route path="support" element={<Support />} />
+
         <Route path="auth" element={<AuthLayout />}>
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<Login />} />
