@@ -6,6 +6,7 @@ import { loginEnd } from "../../http/api";
 import toast from "react-hot-toast";
 import { setAuth } from "../../store/slice/auth-slice.js";
 import { useDispatch } from "react-redux";
+import { Spin } from "antd";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -16,7 +17,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { mutate } = useMutation({
+
+  const { mutate ,isLoadind } = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async (data) => {
@@ -32,6 +34,10 @@ const Login = () => {
       toast.error("Login Failed: " + (error?.message || "Something went wrong"));
     },
   });
+
+  if(isLoadind){
+    return <Spin/>;
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
