@@ -18,7 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
 
-  const { mutate ,isLoadind } = useMutation({
+  const { mutate ,isLoading } = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async (data) => {
@@ -35,7 +35,7 @@ const Login = () => {
     },
   });
 
-  if(isLoadind){
+  if(isLoading){
     return <Spin/>;
   }
 
