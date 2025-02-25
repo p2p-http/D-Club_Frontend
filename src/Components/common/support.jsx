@@ -1,19 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail } from "lucide-react";
 
 const Support = () => {
-    const handleSubmit = (event) => {
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
+        setSuccess(false);
+        setError("");
+
         const formData = new FormData(event.target);
         const email = formData.get("email");
         const fullName = formData.get("fullName");
         const subject = formData.get("subject");
         const message = formData.get("message");
 
-        console.log("Email:", email);
-        console.log("Full Name:", fullName);
-        console.log("Subject:", subject);
-        console.log("Message:", message);
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_BACKEND_API_URL}/support/queryEmailToSupport`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ fullName, email, subject, message }),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Failed to send message.");
+            }
+
+            setSuccess(true);
+            event.target.reset(); // Clear form after success
+        } catch (err) {
+            setError("Something went wrong. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -58,6 +85,7 @@ const Support = () => {
                                 name="fullName"
                                 placeholder="Enter your full name"
                                 className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
+                                required
                             />
                         </FormItem>
 
@@ -68,6 +96,7 @@ const Support = () => {
                                 name="email"
                                 placeholder="example@gmail.com"
                                 className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
+                                required
                             />
                         </FormItem>
 
@@ -78,6 +107,7 @@ const Support = () => {
                                 name="subject"
                                 placeholder="Enter your Subject"
                                 className="mt-2 p-2 sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1"
+                                required
                             />
                         </FormItem>
 
@@ -88,15 +118,21 @@ const Support = () => {
                             name="message"
                             placeholder="Content"
                             className="w-96 bg-[#312F2F] text-white p-3 rounded-xl mt-1 outline-none"
+                            required
                         ></textarea>
+
+                        {/* Status Messages */}
+                        {success && <p className="text-green-500">Message sent successfully!</p>}
+                        {error && <p className="text-red-500">{error}</p>}
 
                         {/* Submit Button */}
                         <div className="flex flex-col mt-5">
                             <button
                                 type="submit"
                                 className="w-96 p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black hover:bg-[#e6c000] transition"
+                                disabled={loading}
                             >
-                                Continue
+                                {loading ? "Sending..." : "Send Message"}
                             </button>
                         </div>
                     </form>
