@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slice/auth-slice";
 import { useNavigate } from "react-router-dom";
-import { Camera, LogOut } from "lucide-react"; // Camera & Logout icons
+import { Camera, LogOut,Pencil } from "lucide-react"; // Camera & Logout icons
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
@@ -82,7 +82,10 @@ const ProfilePage = () => {
 
       {/* Personal Information Section */}
       <div className="personal_info flex flex-col items-start w-3/4 bg-[#121112] rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] px-10 py-6 space-y-10">
+      <div className="flex items-center space-x-2">
         <h1 className="text-[#FFD700] text-xl font-semibold">Personal Information</h1>
+        <Pencil size={20} className="text-gray-400 cursor-pointer hover:text-[#FFD700] transition" />
+        </div>
 
         {/* Age & Gender Selection */}
         <div className="age_gender flex flex-col sm:flex-row gap-8 w-full">
