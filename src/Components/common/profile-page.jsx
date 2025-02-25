@@ -36,7 +36,7 @@ const ProfilePage = () => {
         
         {/* Profile Image Section */}
         <div className="relative w-44 h-44">
-          <img className="w-full h-full rounded-full object-cover" src={selectedImage || loginp} alt="Profile" />
+          <img className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]" src={selectedImage || loginp} alt="Profile" />
           
           {/* Camera Icon (For Image Upload) */}
           <label className="absolute bottom-2 right-2 bg-[#FFD700] p-2 rounded-full cursor-pointer hover:bg-[#e6c000] transition">
