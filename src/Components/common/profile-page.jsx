@@ -57,12 +57,21 @@ const ProfilePage = () => {
             <p className="text-[#868181]">Dance like nobody's watching, party like never before! 💫🍾</p>
           </div>
 
+          <div className="btn flex flex-row space-x-1">
+
           <button
             type="submit" onClick={() => navigate("/")}
-            className="p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black w-2/4 hover:bg-[#e6c000] transition"
+            className="p-2 sm:p-3 rounded-s-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
           >
             {" < "} Back to Home
           </button>
+          <button
+            type="submit" 
+            className="p-2 sm:p-3 rounded-r-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
+          >
+            Edit
+          </button>
+          </div>
         </div>
 
         {/* Logout Icon (Placed at Right-Bottom) */}
