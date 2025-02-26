@@ -69,7 +69,7 @@ const ProfilePage = () => {
               type="submit"
               className="p-2 sm:p-3 rounded-r-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
             >
-              Edit
+              Edit profile
             </button>
           </div>
         </div>
@@ -156,12 +156,12 @@ const ProfilePage = () => {
         </div>
 
         {/* Social Platforms */}
-        <div className="socialp flex flex-col space-y-5">
-          <h1 className="text-[#BFBFBF] text-2xl">Social Platforms</h1>
-          <div className="flex flex-row space-x-6">
-            <img className="h-12 w-12 rounded-full cursor-pointer" src={insta} alt="Instagram" />
-            <img className="h-12 w-12 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
-            <img className="h-12 w-12 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
+        <div className="socialp flex flex-col space-y-2">
+          {/* <h1 className="text-[#BFBFBF] text-2xl">Social Platforms</h1> */}
+          <div className="flex flex-row space-x-4">
+            <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
+            <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
+            <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
           </div>
         </div>
       </div>
