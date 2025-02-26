@@ -14,7 +14,7 @@ const fadeIn = {
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black pt-44 space-y-32">
+    <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black pt-72 space-y-52">
 
       {/* 🚀 Hero Section */}
       <motion.section
@@ -25,14 +25,14 @@ const Home = () => {
       >
         <div className="titel flex flex-row items-center justify-center">
           {/* Tagline & CTA */}
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-slate-400 leading-tight">
+          <h1 className="text-5xl sm:text-7xl font-extrabold text-slate-400 leading-tight">
             <span className="text-[#FFD700]">Find</span> Your perfect club <span className="text-[#FFD700]">partner</span>
           </h1>
           <h1 className=" text-9xl flex items-center justify-center">👋</h1>
         </div>
 
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          Welcome to D-Club! 🎉 Match with the right club partner, **skip solo entries**, and make unforgettable **nightlife memories!** 💃🔥 Join a **safe, fun, and exciting** clubbing experience now! 🌟✨
+        <p className="text-lg text-[#cbae8a] max-w-3xl mx-auto">
+          Welcome to D-Club! 🎉 Match with the right club partner, skip solo entries, and make unforgettable nightlife memories! 💃🔥 Join a safe, fun, and exciting clubbing experience now! 🌟✨
         </p>
 
 
