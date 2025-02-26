@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slice/auth-slice";
 import { useNavigate } from "react-router-dom";
-import { Camera, LogOut,Pencil } from "lucide-react"; // Camera & Logout icons
+import { Camera, LogOut, Pencil } from "lucide-react"; // Camera & Logout icons
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
@@ -33,18 +33,18 @@ const ProfilePage = () => {
     <div className="main flex flex-col items-center justify-center min-h-screen space-y-12 pb-32 pt-24">
       {/* Profile Section */}
       <div className="profile_pic relative flex flex-row items-center justify-start w-3/4 h-60 bg-[#121112] gap-28 rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] px-10">
-        
+
         {/* Profile Image Section */}
         <div className="relative w-44 h-44">
           <img className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]" src={selectedImage || loginp} alt="Profile" />
-          
+
           {/* Camera Icon (For Image Upload) */}
           <label className="absolute bottom-2 right-2 bg-[#FFD700] p-2 rounded-full cursor-pointer hover:bg-[#e6c000] transition">
             <Camera size={20} className="text-black" />
-            <input 
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
               onChange={handleImageChange}
             />
           </label>
@@ -59,18 +59,18 @@ const ProfilePage = () => {
 
           <div className="btn flex flex-row space-x-1">
 
-          <button
-            type="submit" onClick={() => navigate("/")}
-            className="p-2 sm:p-3 rounded-s-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
-          >
-            {" < "} Back to Home
-          </button>
-          <button
-            type="submit" 
-            className="p-2 sm:p-3 rounded-r-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
-          >
-            Edit
-          </button>
+            <button
+              type="submit" onClick={() => navigate("/")}
+              className="p-2 sm:p-3 rounded-s-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
+            >
+              {" < "} Back to Home
+            </button>
+            <button
+              type="submit"
+              className="p-2 sm:p-3 rounded-r-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
+            >
+              Edit
+            </button>
           </div>
         </div>
 
@@ -82,9 +82,9 @@ const ProfilePage = () => {
 
       {/* Personal Information Section */}
       <div className="personal_info flex flex-col items-start w-3/4 bg-[#121112] rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] px-10 py-6 space-y-10">
-      <div className="flex items-center space-x-2">
-        <h1 className="text-[#FFD700] text-xl font-semibold">Personal Information</h1>
-        <Pencil size={20} className="text-gray-400 cursor-pointer hover:text-[#FFD700] transition" />
+        <div className="flex items-center space-x-2">
+          <h1 className="text-[#FFD700] text-xl font-semibold">Personal Information</h1>
+          <Pencil size={20} className="text-gray-400 cursor-pointer hover:text-[#FFD700] transition" />
         </div>
 
         {/* Age & Gender Selection */}
@@ -130,15 +130,28 @@ const ProfilePage = () => {
           </div>
         </div>
 
+
+        {/*  Interest */}
+        <div className="flex flex-col w-full space-y-2">
+        <h1 className="text-[#BFBFBF] text-3xl">Interest</h1>
+        <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
+
+          <div className="interest_box flex flex-row space-x-4">
+            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+          </div>
+        </div></div>
+
         {/* About Yourself */}
         <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
-          <h1 className="text-[#BFBFBF] text-2xl">About Yourself</h1>
+          <h1 className="text-[#BFBFBF] text-2xl">About Yourself 😌</h1>
           <p className="text-[#868181]">Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention.</p>
         </div>
 
         {/* Looking For */}
         <div className="Looking_for flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
-          <h1 className="text-[#BFBFBF] text-2xl">Looking For..?</h1>
+          <h1 className="text-[#BFBFBF] text-2xl">Looking For..? 👀</h1>
           <p className="text-[#868181]">Tell us who you would like to meet and why. Specify your wishes for a partner. This will help you find the right person faster.</p>
         </div>
 
