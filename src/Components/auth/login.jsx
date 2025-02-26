@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { setAuth } from "../../store/slice/auth-slice.js";
 import { useDispatch } from "react-redux";
 import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons"; // Import Ant Design loader icon
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
@@ -17,16 +18,17 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  const { mutate ,isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
     onSuccess: async (data) => {
       console.log(data);
-      dispatch(setAuth({
-        user: data.message.user,
-        authToken: data.message.authToken,
-      }));
+      dispatch(
+        setAuth({
+          user: data.message.user,
+          authToken: data.message.authToken,
+        })
+      );
       toast.success("Login Successful");
       navigate("/");
     },
@@ -35,8 +37,16 @@ const Login = () => {
     },
   });
 
-  if(isLoading){
-    return <Spin/>;
+  // Custom Loader Icon (Change color here)
+  const customLoader = <LoadingOutlined style={{ fontSize: 50, color: "#FFD700" }} spin />;
+
+  // ✅ Display Custom Spinner When Loading
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <Spin indicator={customLoader} />
+      </div>
+    );
   }
 
   const handleSubmit = (event) => {
@@ -52,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-4 sm:gap-6 px-4 sm:px-6 md:px-8">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 pt-9">
       {/* Title Section */}
       <div className="title flex flex-col items-center text-center font-dmMono">
         <img className="w-20 h-20 sm:w-24 sm:h-24" src={login} alt="User Icon" />
@@ -78,10 +88,7 @@ const Login = () => {
           </FormItem>
 
           {/* Password Input with Eye Icon */}
-          <FormItem
-            name="password" label="Password"
-            rules={[{ required: false, message: 'Password is required' }]}
-          >
+          <FormItem name="password" label="Password">
             <input
               type="password"
               name="password"
@@ -122,16 +129,11 @@ const Login = () => {
 };
 
 // Custom FormItem Component
-const FormItem = ({ name, label, rules, children }) => {
+const FormItem = ({ name, label, children }) => {
   return (
     <div className="w-full">
       <label className="text-[#c2c2cb] font-medium">{label}</label>
       {children}
-      {rules?.some((rule) => rule.required) && (
-        <span className="text-red-500 text-sm">
-          {rules.find((rule) => rule.required)?.message}
-        </span>
-      )}
     </div>
   );
 };

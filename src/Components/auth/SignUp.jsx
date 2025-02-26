@@ -39,7 +39,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-4 sm:gap-6 px-4 sm:px-6 md:px-8">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 pt-10">
       {/* Title Section */}
       <div className="title flex flex-col items-center text-center font-dmMono">
         <img className="w-20 h-20 sm:w-24 sm:h-24" src={account} alt="User Icon" />
