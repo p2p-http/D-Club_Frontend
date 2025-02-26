@@ -167,7 +167,12 @@ const ProfilePage = () => {
       </div>
 
       {/* Account Creation Date */}
-      <p className="text-[#868181]">Account Created with 💜 on {"12-12-2025"}</p>
+      <div className=" flex flex-col items-start w-3/4 text-[#868181]">
+      <p>Account Created with 💜 on {"12-12-2025"}</p>
+      </div>
+      
+      
+      
     </div>
   );
 };
