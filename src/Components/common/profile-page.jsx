@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slice/auth-slice";
 import { useNavigate } from "react-router-dom";
 import { Camera, LogOut, Pencil } from "lucide-react"; // Camera & Logout icons
@@ -14,6 +14,8 @@ const ProfilePage = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -53,7 +55,7 @@ const ProfilePage = () => {
         {/* Name, Bio & Button */}
         <div className="name_bio_btn space-y-9">
           <div className="name_bio flex flex-col">
-            <h2 className="text-[#F0E3E3] text-3xl font-semibold">Onkar Dhotarkar</h2>
+            <h2 className="text-[#F0E3E3] text-3xl font-semibold">{user.fullName}</h2>
             <p className="text-[#868181]">Dance like nobody's watching, party like never before! 💫🍾</p>
           </div>
 
@@ -133,15 +135,15 @@ const ProfilePage = () => {
 
         {/*  Interest */}
         <div className="flex flex-col w-full space-y-2">
-        <h1 className="text-[#BFBFBF] text-3xl">Interest</h1>
-        <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
+          <h1 className="text-[#BFBFBF] text-3xl">Interest</h1>
+          <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
 
-          <div className="interest_box flex flex-row space-x-4">
-            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-            <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-          </div>
-        </div></div>
+            <div className="interest_box flex flex-row space-x-4">
+              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
+            </div>
+          </div></div>
 
         {/* About Yourself */}
         <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
@@ -168,11 +170,11 @@ const ProfilePage = () => {
 
       {/* Account Creation Date */}
       <div className=" flex flex-col items-start w-3/4 text-[#868181]">
-      <p>Account Created with 💜 on {"12-12-2025"}</p>
+        <p>Account Created with 💜 on {"12-12-2025"}</p>
       </div>
-      
-      
-      
+
+
+
     </div>
   );
 };
