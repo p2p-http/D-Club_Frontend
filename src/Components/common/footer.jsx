@@ -53,7 +53,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-gray-600 mt-6 pt-6 text-center text-sm">
-        <p>&copy; {new Date().getFullYear()} D-Club. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} D-Club. Created with ❤️ at Pune. All rights reserved.</p>
       </div>
     </footer>
   );
