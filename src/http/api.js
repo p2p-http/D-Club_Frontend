@@ -9,3 +9,5 @@ export const createPassword = (credentials) => api.post('/auth/createPassword', 
 export const sendForgotPasswordEmail = (credentials) => api.post('/auth/forgotPassword', credentials)
 
 export const resetPassword = (credentials) => api.post('/auth/resetPassword', credentials)
+
+export const supportEnd = (credentials) => api.post('/support/queryEmailToSupport', credentials)

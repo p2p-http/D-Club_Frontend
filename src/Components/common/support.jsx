@@ -1,46 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import { Mail } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { supportEnd } from "../../http/api.js"
+import toast from "react-hot-toast";
+
+
+const supportQuery = async (credentials) => {
+    const { data } = await supportEnd(credentials);
+    return data;
+};
 
 const Support = () => {
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState("");
+
+    const { mutate, isPending } = useMutation({
+        mutationKey: ["login"],
+        mutationFn: supportQuery,
+        onSuccess: async () => {
+            toast.success("Query sent successfully");
+            document.getElementById("support-form").reset();
+        },
+        onError: (error) => {
+            toast.error("Login Failed: " + (error?.message || "Something went wrong"));
+        },
+    });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setLoading(true);
-        setSuccess(false);
-        setError("");
-
         const formData = new FormData(event.target);
         const email = formData.get("email");
         const fullName = formData.get("fullName");
         const subject = formData.get("subject");
         const message = formData.get("message");
-
-        try {
-            const response = await fetch(
-                `${import.meta.env.VITE_BACKEND_API_URL}/support/queryEmailToSupport`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ fullName, email, subject, message }),
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error("Failed to send message.");
-            }
-
-            setSuccess(true);
-            event.target.reset(); // Clear form after success
-        } catch (err) {
-            setError("Something went wrong. Please try again later.");
-        } finally {
-            setLoading(false);
-        }
+        mutate({ email, fullName, subject, message });
     };
 
     return (
@@ -77,7 +68,7 @@ const Support = () => {
 
                 {/* Right Section (Form) */}
                 <div className="p-8">
-                    <form onSubmit={handleSubmit} className="flex flex-col space-y-5 w-full max-w-sm">
+                    <form id="support-form" onSubmit={handleSubmit} className="flex flex-col space-y-5 w-full max-w-sm">
                         {/* Full Name Input */}
                         <FormItem name="fullName" label="Full Name">
                             <input
@@ -122,17 +113,17 @@ const Support = () => {
                         ></textarea>
 
                         {/* Status Messages */}
-                        {success && <p className="text-green-500">Message sent successfully!</p>}
-                        {error && <p className="text-red-500">{error}</p>}
+                        {/* {success && <p className="text-green-500">Message sent successfully!</p>}
+                        {error && <p className="text-red-500">{error}</p>} */}
 
                         {/* Submit Button */}
                         <div className="flex flex-col mt-5">
                             <button
                                 type="submit"
                                 className="w-96 p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black hover:bg-[#e6c000] transition"
-                                disabled={loading}
+                                disabled={isPending}
                             >
-                                {loading ? "Sending..." : "Send Message"}
+                                {isPending ? "Sending..." : "Send Message"}
                             </button>
                         </div>
                     </form>

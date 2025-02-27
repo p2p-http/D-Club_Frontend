@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { setAuth } from "../../store/slice/auth-slice.js";
 import { useDispatch } from "react-redux";
 import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons"; // Import Ant Design loader icon
+import { LoadingOutlined } from "@ant-design/icons";
 
 const loginUser = async (credentials) => {
   const { data } = await loginEnd(credentials);
