@@ -17,6 +17,7 @@ import Home from "./Components/common/home";
 import ProfilePage from "./Components/common/profile-page";
 import NotPageFound from "./Components/common/page-not-found";
 import Support from "./Components/common/support";
+import Footer from "./Components/common/footer";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -92,6 +93,7 @@ function App() {
           />
         </Routes>
       </AnimatePresence>
+      <Footer/>
     </div>
   );
 }
