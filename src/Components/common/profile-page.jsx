@@ -56,7 +56,7 @@ const ProfilePage = () => {
         <div className="name_bio_btn space-y-9">
           <div className="name_bio flex flex-col">
             <h2 className="text-[#F0E3E3] text-3xl font-semibold">{user.fullName}</h2>
-            <p className="text-[#868181]">Dance like nobody's watching, party like never before! 💫🍾</p>
+            <p className="text-[#868181]">{user.bio || "Dance like nobody's watching, party like never before! 💫🍾"}</p>
           </div>
 
           <div className="btn flex flex-row space-x-1">
