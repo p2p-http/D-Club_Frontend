@@ -7,6 +7,7 @@ import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
+import ProfileUpdateDrawer from "../drawer/profile-update-drawer";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const ProfilePage = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
 
@@ -69,6 +71,7 @@ const ProfilePage = () => {
             </button>
             <button
               type="submit"
+              onClick={() => setDrawerOpen(true)}
               className="p-2 sm:p-3 rounded-r-xl text-base font-normal bg-[#FFD700] text-black w-40 hover:bg-[#e6c000] transition"
             >
               Edit profile
@@ -173,7 +176,10 @@ const ProfilePage = () => {
         <p>Account Created with 💜 on {"12-12-2025"}</p>
       </div>
 
-
+      <ProfileUpdateDrawer
+        drawerOpen={drawerOpen}
+        setDrawerOpen={setDrawerOpen}
+      />
 
     </div>
   );

@@ -10,18 +10,31 @@ import store from './store/index.js'
 
 import persistor from "./store/index.js"
 import { Provider } from 'react-redux'
+import { ConfigProvider, theme } from 'antd'
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <PersistGate persistor={persistor} />
-      <Provider store={store}>
-        <StrictMode>
-          <Toaster />
-          <App />
-        </StrictMode>
-      </Provider>
-    </BrowserRouter>
+    <ConfigProvider
+
+      theme={{
+        algorithm: theme.darkAlgorithm,
+        token: {
+          colorPrimary: '#3b82f6',
+          colorBgElevated: '#020817',
+          colorBgContainer: '#020817',
+        },
+      }}
+    >
+      <BrowserRouter>
+        <PersistGate persistor={persistor} />
+        <Provider store={store}>
+          <StrictMode>
+            <Toaster />
+            <App />
+          </StrictMode>
+        </Provider>
+      </BrowserRouter>
+    </ConfigProvider>
   </QueryClientProvider>,
 )
