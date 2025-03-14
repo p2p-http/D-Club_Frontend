@@ -32,7 +32,8 @@ const UpdateProfileForm = ({ form }) => {
         name="fullName"
         rules={[{ required: true, message: "Full Name is required" }]}
       >
-        <Input />
+        
+        <Input placeholder="Enter Your Full Name"/>
       </Form.Item>
 
       <Form.Item
@@ -40,7 +41,7 @@ const UpdateProfileForm = ({ form }) => {
         name="bio"
         rules={[{ required: true, message: "Bio is required" }]}
       >
-        <Input.TextArea />
+        <Input.TextArea placeholder="Bio : Dance like nobody's watching, party like never before! 💫🍾" />
       </Form.Item>
 
       <div className="flex items-center justify-between">
@@ -74,29 +75,32 @@ const UpdateProfileForm = ({ form }) => {
         />
       </Form.Item>
 
-      <Form.Item label="Instagram" name="instagram">
-        <Input placeholder="Enter Instagram URL" />
-      </Form.Item>
 
-      <Form.Item label="Twitter" name="twitter">
-        <Input placeholder="Enter Twitter URL" />
-      </Form.Item>
-
-      <Form.Item label="Snapchat" name="snapchat">
-        <Input placeholder="Enter Snapchat URL" />
-      </Form.Item>
-
-      <Form.Item label="About" name="about">
-        <Input.TextArea />
+      <Form.Item label="About Yourself 😌" name="about"rules={[{ required: true, message: "Interest is required" }]} >
+        <Input.TextArea placeholder="Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention." />
       </Form.Item>
 
       <Form.Item
-        label="Looking For"
+        label="Looking For..? 👀"
         name="lookingFor"
         rules={[{ required: true, message: "Looking For is required" }]}
       >
-        <Input.TextArea />
+        <Input.TextArea placeholder="Tell us who you would like to meet and why. Specify your wishes for a partner. This will help you find the right person faster." />
       </Form.Item>
+
+      <Form.Item label="Instagram (optional)" name="instagram">
+        <Input placeholder="Enter Instagram URL" />
+      </Form.Item>
+
+      <Form.Item label="Twitter (optional)" name="twitter">
+        <Input placeholder="Enter Twitter URL" />
+      </Form.Item>
+
+      <Form.Item label="Snapchat (optional)" name="snapchat">
+        <Input placeholder="Enter Snapchat URL" />
+      </Form.Item>
+
+      
     </>
   );
 };

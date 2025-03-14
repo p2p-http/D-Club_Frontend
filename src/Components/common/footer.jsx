@@ -12,7 +12,7 @@ const Footer = () => {
         
         {/* D-Club Info */}
         <div>
-          <h2 className="text-white text-2xl font-semibold">D-<span className="text-[#FFD700]">Club</span> </h2>
+          <h2 className="text-gray-300 text-2xl font-semibold">D-<span className="text-[#FFD700]">Club</span> </h2>
           
 
           <p className="mt-2 text-sm">

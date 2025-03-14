@@ -21,11 +21,11 @@ const Home = () => {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="text-center max-w-5xl space-y-11"
+        className="text-center max-w-5xl space-y-12"
       >
-        <div className="titel flex flex-row items-center justify-center">
+        <div className="titel flex flex-row items-center justify-center space-x-3">
           {/* Tagline & CTA */}
-          <h1 className="text-5xl sm:text-7xl font-extrabold text-slate-400 leading-tight">
+          <h1 className="text-6xl sm:text-8xl font-bold text-slate-400 leading-tight ">
             <span className="text-[#FFD700]">Find</span> Your perfect club <span className="text-[#FFD700]">partner</span>
           </h1>
           <h1 className=" text-9xl flex items-center justify-center">👋</h1>
@@ -97,7 +97,7 @@ const Home = () => {
       <section className="w-full max-w-5xl text-center">
         <h2 className="text-4xl font-bold text-[#FFD700]">Join Our Community</h2>
         <p className="text-gray-400 mt-4 max-w-3xl mx-auto">
-          Be part of an **exclusive clubbing network**! 🎉 **Find partners, create connections, and enjoy nightlife** like never before! 🔥💃
+          Be part of an exclusive clubbing network! 🎉 Find partners, create connections, and enjoy nightlife like never before! 🔥💃
         </p>
         <button className="mt-6 px-8 py-3 bg-[#ff4d6d] text-white font-semibold rounded-full hover:bg-[#e63956] transition text-lg">
           Sign Up Now 🎉
@@ -117,9 +117,9 @@ const Home = () => {
           variants={fadeIn}
           className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed"
         >
-          **D-Club was created to break barriers in nightlife culture.**
-          Whether you're tired of **solo entry restrictions**, looking for a **fun-loving club partner**, or simply want to **enhance your clubbing experience**,
-          **D-Club makes it easy, safe, and exciting to connect and party.**
+          D-Club was created to break barriers in nightlife culture.
+          Whether you're tired of solo entry restrictions, looking for a fun-loving club partner, or simply want to enhance your clubbing experience,
+          D-Club makes it easy, safe, and exciting to connect and party.
         </motion.p>
 
         {/* 🚀 Purpose Highlights */}
@@ -165,9 +165,9 @@ const Home = () => {
             </motion.h2>
 
             <motion.p initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.2 }} className="text-lg text-gray-300">
-              No clubbing partner? Tired of **solo entries**?
-              Clubs rejecting **stack entries**? We get it!
-              Finding the right **party match** shouldn't be hard.
+              No clubbing partner? Tired of solo entries?
+              Clubs rejecting stack entries? We get it!
+              Finding the right party match shouldn't be hard.
             </motion.p>
           </div>
 
@@ -180,9 +180,9 @@ const Home = () => {
             </motion.h2>
 
             <motion.p initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.2 }} className="text-lg text-gray-300">
-              Match with **like-minded clubbers**,
-              Find your **perfect duo**, and enjoy **limitless nightlife**.
-              **Vibe, Dance, & Party** without restrictions!
+              Match with like-minded clubbers,
+              Find your perfect duo, and enjoy limitless nightlife.
+              Vibe, Dance, & Party without restrictions!
             </motion.p>
 
             <motion.button initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.4 }}
