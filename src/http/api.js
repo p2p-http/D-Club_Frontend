@@ -11,3 +11,5 @@ export const sendForgotPasswordEmail = (credentials) => api.post('/auth/forgotPa
 export const resetPassword = (credentials) => api.post('/auth/resetPassword', credentials)
 
 export const supportEnd = (credentials) => api.post('/support/queryEmailToSupport', credentials)
+
+export const updateProfileEnd = (credentials) => api.post('/profile/update', credentials)
