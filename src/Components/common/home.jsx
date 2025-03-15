@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import { RiArrowDownDoubleLine } from "react-icons/ri";
 import Intro from "../home-ui/intro";
 import Working from "../home-ui/working";
+import Cammunityt from "../../assets/Cammunity.png"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -60,6 +61,10 @@ const Home = () => {
         <button className="mt-6 px-8 py-3 bg-[#ff4d6d] text-white font-semibold rounded-full hover:bg-[#e63956] transition text-lg">
           Sign Up Now 🎉
         </button>
+
+        <div className="cammunity-page flex justify-center items-center">
+          <img src={Cammunityt} alt="" />
+        </div>
       </section>
 
 
@@ -161,22 +166,4 @@ export default Home;
 
 
 
-{/* D-Club Logo with Typing Effect */ }
-{/* <div className="flex flex-row items-center justify-center space-x-2 text-4xl sm:text-5xl font-extrabold">
-          <span className="text-white">D-</span>
-          <span className="text-[#FFD700]">Club :</span>
-          <span className="text-[#FFD700] text-2xl sm:text-3xl font-light">
-            <TypeAnimation
-              sequence={[
-                "Discover. Dance. Duo.",
-                1500,
-                "", // Empty string to simulate deletion
-                500,
 
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </span>
-        </div> */}
