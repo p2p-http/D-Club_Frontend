@@ -5,6 +5,9 @@ import { TypeAnimation } from "react-type-animation";
 import soloWalking from "../../assets/solo.json"; // Lottie Animation (Solo Walker)
 import coupleWalking from "../../assets/couple.json";
 import Lottie from "lottie-react";
+import { RiArrowDownDoubleLine } from "react-icons/ri";
+import Intro from "../home-ui/intro";
+import Working from "../home-ui/working";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -14,59 +17,14 @@ const fadeIn = {
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black pt-72 space-y-52">
+    <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black  space-y-40">
 
       {/* 🚀 Hero Section */}
-      <motion.section
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        className="text-center max-w-5xl space-y-12"
-      >
-        <div className="titel flex flex-row items-center justify-center space-x-3">
-          {/* Tagline & CTA */}
-          <h1 className="text-6xl sm:text-8xl font-bold text-slate-400 leading-tight ">
-            <span className="text-[#FFD700]">Find</span> Your perfect club <span className="text-[#FFD700]">partner</span>
-          </h1>
-          <h1 className=" text-9xl flex items-center justify-center">👋</h1>
-        </div>
-
-        <p className="text-lg text-[#cbae8a] max-w-3xl mx-auto">
-          Welcome to D-Club! 🎉 Match with the right club partner, skip solo entries, and make unforgettable nightlife memories! 💃🔥 Join a safe, fun, and exciting clubbing experience now! 🌟✨
-        </p>
-
-
-
-        <button className="mt-6 px-6 py-3 bg-[#FFD700] text-slate-800 font-semibold rounded-full hover:bg-[#e6c000] transition text-lg">
-          Get Started 🚀
-        </button>
-
-      </motion.section>
+      <Intro/>
 
       {/* 🟡 How It Works (Minimal & Clean UI) */}
-      <section className="w-full max-w-5xl text-center space-y-12">
-        <h2 className="text-4xl font-bold text-[#FFD700]">How It Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {[
-            { icon: <Search size={40} />, title: "Create Profile", desc: "Set up your profile & preferences." },
-            { icon: <Handshake size={40} />, title: "Find a Partner", desc: "Get matched with club partners who share your vibe." },
-            { icon: <CheckCircle size={40} />, title: "Enjoy the Night!", desc: "Meet up, skip the solo entry, and have fun!" }
-          ].map((step, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeIn}
-              transition={{ delay: index * 0.2 }}
-              className="bg-[#1b191b] p-6 rounded-xl shadow-md text-center border border-[#333]"
-            >
-              <div className="text-[#FFD700] flex justify-center">{step.icon}</div>
-              <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
-              <p className="text-gray-400 mt-2">{step.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <Working/>
+
 
       {/* 🟡 Why Choose D-Club? (Highlight with Background) */}
       <section className="w-full max-w-6xl text-center bg-[#1b191b] p-10 rounded-xl shadow-lg">

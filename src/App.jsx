@@ -18,6 +18,8 @@ import ProfilePage from "./Components/common/profile-page";
 import NotPageFound from "./Components/common/page-not-found";
 import Support from "./Components/common/support";
 import Footer from "./Components/common/footer";
+import Intro from "./Components/home-ui/intro";
+import Working from "./Components/home-ui/working";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -42,6 +44,7 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Home />
+
               </motion.div>
             }
           />
@@ -71,6 +74,24 @@ function App() {
             }
           />
 
+          <Route
+            path="intro"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Intro />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="working"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Working />
+              </motion.div>
+            }
+          />
+
           {/* Authentication Routes */}
           <Route path="auth" element={<AuthLayout />}>
             <Route path="signup" element={<AnimatedPage><SignUp /></AnimatedPage>} />
@@ -80,6 +101,7 @@ function App() {
             <Route path="sendemail" element={<AnimatedPage><Sendemail /></AnimatedPage>} />
             <Route path="resendemail" element={<AnimatedPage><Resendmail /></AnimatedPage>} />
             <Route path="reset-password" element={<AnimatedPage><ResetPass /></AnimatedPage>} />
+
           </Route>
 
           {/* 404 Page */}
@@ -93,7 +115,7 @@ function App() {
           />
         </Routes>
       </AnimatePresence>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
