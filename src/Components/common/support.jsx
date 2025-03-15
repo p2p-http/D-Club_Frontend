@@ -6,8 +6,7 @@ import toast from "react-hot-toast";
 
 
 const supportQuery = async (credentials) => {
-    const { data } = await supportEnd(credentials);
-    return data;
+    return await supportEnd(credentials);
 };
 
 const Support = () => {
