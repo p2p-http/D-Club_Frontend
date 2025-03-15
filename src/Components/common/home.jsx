@@ -21,10 +21,10 @@ const Home = () => {
     <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black  space-y-40">
 
       {/* 🚀 Hero Section */}
-      <Intro/>
+      <Intro />
 
       {/* 🟡 How It Works (Minimal & Clean UI) */}
-      <Working/>
+      <Working />
 
 
       {/* 🟡 Why Choose D-Club? (Highlight with Background) */}
@@ -68,11 +68,17 @@ const Home = () => {
       </section>
 
 
-      <section className="w-full max-w-6xl text-center py-16">
+      <section className="w-full max-w-6xl text-center py-16 ">
         {/* 🟡 Section Title */}
-        <h2 className="text-5xl font-bold text-[#FFD700] mb-8">
-          What's the <span className="text-white">Purpose of D-Club?</span>
-        </h2>
+        <div className="flex  justify-center gap-6">
+          <div className="circle h-10 w-10 rounded-full bg-[#FFD700] items-center"></div>
+          <h2 className="text-5xl font-bold text-white mb-8">
+            What's the actual Purpose of <span className="text-[#868181]">D-</span><span className="text-[#FFD700]">Club?</span>
+          </h2>
+          <div className="circle h-10 w-10 rounded-full bg-[#FFD700] items-center"></div>
+        </div>
+
+        <h1></h1>
 
         <motion.p
           initial="hidden"
@@ -85,78 +91,13 @@ const Home = () => {
           D-Club makes it easy, safe, and exciting to connect and party.
         </motion.p>
 
-        {/* 🚀 Purpose Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
-          {[
-            { icon: <Users size={50} />, title: "Meet Like-Minded People", desc: "Find clubbers who match your energy and interests, making nightlife more enjoyable and social." },
-            { icon: <PartyPopper size={50} />, title: "No More Solo Clubbing", desc: "Skip awkward solo entries! Get matched with the perfect club partner for an exciting night out." },
-            { icon: <Handshake size={50} />, title: "Build Real Connections", desc: "D-Club isn't just about clubbing—it's about creating meaningful friendships and experiences." },
-            { icon: <Star size={50} />, title: "Elevate Your Clubbing Experience", desc: "Enjoy exclusive events, VIP access, and safe, hassle-free party nights, all with D-Club!" }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeIn}
-              transition={{ delay: index * 0.2 }}
-              className="p-6 bg-[#1b191b] rounded-xl shadow-lg flex flex-col items-center text-center"
-            >
-              <div className="text-[#FFD700] mb-3">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="text-gray-400 mt-2">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+
       </section>
 
 
 
 
-      <section className="relative w-full text-white overflow-hidden py-24 px-6">
-        {/* 🖤 Background Effect */}
-        <div className="absolute inset-0 bg-[#1b191b] transform -skew-y-3" style={{ height: "120%" }}></div>
 
-        {/* 🎉 Content */}
-        <div className="relative flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto space-y-12 md:space-y-0">
-
-          {/* 🚶 Left Side: Solo Walking (Before D-Club) */}
-          <div className="w-full md:w-1/2 flex flex-col items-center text-center md:text-left space-y-6">
-            <Lottie animationData={soloWalking} className="w-64 h-64 rounded-2xl" />
-
-            <motion.h2 initial="hidden" whileInView="visible" variants={fadeIn} className="text-4xl font-extrabold text-gray-400">
-              Feeling <span className="text-[#FFD700]">Alone?</span>
-            </motion.h2>
-
-            <motion.p initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.2 }} className="text-lg text-gray-300">
-              No clubbing partner? Tired of solo entries?
-              Clubs rejecting stack entries? We get it!
-              Finding the right party match shouldn't be hard.
-            </motion.p>
-          </div>
-
-          {/* 💃 Right Side: Couple Walking (After D-Club) */}
-          <div className="w-full md:w-1/2 flex flex-col items-center text-center md:text-left space-y-6">
-            <Lottie animationData={coupleWalking} className="w-64 h-64" />
-
-            <motion.h2 initial="hidden" whileInView="visible" variants={fadeIn} className="text-4xl font-extrabold text-white">
-              **D-Club's Got You!**
-            </motion.h2>
-
-            <motion.p initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.2 }} className="text-lg text-gray-300">
-              Match with like-minded clubbers,
-              Find your perfect duo, and enjoy limitless nightlife.
-              Vibe, Dance, & Party without restrictions!
-            </motion.p>
-
-            <motion.button initial="hidden" whileInView="visible" variants={fadeIn} transition={{ delay: 0.4 }}
-              className="mt-4 px-6 py-3 bg-[#FFD700] text-slate-800 font-semibold rounded-full hover:bg-[#e6c000] transition text-lg"
-            >
-              Find Your Duo Now! 🚀
-            </motion.button>
-          </div>
-
-        </div>
-      </section>
     </div>
   );
 };
