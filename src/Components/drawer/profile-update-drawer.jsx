@@ -5,28 +5,34 @@ import dayjs from "dayjs";
 import { useMutation } from '@tanstack/react-query';
 import { updateProfileEnd } from '../../http/api';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '../../store/slice/auth-slice';
 
 
-const updateProfile = async (credentials) => {
-  const { data } = await updateProfileEnd(credentials);
+const updateProfile = async ({ credentials, token }) => {
+  const { data } = await updateProfileEnd(credentials, token);
   return data;
 };
+
 const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+
+  const { authToken } = useSelector(state => state.auth)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["update-profile"],
     mutationFn: updateProfile,
     onSuccess: async (data) => {
-      console.log(data);
+      console.log("Updated Data:", data)
       dispatch(
         setAuth({
           user: data.message.user,
+          authToken: data.message.authToken,
         })
       );
+      setDrawerOpen(false);
+      form.resetFields();
       toast.success("Profile updated successfully");
     },
     onError: (error) => {
@@ -47,7 +53,7 @@ const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
       },
     };
 
-    mutate(formattedValues);
+    mutate({ credentials: formattedValues, token: authToken });
   };
 
   return (

@@ -12,4 +12,9 @@ export const resetPassword = (credentials) => api.post('/auth/resetPassword', cr
 
 export const supportEnd = (credentials) => api.post('/support/queryEmailToSupport', credentials)
 
-export const updateProfileEnd = (credentials) => api.post('/profile/update', credentials)
+export const updateProfileEnd = (credentials, token) =>
+  api.post('/profile/update', credentials, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
