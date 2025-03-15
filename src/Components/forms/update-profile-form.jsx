@@ -9,13 +9,15 @@ const UpdateProfileForm = ({ form }) => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    console.log("User Interests:", user.interest); // ✅ Debugging (Check Console)
+  
     if (user) {
       form.setFieldsValue({
         fullName: user.fullName,
         bio: user.bio,
         gender: user.gender || "male",
         dateOfBirth: user.dateOfBirth ? dayjs(user.dateOfBirth) : null,
-        interest: user.interest || [],
+        interest: user.interest || [], // ✅ Ensure it's an array
         instagram: user.socialMedia?.instagram || "",
         twitter: user.socialMedia?.twitter || "",
         snapchat: user.socialMedia?.snapchat || "",
@@ -24,6 +26,8 @@ const UpdateProfileForm = ({ form }) => {
       });
     }
   }, [user, form]);
+  
+
 
   return (
     <>
@@ -32,8 +36,8 @@ const UpdateProfileForm = ({ form }) => {
         name="fullName"
         rules={[{ required: true, message: "Full Name is required" }]}
       >
-        
-        <Input placeholder="Enter Your Full Name"/>
+
+        <Input placeholder="Enter Your Full Name" />
       </Form.Item>
 
       <Form.Item
@@ -68,15 +72,20 @@ const UpdateProfileForm = ({ form }) => {
         rules={[{ required: true, message: "Interest is required" }]}
       >
         <Select
-          placeholder="Enter Tags"
           mode="tags"
-          options={InterestOptions}
+          placeholder="Enter Interests"
+          options={InterestOptions} // Assuming InterestOptions is an array of `{ label, value }`
           allowClear
+          value={form.getFieldValue("interest") || []} // Ensure visibility
+          onChange={(value) => form.setFieldsValue({ interest: value })} // Handle updates
         />
       </Form.Item>
 
 
-      <Form.Item label="About Yourself 😌" name="about"rules={[{ required: true, message: "Interest is required" }]} >
+
+
+
+      <Form.Item label="About Yourself 😌" name="about" rules={[{ required: true, message: "Interest is required" }]} >
         <Input.TextArea placeholder="Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention." />
       </Form.Item>
 
@@ -100,7 +109,7 @@ const UpdateProfileForm = ({ form }) => {
         <Input placeholder="Enter Snapchat URL" />
       </Form.Item>
 
-      
+
     </>
   );
 };

@@ -8,6 +8,7 @@ import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
 import ProfileUpdateDrawer from "../drawer/profile-update-drawer";
+import { span } from "framer-motion/client";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ProfilePage = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
+  // console.log(user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -97,71 +99,58 @@ const ProfilePage = () => {
         </div>
 
         {/* Age & Gender Selection */}
-        <div className="age_gender flex flex-col sm:flex-row gap-8 w-full">
+        <div className="age_gender flex flex-col sm:flex-row gap-16 w-full">
           {/* Age Selection */}
           <div className="age">
-            <label className="text-gray-300 text-sm font-medium">Age:</label>
+            <label className="text-gray-300 text-base font-medium">Date Of Birth:</label>
             <div className="flex gap-4 mt-2">
-              {["16-18", "19-21", "22-29", "30+"].map((option) => (
-                <label key={option} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="age"
-                    value={option}
-                    checked={age === option}
-                    onChange={(e) => setAge(e.target.value)}
-                    className="appearance-none w-4 h-4 border border-gray-400 rounded-full checked:bg-[#FFD700] checked:border-transparent"
-                  />
-                  <span className="text-gray-300">{option}</span>
-                </label>
-              ))}
+              <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl"> {user.dateOfBirth ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth)) : "Not Selected"}</div>
             </div>
           </div>
 
           {/* Gender Selection */}
           <div className="gender">
-            <label className="text-gray-300 text-sm font-medium">Gender:</label>
+            <label className="text-gray-300 text-base font-medium">Gender:</label>
+
             <div className="flex gap-4 mt-2">
-              {["Male", "Female", "Other"].map((option) => (
-                <label key={option} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value={option}
-                    checked={gender === option}
-                    onChange={(e) => setGender(e.target.value)}
-                    className="appearance-none w-4 h-4 border border-gray-400 rounded-full checked:bg-[#FFD700] checked:border-transparent"
-                  />
-                  <span className="text-gray-300">{option}</span>
-                </label>
-              ))}
+              <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl"> {user.gender || "Not Selected"}</div>
             </div>
           </div>
+
         </div>
 
 
         {/*  Interest */}
         <div className="flex flex-col w-full space-y-2">
-          <h1 className="text-[#BFBFBF] text-3xl">Interest</h1>
-          <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
+  <h1 className="text-[#BFBFBF] text-3xl">Interest</h1>
+  <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
+    
+    <div className="interest_box flex flex-wrap gap-3">
+      {user.interests && user.interests.length > 0 ? (
+        user.interests.map((interest, index) => (
+          <p key={index} className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 px-3 py-1 rounded-xl">
+            {interest}
+          </p>
+        ))
+      ) : (
+        <p className="text-gray-400">No interests added yet.</p>
+      )}
+    </div>
 
-            <div className="interest_box flex flex-row space-x-4">
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 w-16 h-8 p-1 rounded-xl">dance</p>
-            </div>
-          </div></div>
+  </div>
+</div>
+
 
         {/* About Yourself */}
         <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
           <h1 className="text-[#BFBFBF] text-2xl">About Yourself 😌</h1>
-          <p className="text-[#868181]">Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention.</p>
+          <p className="text-[#868181]">{user.about || "Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention."}</p>
         </div>
 
         {/* Looking For */}
         <div className="Looking_for flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md px-10 py-6 space-y-5">
           <h1 className="text-[#BFBFBF] text-2xl">Looking For..? 👀</h1>
-          <p className="text-[#868181]">Tell us who you would like to meet and why. Specify your wishes for a partner. This will help you find the right person faster.</p>
+          <p className="text-[#868181]">{user.lookingFor || "Tell us who you would like to meet and why. Specify your wishes for a partner. This will help you find the right person faster."}</p>
         </div>
 
         {/* Social Platforms */}
@@ -177,7 +166,9 @@ const ProfilePage = () => {
 
       {/* Account Creation Date */}
       <div className=" flex flex-col items-start w-3/4 text-[#868181]">
-        <p>Account Created with 💜 on {"12-12-2025"}</p>
+        <p>Account Created with 💜 on {user.createdAt ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.createdAt)) : "DD-MM-YYYY"}  </p>
+        <p>Last Updated on {user.updatedAt ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.updatedAt)) : "DD-MM-YYYY"}  </p>
+
       </div>
 
       <ProfileUpdateDrawer
