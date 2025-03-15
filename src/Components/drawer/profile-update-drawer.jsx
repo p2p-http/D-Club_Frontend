@@ -1,4 +1,4 @@
-import { Button, Drawer, Form, Space } from 'antd';
+import { Button, Drawer, Form, Space, Spin } from 'antd'; // ✅ Import Spin for loader
 import React from 'react'
 import UpdateProfileForm from '../forms/update-profile-form';
 import dayjs from "dayjs";
@@ -8,7 +8,6 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '../../store/slice/auth-slice';
 
-
 const updateProfile = async ({ credentials, token }) => {
   const { data } = await updateProfileEnd(credentials, token);
   return data;
@@ -17,7 +16,6 @@ const updateProfile = async ({ credentials, token }) => {
 const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-
   const { authToken } = useSelector(state => state.auth)
 
   const { mutate, isPending } = useMutation({
@@ -36,9 +34,9 @@ const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
       toast.success("Profile updated successfully");
     },
     onError: (error) => {
-      toast.error("Login Failed: " + (error?.message || "Something went wrong"));
+      toast.error("Update Failed: " + (error?.message || "Something went wrong"));
     },
-  })
+  });
 
   const handleSubmit = () => {
     const values = form.getFieldsValue();
@@ -62,7 +60,7 @@ const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
       open={drawerOpen}
       styles={{
         body: { background: "#000" },
-        header: { background: "#00", color: "#fff" },
+        header: { background: "#000", color: "#fff" },
         content: { background: "#000" }
       }}
       onClose={() => setDrawerOpen(false)}
@@ -70,9 +68,14 @@ const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
       destroyOnClose={true}
       extra={
         <Space>
-          <Button onClick={() => setDrawerOpen(false)}>Cancel</Button>
-          <Button onClick={handleSubmit} className='font-bold' style={{ background: "#FFD700", color: "#000" }}>
-            Submit
+          <Button onClick={() => setDrawerOpen(false)} disabled={isPending}>Cancel</Button>
+          <Button 
+            onClick={handleSubmit} 
+            className='font-bold flex items-center gap-2' 
+            style={{ background: "#FFD700", color: "#000" }}
+            disabled={isPending} // ✅ Disable button while updating
+          >
+            {isPending ? <Spin size="small" /> : "Submit"} {/* ✅ Show loader while updating */}
           </Button>
         </Space>
       }
@@ -84,4 +87,4 @@ const ProfileUpdateDrawer = ({ drawerOpen, setDrawerOpen }) => {
   )
 }
 
-export default ProfileUpdateDrawer
+export default ProfileUpdateDrawer;
