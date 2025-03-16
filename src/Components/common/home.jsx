@@ -37,31 +37,35 @@ const Home = () => {
       
 
 
-      <section className="w-full max-w-6xl text-center py-16 flex flex-col space-y-4">
-        {/* 🟡 Section Title */}
-        <div className="flex  justify-center gap-6">
-          <div className="circle h-10 w-10 rounded-full bg-[#FFD700] items-center"></div>
-          <h2 className="text-5xl font-bold text-white mb-8">
-            What's the actual Purpose of <span className="text-[#868181]">D-</span><span className="text-[#FFD700]">Club?</span>
-          </h2>
-          <div className="circle h-10 w-10 rounded-full bg-[#FFD700] items-center"></div>
-        </div>
+      <section className="w-full max-w-6xl text-center py-8 sm:py-16 flex flex-col space-y-4 px-4 sm:px-0">
+  {/* 🟡 Section Title */}
+  <div className="flex justify-center gap-4 sm:gap-6">
+    <div className="circle h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-[#FFD700] flex items-center justify-center"></div>
+    <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 sm:mb-8">
+      What's the actual Purpose of{" "}
+      <span className="text-[#868181]">D-</span>
+      <span className="text-[#FFD700]">Club?</span>
+    </h2>
+    <div className="circle h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-[#FFD700] flex items-center justify-center"></div>
+  </div>
 
-        <h1 className=" font-poppins text-3xl font-semibold"> Find? <span className="text-[#4F4F4F] line-through"> Alone </span> <span className="text[#FFD700] font-extrabold"> : </span> A Love One</h1>
+  {/* Subtitle */}
+  <h1 className="font-poppins text-2xl sm:text-3xl font-semibold">
+    Find?{" "}
+    <span className="text-[#4F4F4F] line-through">Alone</span>{" "}
+    <span className="text-[#FFD700] font-extrabold">:</span> A Love One
+  </h1>
 
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeIn}
-          className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed"
-        >
-          D-Club was created to break barriers in nightlife culture.
-          Whether you're tired of solo entry restrictions, looking for a fun-loving club partner, or simply want to enhance your clubbing experience,
-          D-Club makes it easy, safe, and exciting to connects and parties.
-        </motion.p>
-
-
-      </section>
+  {/* Description */}
+  <motion.p
+    initial="hidden"
+    whileInView="visible"
+    variants={fadeIn}
+    className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed"
+  >
+    D-Club was created to break barriers in nightlife culture. Whether you're tired of solo entry restrictions, looking for a fun-loving club partner, or simply want to enhance your clubbing experience, D-Club makes it easy, safe, and exciting to connect and party.
+  </motion.p>
+</section>
 
 
 

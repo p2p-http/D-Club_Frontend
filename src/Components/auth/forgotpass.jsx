@@ -62,7 +62,7 @@ const ForgotPass = () => {
           </FormItem>
 
           {/* Button */}
-          <button type="submit" className="p-3 rounded-md bg-[#FFD700] text-black w-full font-medium hover:bg-yellow-500 transition">
+          <button type="submit" className="p-3 rounded-s-xl bg-[#FFD700] text-black w-full font-medium hover:bg-yellow-500 transition">
             Continue
           </button>
 
