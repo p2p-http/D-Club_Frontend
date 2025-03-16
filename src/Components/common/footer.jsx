@@ -24,7 +24,7 @@ const Footer = () => {
         <div>
           <h3 className="text-[#FFD700] text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-white flex items-center gap-2"><Home size={16}/> Home</Link></li>
+            <li><Link to="prostack" className="hover:text-white flex items-center gap-2"><Home size={16}/> Home</Link></li>
             <li><Link to="/we" className="hover:text-white flex items-center gap-2"><Info size={16}/> We</Link></li>
             <li><Link to="/event" className="hover:text-white flex items-center gap-2"><Users size={16}/> Event</Link></li>
             <li><Link to="/support" className="hover:text-white flex items-center gap-2"><HelpCircle size={16}/> Support</Link></li>
