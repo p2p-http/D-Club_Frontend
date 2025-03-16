@@ -69,14 +69,14 @@ const ProfilePage = () => {
             <button
               type="submit"
               onClick={() => navigate("/")}
-              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-xl sm:rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl sm:rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
             >
               {" < "} Back to Home
             </button>
             <button
               type="submit"
               onClick={() => setDrawerOpen(true)}
-              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-xl sm:rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-d-xl sm:rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
             >
               <Pencil size={15} className="text-semi black cursor-pointer hover:text-[#FFD700] transition" />
               Edit profile

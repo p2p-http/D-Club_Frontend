@@ -75,7 +75,7 @@ const Home = () => {
         <p className="text-gray-400 mt-4 max-w-3xl mx-auto">
           Be part of an exclusive clubbing network! 🎉 Find partners, create connections, and enjoy nightlife like never before! 🔥💃
         </p>
-        <button className="mt-6 px-8 py-3 bg-green-600 text-gray-200 font-semibold rounded-full hover:bg-green-700 transition text-lg">
+        <button className="mt-6 px-8 py-3 bg-[#fb6976] hover:bg-[#e44f5c] text-gray-200 font-semibold rounded-full  transition text-lg">
           Join Now 🎉
         </button>
 
