@@ -20,6 +20,7 @@ import Support from "./Components/common/support";
 import Footer from "./Components/common/footer";
 import Intro from "./Components/home-ui/intro";
 import Working from "./Components/home-ui/working";
+import Prostack from "./Components/common/prostack";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -88,6 +89,15 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Working />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="prostack"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Prostack />
               </motion.div>
             }
           />
