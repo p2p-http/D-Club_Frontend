@@ -1,15 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, Handshake, CheckCircle, Users, PartyPopper, Star } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
-import soloWalking from "../../assets/solo.json"; // Lottie Animation (Solo Walker)
-import coupleWalking from "../../assets/couple.json";
-import Lottie from "lottie-react";
-import { RiArrowDownDoubleLine } from "react-icons/ri";
 import Intro from "../home-ui/intro";
 import Working from "../home-ui/working";
 import Cammunityt from "../../assets/community.webp"
 import Prostack from "./prostack";
+
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -20,6 +15,7 @@ const fadeIn = {
 const Home = () => {
   return (
     <div className="flex flex-col items-center text-white min-h-screen px-6 py-12 bg-black  space-y-40">
+
 
       {/* 🚀 Hero Section */}
       <Intro />

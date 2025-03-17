@@ -105,7 +105,7 @@ function App() {
               </motion.div>
             }
           />
-
+ 
           {/* Authentication Routes */}
           <Route path="auth" element={<AuthLayout />}>
             <Route path="signup" element={<AnimatedPage><SignUp /></AnimatedPage>} />

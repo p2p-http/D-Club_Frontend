@@ -14,32 +14,28 @@ const Sendemail = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="flex items-center justify-center h-screen bg-black flex-col">
+            className="flex items-center justify-center min-h-screen bg-black flex-col px-4 sm:px-6 lg:px-8"
+        >
             {/* Title and Animation Outside the Box */}
-            <div className="text-center mb-2">
+            <div className="text-center mb-4 sm:mb-6">
                 <Lottie
                     animationData={emailAnimation}
                     loop={true}
-                    className="w-44 h-44 mx-auto"
+                    className="w-32 h-32 sm:w-44 sm:h-44 mx-auto"
                 />
-                <h1 className="text-3xl font-bold font-dmMono text-white">Create <span className='text-[#FFD700]'>Password</span></h1>
-
-
+                <h1 className="text-2xl sm:text-3xl font-bold font-dmMono text-white">
+                    Create <span className="text-[#FFD700]">Password</span>
+                </h1>
             </div>
 
             {/* Box Content */}
-            <div
-
-                className="bg-[#312F2F] w-96 p-8 rounded-xl shadow-lg text-center"
-            >
-
-
-                <p className="text-white text-xl">
+            <div className="bg-[#312F2F] w-full max-w-md p-6 sm:p-8 rounded-xl shadow-lg text-center">
+                <p className="text-white text-lg sm:text-xl">
                     An email with instructions has been sent to
                     <br />
                     <span className="text-[#ff9684]">{email}</span>
                 </p>
-                <p className="text-gray-400 text-base mt-2">
+                <p className="text-gray-400 text-sm sm:text-base mt-2">
                     The message may end up in your spam folder.
                 </p>
 

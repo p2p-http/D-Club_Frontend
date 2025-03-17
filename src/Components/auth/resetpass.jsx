@@ -13,16 +13,16 @@ const resetPasswordEndPt = async (credentials) => {
 const ResetPass = () => {
   const navigate = useNavigate();
   const [search] = useSearchParams();
-  const token = search.get("token");
+  const token = search.get('token');
 
-  console.log("Token => ", token);
+  console.log('Token => ', token);
 
   const { mutate } = useMutation({
     mutationKey: ['resetPassword'],
     mutationFn: resetPasswordEndPt,
     onSuccess: async () => {
-      toast.success("Password Reset Successful!");
-      navigate("/auth/login");
+      toast.success('Password Reset Successful!');
+      navigate('/auth/login');
     },
   });
 
@@ -39,15 +39,17 @@ const ResetPass = () => {
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6 px-4 sm:px-6 lg:px-8">
       <div className="title flex flex-col items-center text-center font-dmMono">
-        <img className="w-24 h-24" src={conpass} alt="User Icon" />
-        <h1 className="text-3xl font-bold">Reset <span className='text-[#FFD700]'>Password</span></h1>
+        <img className="w-20 h-20 sm:w-24 sm:h-24" src={conpass} alt="User Icon" />
+        <h1 className="text-2xl sm:text-3xl font-bold">
+          Reset <span className="text-[#FFD700]">Password</span>
+        </h1>
       </div>
 
       {/* Box */}
-      <div className="box h-[40vh] w-[70vh] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 shadow-md shadow-gray-600">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
+      <div className="box w-full max-w-md bg-[#312F2F] flex justify-center items-center rounded-xl p-6 sm:p-8 shadow-md shadow-gray-600">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full">
           {/* Password Input */}
           <FormItem
             name="password"
@@ -58,7 +60,7 @@ const ResetPass = () => {
               type="password"
               name="password"
               placeholder="Enter New Password"
-              className="mt-2 p-2 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 focus:ring-[#FFD700]"
             />
           </FormItem>
 
@@ -72,13 +74,18 @@ const ResetPass = () => {
               type="password"
               name="confirmPassword"
               placeholder="Confirm New Password"
-              className="mt-2 p-2 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full"
+              className="mt-2 p-2 sm:p-3 rounded-s-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 w-full focus:outline-none focus:ring-1 focus:ring-[#FFD700]"
             />
           </FormItem>
 
           {/* Button */}
           <div className="flex flex-col items-center">
-            <button type="submit" className="p-2 rounded-s-xl bg-[#FFD700] text-black w-full">Reset Password</button>
+            <button
+              type="submit"
+              className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full font-medium hover:bg-yellow-500 transition"
+            >
+              Reset Password
+            </button>
           </div>
         </form>
       </div>

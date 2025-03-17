@@ -5,27 +5,24 @@ import toast from 'react-hot-toast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 
-
 const createPasswordEndPt = async (credentials) => {
   const { data } = await createPassword(credentials);
   return data;
 };
 
 const ConfirmPass = () => {
-
   const navigate = useNavigate();
-
   const [search] = useSearchParams();
   const token = search.get("token");
 
-  console.log("Token => ", token)
+  console.log("Token => ", token);
 
   const { mutate } = useMutation({
     mutationKey: ['createPassword'],
     mutationFn: createPasswordEndPt,
     onSuccess: async () => {
-      toast.success("Registration is Done!!!")
-      navigate("/")
+      toast.success("Registration is Done!!!");
+      navigate("/");
     },
   });
 
@@ -35,24 +32,22 @@ const ConfirmPass = () => {
     const password = formData.get('password');
     const confirmPassword = formData.get('confirmPassword');
 
-    // Handle form data (e.g., send to an API)
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
 
-    mutate({ password, confirmPassword, token })
+    mutate({ password, confirmPassword, token });
   };
 
   return (
-    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6">
+    <div className="main flex flex-col text-white justify-center items-center min-h-screen gap-6 p-4">
       <div className="title flex flex-col items-center text-center font-dmMono">
         <img className="w-24 h-24" src={conpass} alt="User Icon" />
         <h1 className="text-3xl font-bold">Confirm <span className='text-[#FFD700]'>Password</span></h1>
       </div>
 
       {/* Box */}
-      <div className="box h-[40vh] w-[70vh] bg-[#312F2F] flex justify-center items-center rounded-xl p-4 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full max-w-sm">
-
+      <div className="box w-full max-w-md bg-[#312F2F] flex justify-center items-center rounded-xl p-6 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-600 drop-shadow-xl">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full">
           {/* Password Input */}
           <FormItem
             name="password" label="New Password"
