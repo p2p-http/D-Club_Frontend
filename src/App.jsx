@@ -32,6 +32,11 @@ const pageVariants = {
 function App() {
   const location = useLocation();
 
+  // ✅ Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  }, [location.pathname]); // Triggered when the route changes
+
   return (
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
@@ -45,7 +50,6 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Home />
-
               </motion.div>
             }
           />
@@ -111,7 +115,6 @@ function App() {
             <Route path="sendemail" element={<AnimatedPage><Sendemail /></AnimatedPage>} />
             <Route path="resendemail" element={<AnimatedPage><Resendmail /></AnimatedPage>} />
             <Route path="reset-password" element={<AnimatedPage><ResetPass /></AnimatedPage>} />
-
           </Route>
 
           {/* 404 Page */}

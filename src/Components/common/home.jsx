@@ -27,49 +27,49 @@ const Home = () => {
 
 
       {/* 🚀 Improve Profile */}
-<div className="flex flex-col space-y-8 justify-center items-center py-8 sm:py-12">
-  {/* Heading */}
-  <h2 className="text-2xl sm:text-4xl font-extrabold text-[#E2E8F0] font-poppins text-center">
-    Update Profile for Better Recommendations <span className="text-yellow-400">{'>'}</span>
-  </h2>
+      <div className="flex flex-col space-y-8 justify-center items-center py-8 sm:py-12 sm:w-full sm:bg-gradient-to-br sm:from-[#2a2a2a] sm:to-[#1a1a1a]">
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#969fac] font-poppins text-center">
+       Update Profile for Better Recommendations <span className="text-yellow-400">{'->'}</span>
+        </h2>
 
-  {/* Boxes and Prostack Section */}
-  <div className="box-prostack flex flex-col items-center justify-center w-full max-w-6xl px-4 sm:px-8">
-    {/* Boxes Section */}
-    <div className="boxes flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8 w-full justify-center items-stretch">
-      {/* Box 1: Update Profile */}
-      <div className="box-1 bg-[#1b191b] rounded-xl p-6 sm:p-8 text-center shadow-lg flex flex-col space-y-6 flex-1 hover:bg-[#2a2828] transition-all duration-300">
-        <div className="cicle flex flex-row space-x-3 items-center">
-          <div className="circle h-4 w-4 bg-yellow-400 rounded-full"></div>
-          <h1 className="text-[#E2E8F0] text-lg sm:text-xl font-semibold text-start">
-            Update Profile
-          </h1>
+        {/* Boxes and Prostack Section */}
+        <div className="box-prostack flex flex-col items-center justify-center w-full max-w-6xl px-4 sm:px-8">
+          {/* Boxes Section */}
+          <div className="boxes flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8 w-full justify-center items-stretch">
+            {/* Box 1: Update Profile */}
+            <div className="box-1 bg-[#1b191b] rounded-xl p-6 sm:p-8 text-center shadow-lg flex flex-col space-y-6 flex-1 hover:bg-[#2a2828] transition-all duration-300">
+              <div className="cicle flex flex-row space-x-3 items-center">
+                <div className="circle h-4 w-4 bg-yellow-400 rounded-full"></div>
+                <h1 className="text-[#E2E8F0] text-lg sm:text-xl font-semibold text-start">
+                  Update Profile
+                </h1>
+              </div>
+              <p className="text-[#94A3B8] text-sm sm:text-base text-start">
+                Take a few minutes to update your profile and make it more interesting!
+              </p>
+            </div>
+
+            {/* Box 2: Improve Accuracy */}
+            <div className="box-1 bg-[#1b191b] rounded-xl p-6 sm:p-8 text-center shadow-lg flex flex-col space-y-6 flex-1 hover:bg-[#2a2828] transition-all duration-300">
+              <div className="cicle flex flex-row space-x-3 items-center">
+                <div className="circle h-4 w-4 bg-yellow-400 rounded-full"></div>
+                <h1 className="text-[#E2E8F0] text-lg sm:text-xl font-semibold text-start">
+                  Improve Accuracy
+                </h1>
+              </div>
+              <p className="text-[#94A3B8] text-sm sm:text-base text-start">
+                Our ML model uses your profile to find the best matches. A complete and engaging profile boosts your visibility and increases your chances of connecting with someone special.
+              </p>
+            </div>
+          </div>
+
+          {/* Prostack Component */}
+          <div className="w-full mt-8 sm:mt-12">
+            <Prostack />
+          </div>
         </div>
-        <p className="text-[#94A3B8] text-sm sm:text-base text-start">
-          Take a few minutes to update your profile and make it more interesting!
-        </p>
       </div>
-
-      {/* Box 2: Improve Accuracy */}
-      <div className="box-1 bg-[#1b191b] rounded-xl p-6 sm:p-8 text-center shadow-lg flex flex-col space-y-6 flex-1 hover:bg-[#2a2828] transition-all duration-300">
-        <div className="cicle flex flex-row space-x-3 items-center">
-          <div className="circle h-4 w-4 bg-yellow-400 rounded-full"></div>
-          <h1 className="text-[#E2E8F0] text-lg sm:text-xl font-semibold text-start">
-            Improve Accuracy
-          </h1>
-        </div>
-        <p className="text-[#94A3B8] text-sm sm:text-base text-start">
-          Our ML model uses your profile to find the best matches. A complete and engaging profile boosts your visibility and increases your chances of connecting with someone special.
-        </p>
-      </div>
-    </div>
-
-    {/* Prostack Component */}
-    <div className="w-full mt-8 sm:mt-12">
-      <Prostack />
-    </div>
-  </div>
-</div>
 
 
 

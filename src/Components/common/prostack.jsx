@@ -6,6 +6,7 @@ import { logout } from "../../store/slice/auth-slice"; // Logout action
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
+import userr from "../../assets/login.png";
 
 const Prostack = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -29,7 +30,7 @@ const Prostack = () => {
     };
 
     return (
-        <div className="main flex flex-col items-center justify-center min-h-[50vh] space-y-4 sm:space-y-8 pb-4 sm:pb-10 pt-6 sm:pt-8 px-3 sm:px-6 bg-black text-white">
+        <div className="main flex flex-col items-center justify-center min-h-[50vh] space-y-4 sm:space-y-8 pb-4 sm:pb-10 pt-6 sm:pt-8 px-3 sm:px-6 text-white">
             {/* Profile Section */}
             <div className="flex flex-col w-full max-w-md md:max-w-2xl lg:max-w-4xl space-y-4 p-3 sm:p-4 rounded-2xl bg-[#312F2F] shadow-md">
                 {/* Profile Card */}
@@ -37,7 +38,7 @@ const Prostack = () => {
     {/* Profile Image Section */}
     <div className="photo-icon relative w-20 h-20 sm:w-32 sm:h-32 flex items-center justify-center">
         <img
-            className="w-full h-full rounded-full object-cover border border-[#FFD700]"
+            className="w-full h-full rounded-full border-2 object-cover  border-[#FFD700] p-1"
             src={selectedImage || loginp}
             alt="Profile"
         />
@@ -46,7 +47,7 @@ const Prostack = () => {
     {/* Name, Bio & Button */}
     <div className="name,bio,btn flex flex-col justify-start sm:items-start space-y-2 sm:text-start">
         <div className="text-center sm:text-start">
-            <h2 className="text-[#F0E3E3] text-lg sm:text-2xl font-semibold">
+            <h2 onClick={() => navigate("/dashboard/profile")} className="text-[#F0E3E3] text-lg sm:text-2xl font-semibold hover:text-[#ffc45e] cursor-pointer"> 
                 {user?.fullName || "User Name"}
             </h2>
             <p className="text-[#868181] text-xs sm:text-sm">
