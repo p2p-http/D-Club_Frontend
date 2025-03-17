@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slice/auth-slice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Camera, LogOut, Pencil } from "lucide-react"; // Camera & Logout icons
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
@@ -16,6 +16,8 @@ const ProfilePage = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
+
+  console.log("USER -> ", user)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -138,10 +140,10 @@ const ProfilePage = () => {
           <h1 className="text-[#BFBFBF] text-xl sm:text-3xl">Interest</h1>
           <div className="Interest flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
             <div className="interest_box flex flex-wrap gap-3">
-              {user.interests && user.interests.length > 0 ? (
-                user.interests.map((interest, index) => (
+              {user.interest ? (
+                user.interest.map((tag, index) => (
                   <p key={index} className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 px-3 py-1 rounded-xl">
-                    {interest}
+                    {tag}
                   </p>
                 ))
               ) : (
@@ -170,9 +172,15 @@ const ProfilePage = () => {
         {/* Social Platforms */}
         <div className="socialp flex flex-col space-y-2">
           <div className="flex flex-row space-x-4">
-            <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
-            <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
-            <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
+            <a href={user.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
+            </a>
+            <a href={user.socialMedia.snapchat} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
+            </a>
+            <a href={user.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
+            </a>
           </div>
         </div>
       </div>
