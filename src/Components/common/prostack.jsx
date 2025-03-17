@@ -103,7 +103,7 @@ const Prostack = () => {
                 <div className="About_yourself roundedxl shadow-xl shadow-gray-600 flex flex-col bg-[#312F2F] rounded-xl p-6 sm:p-8 space-y-4 w-full mx-auto"> {/* Full width */}
                     <h1 className="text-[#BFBFBF] text-xl sm:text-2xl font-semibold">About {user?.fullName || "Yourself"} 😌</h1>
                     <p className="text-[#868181] text-sm sm:text-base">
-                        {user?.about || "Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention."}
+                        {user?.about || "Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention!"}
                     </p>
                 </div>
             </div>
