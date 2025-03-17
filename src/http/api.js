@@ -18,3 +18,11 @@ export const updateProfileEnd = (credentials, token) =>
       Authorization: `Bearer ${token}`,
     },
   });
+export const updateProfileImg = (formData, token) =>
+  api.post('/profile/uploadProfilePicture', formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+

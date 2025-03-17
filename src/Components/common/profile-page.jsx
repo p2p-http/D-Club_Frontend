@@ -1,35 +1,62 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/slice/auth-slice";
-import { Link, useNavigate } from "react-router-dom";
-import { Camera, LogOut, Pencil } from "lucide-react"; // Camera & Logout icons
+import { logout, setUser } from "../../store/slice/auth-slice";
+import { useNavigate } from "react-router-dom";
+import { Camera, FileEdit, LogOut, Pencil } from "lucide-react";
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
 import ProfileUpdateDrawer from "../drawer/profile-update-drawer";
+import { useMutation } from "@tanstack/react-query";
+import { message } from "antd";
+import { updateProfileImg } from "../../http/api";
+
+const updateProfile = async ({ formData, token }) => {
+  console.log(formData)
+  console.log(token)
+  const { data } = await updateProfileImg(formData, token);
+  return data;
+};
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const { user } = useSelector((state) => state.auth);
-
-  console.log("USER -> ", user);
+  const { user, authToken } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
     navigate("/auth/login");
   };
 
-  // Handle Image Upload
+  const { mutate } = useMutation({
+    mutationKey: ["update-profile"],
+    mutationFn: updateProfile,
+    onSuccess: (data) => {
+      console.log("Updated IMG Data:", data);
+      dispatch(setUser({ ...user, avatar: data?.message?.avatar || data?.avatar }));
+      message.success("Profile picture uploaded successfully", 3);
+    },
+    onError: (error) => {
+      console.error("Error updating profileIMG:", error);
+      message.error("Failed to update profile picture", 3);
+    },
+  });
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setSelectedImage(imageURL);
+      const formData = new FormData();
+      formData.append("avatar", file);
+      mutate({ formData, token: authToken });
+    }
+    else {
+      message.open({
+        content: "No file selected",
+        type: "error",
+        className: "absolute top-[40px] right-4",
+      });
     }
   };
 
@@ -41,7 +68,7 @@ const ProfilePage = () => {
         <div className="relative w-32 h-32 sm:w-44 sm:h-44">
           <img
             className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]"
-            src={selectedImage || loginp}
+            src={user.avatar?.url || loginp}
             alt="Profile"
           />
           {/* Camera Icon (For Image Upload) */}
@@ -70,28 +97,27 @@ const ProfilePage = () => {
 
           <div className="btn flex flex-col sm:flex-row gap-2 sm:gap-1">
             <button
-              type="submit"
+              type="button"
               onClick={() => navigate("/")}
-              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl sm:rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
             >
               {" < "} Back to Home
             </button>
             <button
-              type="submit"
+              type="button"
               onClick={() => setDrawerOpen(true)}
-              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-d-xl sm:rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+              className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
             >
               <Pencil
                 size={15}
-                className="text-semi black cursor-pointer hover:text-[#FFD700] transition"
+                className="cursor-pointer hover:text-[#FFD700] transition"
               />
               Edit profile
             </button>
           </div>
         </div>
 
-        {/* Logout Button - Responsive Positioning */}
-        {/* Single Logout Button with Responsive Positioning */}
+        {/* Logout Button */}
         <div
           className="absolute top-4 right-4 sm:top-auto sm:bottom-6 sm:right-6 cursor-pointer"
           onClick={handleLogout}
@@ -117,7 +143,6 @@ const ProfilePage = () => {
 
         {/* Age & Gender Selection */}
         <div className="age_gender flex flex-col sm:flex-row gap-6 sm:gap-16 w-full">
-          {/* Age Selection */}
           <div className="age w-full sm:w-auto">
             <label className="text-gray-300 text-sm sm:text-base font-medium">
               Date Of Birth:
@@ -125,15 +150,12 @@ const ProfilePage = () => {
             <div className="flex gap-4 mt-2">
               <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
                 {user.dateOfBirth
-                  ? new Intl.DateTimeFormat("fr-CA").format(
-                    new Date(user.dateOfBirth)
-                  )
+                  ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
                   : "Not Selected"}
               </div>
             </div>
           </div>
 
-          {/* Gender Selection */}
           <div className="gender w-full sm:w-auto">
             <label className="text-gray-300 text-sm sm:text-base font-medium">
               Gender:
@@ -169,9 +191,7 @@ const ProfilePage = () => {
 
         {/* About Yourself */}
         <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
-          <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">
-            About Yourself 😌
-          </h1>
+          <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">About Yourself 😌</h1>
           <p className="text-[#868181] text-sm sm:text-base">
             {user.about ||
               "Write a few lines about yourself. Tell us about your life, experience. This will make your profile more interesting and attract more attention."}
@@ -180,9 +200,7 @@ const ProfilePage = () => {
 
         {/* Looking For */}
         <div className="Looking_for flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
-          <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">
-            Looking For..? 👀
-          </h1>
+          <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">Looking For..? 👀</h1>
           <p className="text-[#868181] text-sm sm:text-base">
             {user.lookingFor ||
               "Tell us who you would like to meet and why. Specify your wishes for a partner. This will help you find the right person faster."}
@@ -192,38 +210,14 @@ const ProfilePage = () => {
         {/* Social Platforms */}
         <div className="socialp flex flex-col space-y-2">
           <div className="flex flex-row space-x-4">
-            <a
-              href={user.socialMedia.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="h-8 w-8 rounded-full cursor-pointer"
-                src={insta}
-                alt="Instagram"
-              />
+            <a href={user.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
             </a>
-            <a
-              href={user.socialMedia.snapchat}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="h-8 w-8 rounded-full cursor-pointer"
-                src={snap}
-                alt="Snapchat"
-              />
+            <a href={user.socialMedia.snapchat} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
             </a>
-            <a
-              href={user.socialMedia.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="h-8 w-8 rounded-full cursor-pointer"
-                src={twiter}
-                alt="Twitter"
-              />
+            <a href={user.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
+              <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
             </a>
           </div>
         </div>
@@ -245,10 +239,7 @@ const ProfilePage = () => {
         </p>
       </div>
 
-      <ProfileUpdateDrawer
-        drawerOpen={drawerOpen}
-        setDrawerOpen={setDrawerOpen}
-      />
+      <ProfileUpdateDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
     </div>
   );
 };
