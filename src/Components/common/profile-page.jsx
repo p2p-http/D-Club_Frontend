@@ -67,7 +67,7 @@ const ProfilePage = () => {
         {/* Profile Image Section */}
         <div className="relative w-32 h-32 sm:w-44 sm:h-44">
           <img
-            className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]"
+            className="w-full h-full rounded-full object-cover border-2 border-[#FFD700] p-1"
             src={user.avatar?.url || loginp}
             alt="Profile"
           />

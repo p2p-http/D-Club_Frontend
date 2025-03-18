@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import login from "../../assets/login.png";
+import login from "../../assets/login.png"; // Default profile image
 import { FiMenu, FiX } from "react-icons/fi"; // Import icons - mobile menu
 import { useSelector } from "react-redux";
 import NavbarLinks from "../../config/NavbarLink";
@@ -8,7 +8,7 @@ import NavbarLinks from "../../config/NavbarLink";
 const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { authToken } = useSelector((state) => state.auth);
+  const { authToken, user } = useSelector((state) => state.auth); // Get user from Redux store
 
   return (
     <nav className="fixed bg-black top-0 left-0 w-full text-white z-50 shadow-[5px_5px_15px_rgba(0,0,0,0.3)] shadow-gray-700 drop-shadow-xl">
@@ -39,9 +39,9 @@ const Navbar = () => {
           {authToken ? (
             <img
               onClick={() => navigate("/dashboard/profile")}
-              className="w-10 h-10 cursor-pointer"
-              src={login}
-              alt="Login Icon"
+              className="w-10 h-10 cursor-pointer rounded-full object-cover border-2 border-[#FFD700] p-0"
+              src={user?.avatar?.url || login} // Use user.avatar.url or fallback to login
+              alt="Profile Icon"
             />
           ) : (
             <button onClick={() => navigate("/auth/login")}>Log in</button>
@@ -79,12 +79,12 @@ const Navbar = () => {
                 setMenuOpen(false);
                 navigate("/dashboard/profile");
               }}
-              className="w-10 h-10 cursor-pointer"
-              src={login}
-              alt="Login Icon"
+              className="w-10 h-10 cursor-pointer rounded-full object-cover border-2 border-[#FFD700] p-1"
+              src={user?.avatar?.url || login} // Use user.avatar.url or fallback to login
+              alt="Profile Icon"
             />
           ) : (
-            <button onClick={() => navigate("/auth/login")}>Log in</button> // Added onClick handler
+            <button onClick={() => navigate("/auth/login")}>Log in</button>
           )}
         </div>
       )}
