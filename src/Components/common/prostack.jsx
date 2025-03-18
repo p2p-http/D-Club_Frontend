@@ -29,9 +29,9 @@ const Prostack = () => {
     };
 
     return (
-        <div className="main flex flex-col items-center justify-center min-h-[50vh] space-y-4 sm:space-y-8 pb-4 sm:pb-10 pt-6 sm:pt-8 px-3 sm:px-6 text-white">
+        <div className="main flex flex-col items-center justify-center min-h-[50vh] space-y-4 sm:space-y-8 pb-4 sm:pb-10 pt-6 sm:pt-8 px-3 sm:px-6 text-white ">
             {/* Profile Section */}
-            <div className="flex flex-col w-full max-w-md md:max-w-2xl lg:max-w-4xl space-y-4 p-3 sm:p-4 rounded-2xl bg-[#312F2F] shadow-md">
+            <div className="flex flex-col w-full max-w-md md:max-w-2xl lg:max-w-4xl space-y-4 p-3 sm:p-4 rounded-2xl bg-[#312F2F] g-gradient-to-r from-gray-50 to-gray-100 shadow-md shadow-gray-800  ">
                 {/* Profile Card */}
                 <div className="profile_pic relative flex flex-col items-center sm:flex-row sm:items-start sm:justify-start w-full gap-3 sm:gap-11 p-3 sm:p-6">
                     {/* Profile Image Section */}
