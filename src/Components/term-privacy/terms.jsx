@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Terms = () => {
+
+  const navigate = useNavigate();
+
+  
     return (
         <div className="min-h-screen  text-white flex justify-center items-center">
             <div className="w-3/4 max-w-4xl bg-gray-900  pb-0 rounded-xl shadow-lg px-10 justify-center items-center pt-4 mt-36 ">

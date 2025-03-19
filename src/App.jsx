@@ -22,6 +22,7 @@ import Intro from "./Components/home-ui/intro";
 import Working from "./Components/home-ui/working";
 import Prostack from "./Components/common/prostack";
 import Terms from "./Components/term-privacy/terms";
+import Privacy from "./Components/term-privacy/privacy";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -114,7 +115,16 @@ function App() {
               </motion.div>
             }
           />
- 
+
+          <Route
+            path="privacy"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Privacy />
+              </motion.div>
+            }
+          />
+
           {/* Authentication Routes */}
           <Route path="auth" element={<AuthLayout />}>
             <Route path="signup" element={<AnimatedPage><SignUp /></AnimatedPage>} />
