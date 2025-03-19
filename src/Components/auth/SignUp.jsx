@@ -79,7 +79,7 @@ const SignUp = () => {
             <button type="submit" className="p-2 sm:p-3 rounded-s-xl bg-[#FFD700] text-black w-full hover:bg-[#e6c000] transition">
               Continue
             </button>
-            <p className="pt-2 text-xs text-gray-400"> By clicking Continue, you agree to our <span onClick={() => navigate("/auth/login")}  className="text-[#ffc45e] cursor-pointer">Terms</span> and <span onClick={() => navigate("/auth/login")} className="text-[#ffc45e] cursor-pointer" >Privacy Policy</span></p>
+            <p className="pt-2 text-xs text-gray-400"> By clicking Continue, you agree to our <span onClick={() => navigate("/auth/login")}  className="text-[#ffc45e] cursor-pointer hover:underline">Terms</span> and <span onClick={() => navigate("/auth/login")} className="text-[#ffc45e] cursor-pointer hover:underline" >Privacy Policy</span></p>
 
           </div>
         </form>
