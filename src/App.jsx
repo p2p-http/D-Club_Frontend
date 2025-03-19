@@ -23,6 +23,7 @@ import Working from "./Components/home-ui/working";
 import Prostack from "./Components/common/prostack";
 import Terms from "./Components/term-privacy/terms";
 import Privacy from "./Components/term-privacy/privacy";
+import We from "./Components/common/we";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -77,6 +78,16 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Support />
+              </motion.div>
+            }
+          />
+
+          {/* We */}
+          <Route
+            path="we"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <We />
               </motion.div>
             }
           />
