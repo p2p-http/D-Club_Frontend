@@ -159,27 +159,24 @@ const ProfilePage = () => {
             <div className="flex items-center gap-2">
               <label className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6EC7] to-[#FFD700] text-sm sm:text-base font-medium">
                 {isPartyModeOn ? "Party Mode On " : "Party Mode Off"}
-
               </label>
               <span className="bg-[#FFD700] text-black font-bold text-xs px-2 py-1 rounded-full animate-blink">
                 New
               </span>
             </div>
 
-            <div className="flex gap-4 mt-2">
-              {/* Toggle Button */}
+            {/* Compact Toggle Button */}
+            <div className="flex items-center gap-2 mt-2">
               <button
-                className={`flex items-center bg-[#1b191b] rounded-full p-1 w-12 h-6 transition-all duration-300 ${isPartyModeOn ? "justify-end" : "justify-start"
+                className={`relative flex items-center bg-[#1b191b] rounded-full p-1 w-12 h-6 transition-all duration-300 ${isPartyModeOn ? "justify-end" : "justify-start"
                   }`}
                 onClick={() => setIsPartyModeOn(!isPartyModeOn)}
               >
                 <div
-                  className={`bg-[#FF6EC7] w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isPartyModeOn ? "translate-x-6" : "translate-x-0"
+                  className={`absolute bg-[#FF6EC7] w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isPartyModeOn ? "translate-x-6" : "translate-x-0"
                     }`}
                 />
               </button>
-
-
             </div>
           </div>
         </div>
