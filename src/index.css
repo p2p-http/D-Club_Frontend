@@ -12,6 +12,7 @@
     @apply bg-background text-foreground font-poppins;
   }
 }
+
 /* Customize NProgress bar */
 #nprogress .bar {
   background: #FFD700 !important; /* Gold color */
@@ -22,4 +23,12 @@
   box-shadow: 0 0 10px #FFD700, 0 0 5px #FFD700 !important;
 }
 
+/* Blinking Animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
+.animate-blink {
+  animation: blink 1s 12;
+}

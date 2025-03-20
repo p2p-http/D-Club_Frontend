@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setUser } from "../../store/slice/auth-slice";
 import { useNavigate } from "react-router-dom";
-import { Camera, FileEdit, LogOut, Pencil } from "lucide-react";
+import { Camera, LogOut, Pencil } from "lucide-react";
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
@@ -13,8 +13,6 @@ import { message } from "antd";
 import { updateProfileImg } from "../../http/api";
 
 const updateProfile = async ({ formData, token }) => {
-  console.log(formData)
-  console.log(token)
   const { data } = await updateProfileImg(formData, token);
   return data;
 };
@@ -23,6 +21,7 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isPartyModeOn, setIsPartyModeOn] = useState(false); // State for Party Mode toggle
   const { user, authToken } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
@@ -34,7 +33,6 @@ const ProfilePage = () => {
     mutationKey: ["update-profile"],
     mutationFn: updateProfile,
     onSuccess: (data) => {
-      console.log("Updated IMG Data:", data);
       dispatch(setUser({ ...user, avatar: data?.message?.avatar || data?.avatar }));
       message.success("Profile picture uploaded successfully", 3);
     },
@@ -50,13 +48,8 @@ const ProfilePage = () => {
       const formData = new FormData();
       formData.append("avatar", file);
       mutate({ formData, token: authToken });
-    }
-    else {
-      message.open({
-        content: "No file selected",
-        type: "error",
-        className: "absolute top-[40px] right-4",
-      });
+    } else {
+      message.error("No file selected", 3);
     }
   };
 
@@ -108,10 +101,7 @@ const ProfilePage = () => {
               onClick={() => setDrawerOpen(true)}
               className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
             >
-              <Pencil
-                size={15}
-                className="cursor-pointer hover:text-[#FFD700] transition"
-              />
+              <Pencil size={15} className="cursor-pointer hover:text-[#FFD700] transition" />
               Edit profile
             </button>
           </div>
@@ -122,10 +112,7 @@ const ProfilePage = () => {
           className="absolute top-4 right-4 sm:top-auto sm:bottom-6 sm:right-6 cursor-pointer"
           onClick={handleLogout}
         >
-          <LogOut
-            size={28}
-            className="text-gray-400 hover:text-red-500 transition"
-          />
+          <LogOut size={28} className="text-gray-400 hover:text-red-500 transition" />
         </div>
       </div>
 
@@ -164,6 +151,35 @@ const ProfilePage = () => {
               <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
                 {user.gender || "Not Selected"}
               </div>
+            </div>
+          </div>
+
+          {/* Party Mode Section */}
+          <div className="party-mode w-full sm:w-auto">
+            <div className="flex items-center gap-2">
+              <label className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6EC7] to-[#FFD700] text-sm sm:text-base font-medium">
+                {isPartyModeOn ? "Party Mode On " : "Party Mode Off"}
+
+              </label>
+              <span className="bg-[#FFD700] text-black font-bold text-xs px-2 py-1 rounded-full animate-blink">
+                New
+              </span>
+            </div>
+
+            <div className="flex gap-4 mt-2">
+              {/* Toggle Button */}
+              <button
+                className={`flex items-center bg-[#1b191b] rounded-full p-1 w-12 h-6 transition-all duration-300 ${isPartyModeOn ? "justify-end" : "justify-start"
+                  }`}
+                onClick={() => setIsPartyModeOn(!isPartyModeOn)}
+              >
+                <div
+                  className={`bg-[#FF6EC7] w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ${isPartyModeOn ? "translate-x-6" : "translate-x-0"
+                    }`}
+                />
+              </button>
+
+
             </div>
           </div>
         </div>
