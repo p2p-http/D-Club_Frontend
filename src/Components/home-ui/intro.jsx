@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { RiArrowDownDoubleLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // Import useSelector to check auth state
 
 // Fade-in animation variants
 const fadeIn = {
@@ -9,6 +11,17 @@ const fadeIn = {
 };
 
 const Intro = () => {
+  const navigate = useNavigate();
+  const { isAuth } = useSelector((state) => state.auth); // Use isAuth from authSlice
+
+  const handleGetStarted = () => {
+    if (isAuth) {
+      navigate("/events"); // Redirect to events if logged in
+    } else {
+      navigate("/auth/login"); // Redirect to login if not logged in
+    }
+  };
+
   return (
     <div className="flex flex-col items-center text-white min-h-screen px-4 sm:px-6 py-8 bg-black pt-24 sm:pt-48 space-y-24 sm:space-y-52 relative">
       {/* 🚀 Hero Section */}
@@ -33,7 +46,10 @@ const Intro = () => {
           experience now! 🌟✨
         </p>
 
-        <button className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-[#FFD700] text-slate-800 font-semibold rounded-full hover:bg-[#e6c000] transition text-sm sm:text-lg">
+        <button
+          onClick={handleGetStarted} // Use the new handler
+          className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-[#FFD700] text-slate-800 font-semibold rounded-full hover:bg-[#e6c000] transition text-sm sm:text-lg"
+        >
           Get Started 🚀
         </button>
       </motion.section>
