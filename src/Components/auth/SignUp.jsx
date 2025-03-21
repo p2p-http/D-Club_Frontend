@@ -4,20 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { sendVerificationEmail } from "../../http/api";
 import toast from "react-hot-toast";
-
-
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const sendVeficationEmail = async (credentials) => {
   const { data } = await sendVerificationEmail(credentials);
   return data;
 };
 
-
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const { mutate } = useMutation({
-    mutationKey: ['sendVerificationEmail'],
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["sendVerificationEmail"],
     mutationFn: sendVeficationEmail,
     onSuccess: async (data, variables) => {
       // Pass the email as part of the state
@@ -26,8 +25,20 @@ const SignUp = () => {
     onError: (error) => {
       console.log(error);
       toast.error("Something went wrong check email or password");
-    }
+    },
   });
+
+  // Custom Loader Icon (Change color here)
+  const customLoader = <LoadingOutlined style={{ fontSize: 50, color: "#FFD700" }} spin />;
+
+  // ✅ Display Custom Spinner When Loading
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <Spin indicator={customLoader} />
+      </div>
+    );
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -80,7 +91,6 @@ const SignUp = () => {
               Continue
             </button>
             <p className="pt-2 text-xs text-gray-400"> By clicking Continue, you agree to our <span onClick={() => navigate("/terms")}  className="text-[#ffc45e] cursor-pointer hover:underline">Terms</span> and <span onClick={() => navigate("/privacy")} className="text-[#ffc45e] cursor-pointer hover:underline" >Privacy Policy</span></p>
-
           </div>
         </form>
       </div>
