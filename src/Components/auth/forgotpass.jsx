@@ -16,8 +16,9 @@ const ForgotPass = () => {
   const { mutate } = useMutation({
     mutationKey: ['sendForgotPassEmail'],
     mutationFn: sendForgotPassEmail,
-    onSuccess: async () => {
-      navigate('/auth/resendemail');
+    onSuccess: async (data, variables) => {
+      // Pass the email as part of the navigation state
+      navigate('/auth/resendemail', { state: { email: variables.email } });
     },
     onError: (error) => {
       console.log(error);

@@ -1,43 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Lottie from 'lottie-react';
-import emailAnimation from '../../assets/email.json';
-import { logout, setUser } from "../../store/slice/auth-slice";
-import { useDispatch, useSelector } from "react-redux";
-import { IoMdMailUnread } from "react-icons/io";
-
+import { IoMdMailUnread } from 'react-icons/io';
 
 const Sendemail = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const email = location.state?.email || 'your email'; // Retrieve the email from location state
-    const { user, authToken } = useSelector((state) => state.auth);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+        <div
+           
             className="flex items-center justify-center min-h-screen bg-black flex-col px-4 sm:px-6 lg:px-8"
         >
             {/* Title and Animation Outside the Box */}
-            <div className="text-center mb-4 sm:mb-6 flex flex-col justify-center items-center gap-6">
-                <div className=' h-48 w-48 bg-gray-900 p-2 flex justify-center items-center rounded-full'>
-
-                    <div className=' h-32 w-32 bg-gray-800 p-2 flex justify-center items-center rounded-full'>
-
-                        <div className=' h-20 w-20 bg-gray-700 p-2 flex justify-center items-center rounded-full'>
-                            <IoMdMailUnread className='text-[#cfc387] text-5xl text-center justify-center items-center' />
+            <div className="text-center mb-4 sm:mb-6 flex flex-col justify-center items-center gap-11">
+                <div className="h-48 w-48 bg-gray-900 p-2 flex justify-center items-center rounded-full">
+                    <div className="h-32 w-32 bg-gray-800 p-2 flex justify-center items-center rounded-full">
+                        <div className="h-20 w-20 bg-gray-700 p-2 flex justify-center items-center rounded-full">
+                            <IoMdMailUnread className="text-[#cfc387] text-5xl text-center justify-center items-center" />
                         </div>
-
                     </div>
-
                 </div>
 
-
-
-               
                 <h1 className="text-2xl sm:text-3xl font-bold font-dmMono text-white">
                     Create <span className="text-[#FFD700]">Password</span>
                 </h1>
@@ -64,7 +49,7 @@ const Sendemail = () => {
                     </button>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
