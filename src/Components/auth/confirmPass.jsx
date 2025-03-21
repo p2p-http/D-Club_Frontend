@@ -64,7 +64,7 @@ const ConfirmPass = () => {
           {/* Confirm Password Input */}
           <FormItem
             name="confirmPassword"
-            label="Verify"
+            label="Verify"   
             rules={[{ required: false, message: 'Confirm Password is required' }]}
           >
             <input

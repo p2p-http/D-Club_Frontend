@@ -68,7 +68,7 @@ const ResetPass = () => {
           <FormItem
             name="confirmPassword"
             label="Verify"
-            rules={[{ required: false, message: 'Confirm Password is required' }]}
+            rules={[{ required: false, message: 'Confirm Password is required' }]}  
           >
             <input
               type="password"

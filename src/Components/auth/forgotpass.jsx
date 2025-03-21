@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { sendForgotPasswordEmail } from '../../http/api';
 import toast from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const sendForgotPassEmail = async (credentials) => {
   const { data } = await sendForgotPasswordEmail(credentials);
@@ -13,7 +15,7 @@ const sendForgotPassEmail = async (credentials) => {
 const ForgotPass = () => {
   const navigate = useNavigate();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['sendForgotPassEmail'],
     mutationFn: sendForgotPassEmail,
     onSuccess: async (data, variables) => {
@@ -25,6 +27,18 @@ const ForgotPass = () => {
       toast.error('Something went wrong. Please check your email.');
     },
   });
+
+  // Custom Loader Icon (Change color here)
+  const customLoader = <LoadingOutlined style={{ fontSize: 50, color: '#FFD700' }} spin />;
+
+  // ✅ Display Custom Spinner When Loading
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <Spin indicator={customLoader} />
+      </div>
+    );
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
