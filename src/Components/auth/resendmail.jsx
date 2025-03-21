@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'; // Import useSelector
 import Lottie from 'lottie-react';
 import emailAnimation from '../../assets/email.json';
+import { IoMdMailUnread } from "react-icons/io";
+
 
 const Resendmail = () => {
     const location = useLocation(); // Declare hooks before return
@@ -18,12 +20,18 @@ const Resendmail = () => {
             className="flex items-center justify-center min-h-screen bg-black flex-col px-4 sm:px-6 lg:px-8"
         >
             {/* Title and Animation Outside the Box */}
-            <div className="text-center mb-4 sm:mb-6">
-                <Lottie
-                    animationData={emailAnimation}
-                    loop={true}
-                    className="w-32 h-32 sm:w-44 sm:h-44 mx-auto"
-                />
+            <div className="text-center mb-4 sm:mb-6 ">
+                <div className=' h-48 w-48 bg-gray-900 p-2 flex justify-center items-center rounded-full'>
+
+                    <div className=' h-32 w-32 bg-gray-800 p-2 flex justify-center items-center rounded-full'>
+
+                        <div className=' h-20 w-20 bg-gray-700 p-2 flex justify-center items-center rounded-full'>
+                            <IoMdMailUnread className='text-[#cfc387] text-5xl text-center justify-center items-center' />
+                        </div>
+
+                    </div>
+
+                </div>
                 <h1 className="text-2xl sm:text-3xl font-semibold text-white font-dmMono">
                     Reset <span className="text-[#FFD700]">Password</span>
                 </h1>
