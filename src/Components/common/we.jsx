@@ -15,7 +15,7 @@ const We = () => {
             <div className="main flex flex-col justify-center items-center md:flex-row md:space-x-48">
                 {/* Profile Photo */}
                 <div className="photo relative">
-                    <div className="circle h-[29vh] w-[29vh] rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center md:h-[50vh] md:w-[50vh]">
+                    <div className="circle h-[29vh] w-[29vh] rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center md:h-[50vh] md:w-[50vh] border-2  border-[#FFD700]   ">
                         <img src={ss} alt="" className="rounded-full h-[100%] w-[100%] object-cover" />
                     </div>
                 </div>

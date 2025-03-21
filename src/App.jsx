@@ -24,6 +24,7 @@ import Prostack from "./Components/common/prostack";
 import Terms from "./Components/term-privacy/terms";
 import Privacy from "./Components/term-privacy/privacy";
 import We from "./Components/common/we";
+import Events from './Components/common/event'
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -106,6 +107,15 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Working />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="events"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Events/>
               </motion.div>
             }
           />
