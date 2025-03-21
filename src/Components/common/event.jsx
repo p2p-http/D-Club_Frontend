@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Search } from "lucide-react"; // Import the Search icon
+import clubsData from '../club-api/clubsData.json'; // Import the JSON data
 
 const Events = () => {
+    const [clubs, setClubs] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    // Fetch data from the JSON file (simulate API call)
+    useEffect(() => {
+        setClubs(clubsData); // Set the clubs data directly from the JSON file
+    }, []);
+
+    // Filter clubs based on the search query (by city)
+    const filteredClubs = clubs.filter((club) =>
+        club.city.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    // Group clubs by city
+    const groupedClubs = filteredClubs.reduce((acc, club) => {
+        if (!acc[club.city]) {
+            acc[club.city] = [];
+        }
+        acc[club.city].push(club);
+        return acc;
+    }, {});
+
     return (
         <>
-            <div className="pt-56 justify-center items-center px-20">
+            <div className="pt-32 justify-center items-center px-20">
+                {/* Search Bar */}
                 <div className="search-bar-main mb-20">
-                    <FormItem name="email">
+                    <FormItem name="search">
                         <div className="relative w-2/4">
                             <input
-                                type="email"
-                                name="email"
-                                placeholder="Search by Location : 'pune', 'mumbai'"
+                                type="text"
+                                name="search"
+                                placeholder="Search by Location: 'pune', 'mumbai'"
                                 className="mt-2 p-2 w-full sm:p-3 rounded-xl bg-[#312F2F] border-[#4F4F4F] border text-white placeholder:text-gray-400 focus:outline-none focus:ring-1"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             {/* Search Icon */}
                             <Search
@@ -23,57 +49,63 @@ const Events = () => {
                     </FormItem>
                 </div>
 
-                <div className="eventmain">
-                    <div className="1 flex flex-col gap-9">
-                        <div className="title">
-                            <h1 className="text-[#DFCB60] text-2xl font-bold">Pune</h1>
-                        </div>
-
-                        <div className="boxes">
-                            <div className="box1 bg-[#4F4F4F] h-56 w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative">
-                                <div className="photo h-full w-28 bg-black object-fill rounded-s-3xl"></div>
-
-                                <div className="info px-8 py-4 flex flex-col space-y-4">
-                                    <div className="title-description flex flex-col space-y-3">
-                                        <div>
-                                            <h1 className="title text-[#FFD700] font-semibold text-xl">
-                                                Title of Club
-                                            </h1>
-                                        </div>
-
-
-                                        <div className="desc">
-                                            <p className="description text-[#BFBFBF] text-base">
-                                                Description of Club
-                                            </p>
-                                            <p className="description text-[#BFBFBF] text-base">
-                                                Description of Club
-                                            </p>
-                                            <p className="description text-[#BFBFBF] text-base">
-                                                Description of Club
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="location-timing flex flex-col">
-                                        <p>Location of clubs</p>
-                                        <div className="time flex flex-row">
-                                            <p className="text-xs font-semibold">opening time</p>
-                                            <p className="text-xs font-semibold">-</p>
-                                            <p className="text-xs font-semibold">closing time</p>
-                                        </div>
-                                    </div>
+                {/* Clubs List */}
+                <div className="eventslist flex flex-col gap-14">
+                    {Object.keys(groupedClubs).map((city) => (
+                        <div key={city} className="eventmain">
+                            <div className="flex flex-col gap-9">
+                                {/* City Title */}
+                                <div className="title">
+                                    <h1 className="text-[#DFCB60] text-2xl font-bold">{city}</h1>
                                 </div>
 
-                                {/* Enroll Button */}
-                                <div className="absolute bottom-0 right-0">
-                                    <button className="p-2 px-4 bg-[#312F2F] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-semibold">
-                                        Enroll
-                                    </button>
+                                {/* Clubs Container with Horizontal Scroll */}
+                                <div className="boxes flex overflow-x-auto space-x-20 pb-4 scrollbar-hide">
+                                    {groupedClubs[city].map((club, index) => (
+                                        <div
+                                            key={index}
+                                            className="box bg-[#4F4F4F] h-56 w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
+                                        >
+                                            {/* Club Photo */}
+                                            <div className="photo h-full w-60 bg-black object-fill rounded-s-3xl"></div>
+
+                                            {/* Club Info */}
+                                            <div className="info px-8 py-4 flex flex-col space-y-4">
+                                                <div className="title-description flex flex-col space-y-3">
+                                                    <div>
+                                                        <h1 className="title text-[#FFD700] font-semibold text-xl">
+                                                            {club.name}
+                                                        </h1>
+                                                    </div>
+                                                    <div className="desc">
+                                                        <p className="description text-[#BFBFBF] text-base">
+                                                            {club.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="location-timing flex flex-col text-[#BFBFBF]">
+                                                    <p className="text-[#BFBFBF]">{club.location}</p>
+                                                    <div className="time flex flex-row text-[#DFCB60] font-bold">
+                                                        <p className="text-xs ">{club.opening_time}</p>
+                                                        <p className="text-xs ">-</p>
+                                                        <p className="text-xs ">{club.closing_time}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Enroll Button */}
+                                            <div className="absolute bottom-0 right-0">
+                                                <button className="p-2 px-6 bg-[#312F2F] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-semibold text-xs">
+                                                    Enroll
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </>

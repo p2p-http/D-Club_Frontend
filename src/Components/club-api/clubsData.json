@@ -1,0 +1,202 @@
+[
+    {
+      "name": "High Spirits",
+      "description": "A vibrant nightclub known for its live music, themed parties, and energetic crowd.",
+      "location": "Koregaon Park, Pune",
+      "opening_time": "7:00 PM",
+      "closing_time": "1:30 AM",
+      "city": "Pune"
+    },
+    {
+      "name": "Swig",
+      "description": "A rooftop lounge and nightclub offering EDM, Bollywood music, and stunning city views.",
+      "location": "SB Road, Pune",
+      "opening_time": "6:00 PM",
+      "closing_time": "2:00 AM",
+      "city": "Pune"
+    },
+    {
+      "name": "Club 9",
+      "description": "A premium nightclub with a mix of Bollywood and international music, popular among young crowds.",
+      "location": "Kalyani Nagar, Pune",
+      "opening_time": "8:00 PM",
+      "closing_time": "2:30 AM",
+      "city": "Pune"
+    },
+    {
+      "name": "Hype",
+      "description": "A trendy club with a modern vibe, hosting top DJs and themed nights.",
+      "location": "Viman Nagar, Pune",
+      "opening_time": "7:30 PM",
+      "closing_time": "1:00 AM",
+      "city": "Pune"
+    },
+    {
+      "name": "The Urban Foundry",
+      "description": "A gastro-bar and nightclub with a mix of great food, drinks, and music.",
+      "location": "Kharadi, Pune",
+      "opening_time": "6:00 PM",
+      "closing_time": "12:30 AM",
+      "city": "Pune"
+    },
+    {
+      "name": "Tryst",
+      "description": "A luxurious nightclub with high-energy music, celebrity events, and a glamorous crowd.",
+      "location": "Bandra Kurla Complex, Mumbai",
+      "opening_time": "8:00 PM",
+      "closing_time": "3:00 AM",
+      "city": "Mumbai"
+    },
+    {
+      "name": "Kitty Su",
+      "description": "An iconic club with an underground vibe, hosting international DJs and themed parties.",
+      "location": "The Lalit, Mumbai",
+      "opening_time": "9:00 PM",
+      "closing_time": "3:30 AM",
+      "city": "Mumbai"
+    },
+    {
+      "name": "AER",
+      "description": "A rooftop nightclub with breathtaking views, offering a mix of house and EDM music.",
+      "location": "Worli, Mumbai",
+      "opening_time": "7:00 PM",
+      "closing_time": "1:30 AM",
+      "city": "Mumbai"
+    },
+    {
+      "name": "Royalty",
+      "description": "A high-end club with a royal ambiance, known for its Bollywood and hip-hop music.",
+      "location": "Bandra, Mumbai",
+      "opening_time": "8:30 PM",
+      "closing_time": "3:00 AM",
+      "city": "Mumbai"
+    },
+    {
+      "name": "Trilogy",
+      "description": "A multi-level nightclub with a mix of retro, Bollywood, and electronic music.",
+      "location": "Lower Parel, Mumbai",
+      "opening_time": "9:00 PM",
+      "closing_time": "3:00 AM",
+      "city": "Mumbai"
+    },
+    {
+      "name": "Skyye",
+      "description": "A rooftop nightclub with panoramic city views and a mix of EDM and house music.",
+      "location": "UB City, Bangalore",
+      "opening_time": "6:30 PM",
+      "closing_time": "1:00 AM",
+      "city": "Bangalore"
+    },
+    {
+      "name": "Social",
+      "description": "A trendy club with a co-working space by day and a lively nightclub by night.",
+      "location": "Church Street, Bangalore",
+      "opening_time": "7:00 PM",
+      "closing_time": "12:30 AM",
+      "city": "Bangalore"
+    },
+    {
+      "name": "The Biere Club",
+      "description": "A brewery and nightclub offering craft beers, live music, and a relaxed vibe.",
+      "location": "Vittal Mallya Road, Bangalore",
+      "opening_time": "6:00 PM",
+      "closing_time": "1:00 AM",
+      "city": "Bangalore"
+    },
+    {
+      "name": "Pecos",
+      "description": "A retro-themed club with a laid-back vibe, playing classic rock and blues.",
+      "location": "Brigade Road, Bangalore",
+      "opening_time": "5:00 PM",
+      "closing_time": "11:30 PM",
+      "city": "Bangalore"
+    },
+    {
+      "name": "Fuga",
+      "description": "A high-energy nightclub with a mix of Bollywood, EDM, and international music.",
+      "location": "Richmond Town, Bangalore",
+      "opening_time": "8:00 PM",
+      "closing_time": "2:00 AM",
+      "city": "Bangalore"
+    },
+    {
+      "name": "Pasha",
+      "description": "A luxurious nightclub with Bollywood, Kollywood, and international music.",
+      "location": "Radisson Blu, Chennai",
+      "opening_time": "8:00 PM",
+      "closing_time": "2:00 AM",
+      "city": "Chennai"
+    },
+    {
+      "name": "Zara The Tapas Bar",
+      "description": "A chic lounge and nightclub offering Spanish tapas and lively music.",
+      "location": "RA Puram, Chennai",
+      "opening_time": "6:00 PM",
+      "closing_time": "1:00 AM",
+      "city": "Chennai"
+    },
+    {
+      "name": "10 Downing Street",
+      "description": "A British-themed pub and nightclub with a mix of retro and contemporary music.",
+      "location": "Nungambakkam, Chennai",
+      "opening_time": "5:00 PM",
+      "closing_time": "12:30 AM",
+      "city": "Chennai"
+    },
+    {
+      "name": "Leather Bar",
+      "description": "A stylish nightclub with a leather-themed decor and a mix of EDM and Bollywood music.",
+      "location": "Hyatt Regency, Chennai",
+      "opening_time": "7:00 PM",
+      "closing_time": "1:30 AM",
+      "city": "Chennai"
+    },
+    {
+      "name": "Gatsby 2000",
+      "description": "A retro-themed nightclub with a 1920s vibe, playing classic hits and modern tracks.",
+      "location": "OMR, Chennai",
+      "opening_time": "7:30 PM",
+      "closing_time": "1:00 AM",
+      "city": "Chennai"
+    },
+    {
+      "name": "Tabula Rasa",
+      "description": "A high-end nightclub with a futuristic design and a focus on electronic dance music.",
+      "location": "Jubilee Hills, Hyderabad",
+      "opening_time": "8:00 PM",
+      "closing_time": "2:30 AM",
+      "city": "Hyderabad"
+    },
+    {
+      "name": "Air Lounge",
+      "description": "A rooftop club with a relaxed vibe, offering Bollywood and retro music.",
+      "location": "Banjar Hills, Hyderabad",
+      "opening_time": "7:00 PM",
+      "closing_time": "1:00 AM",
+      "city": "Hyderabad"
+    },
+    {
+      "name": "Over The Moon",
+      "description": "A rooftop nightclub with a mix of Bollywood, EDM, and international music.",
+      "location": "Jubilee Hills, Hyderabad",
+      "opening_time": "7:30 PM",
+      "closing_time": "1:30 AM",
+      "city": "Hyderabad"
+    },
+    {
+      "name": "The Moonshine Project",
+      "description": "A trendy club with a mix of live music, DJs, and a vibrant crowd.",
+      "location": "Madhapur, Hyderabad",
+      "opening_time": "6:00 PM",
+      "closing_time": "12:30 AM",
+      "city": "Hyderabad"
+    },
+    {
+      "name": "Club 8",
+      "description": "A premium nightclub with a luxurious ambiance and a mix of Bollywood and EDM music.",
+      "location": "Banjar Hills, Hyderabad",
+      "opening_time": "8:00 PM",
+      "closing_time": "2:00 AM",
+      "city": "Hyderabad"
+    }
+  ]
