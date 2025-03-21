@@ -16,15 +16,15 @@ const sendVeficationEmail = async (credentials) => {
 const SignUp = () => {
   const navigate = useNavigate();
 
-
   const { mutate } = useMutation({
     mutationKey: ['sendVerificationEmail'],
     mutationFn: sendVeficationEmail,
-    onSuccess: async () => {
-      navigate("/auth/sendemail");
+    onSuccess: async (data, variables) => {
+      // Pass the email as part of the state
+      navigate("/auth/sendemail", { state: { email: variables.email } });
     },
     onError: (error) => {
-      console.log(error)
+      console.log(error);
       toast.error("Something went wrong check email or password");
     }
   });

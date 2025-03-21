@@ -3,11 +3,16 @@ import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import emailAnimation from '../../assets/email.json';
+import { logout, setUser } from "../../store/slice/auth-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { IoMdMailUnread } from "react-icons/io";
+
 
 const Sendemail = () => {
-    const location = useLocation(); // Declare hooks before return
+    const location = useLocation();
     const navigate = useNavigate();
-    const email = location.state?.email || 'your email';
+    const email = location.state?.email || 'your email'; // Retrieve the email from location state
+    const { user, authToken } = useSelector((state) => state.auth);
 
     return (
         <motion.div
@@ -17,12 +22,22 @@ const Sendemail = () => {
             className="flex items-center justify-center min-h-screen bg-black flex-col px-4 sm:px-6 lg:px-8"
         >
             {/* Title and Animation Outside the Box */}
-            <div className="text-center mb-4 sm:mb-6">
-                <Lottie
-                    animationData={emailAnimation}
-                    loop={true}
-                    className="w-32 h-32 sm:w-44 sm:h-44 mx-auto"
-                />
+            <div className="text-center mb-4 sm:mb-6 flex flex-col justify-center items-center gap-6">
+                <div className=' h-48 w-48 bg-gray-900 p-2 flex justify-center items-center rounded-full'>
+
+                    <div className=' h-32 w-32 bg-gray-800 p-2 flex justify-center items-center rounded-full'>
+
+                        <div className=' h-20 w-20 bg-gray-700 p-2 flex justify-center items-center rounded-full'>
+                            <IoMdMailUnread className='text-[#cfc387] text-5xl text-center justify-center items-center' />
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+               
                 <h1 className="text-2xl sm:text-3xl font-bold font-dmMono text-white">
                     Create <span className="text-[#FFD700]">Password</span>
                 </h1>
@@ -33,7 +48,7 @@ const Sendemail = () => {
                 <p className="text-white text-lg sm:text-xl">
                     An email with instructions has been sent to
                     <br />
-                    <span className="text-[#ff9684]">{email}</span>
+                    <span className="text-[#ff9684]">{email}</span> {/* Display the email */}
                 </p>
                 <p className="text-gray-400 text-sm sm:text-base mt-2">
                     The message may end up in your spam folder.

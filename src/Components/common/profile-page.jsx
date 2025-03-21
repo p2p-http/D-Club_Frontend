@@ -15,7 +15,7 @@ import { updateProfileImg } from "../../http/api";
 const updateProfile = async ({ formData, token }) => {
   const { data } = await updateProfileImg(formData, token);
   return data;
-};
+};  
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
