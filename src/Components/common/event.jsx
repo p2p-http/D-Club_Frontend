@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Search } from "lucide-react"; // Import the Search icon
+import { Search, MapPin, Clock } from "lucide-react"; // Import Lucide icons
 import clubsData from '../club-api/clubsData.json'; // Import the JSON data
 
+
+
+const clubphotos = [
+
+    require('../../assets/1.png'),
+    require('../../assets/2.png'),
+    require('../../assets/3.png'),
+    require('../../assets/4.png'),
+    require('../../assets/5.png'),
+    require('../../assets/6.png'),
+];
 const Events = () => {
     const [clubs, setClubs] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -27,11 +38,11 @@ const Events = () => {
 
     return (
         <>
-            <div className="pt-32 justify-center items-center px-20">
+            <div className="pt-32 justify-center items-center px-4 sm:px-10 md:px-20">
                 {/* Search Bar */}
-                <div className="search-bar-main mb-20">
+                <div className="search-bar-main mb-10 sm:mb-20">
                     <FormItem name="search">
-                        <div className="relative w-2/4">
+                        <div className="relative w-full md:w-2/4">
                             <input
                                 type="text"
                                 name="search"
@@ -50,53 +61,64 @@ const Events = () => {
                 </div>
 
                 {/* Clubs List */}
-                <div className="eventslist flex flex-col gap-14">
+                <div className="eventslist flex flex-col gap-10 sm:gap-14">
                     {Object.keys(groupedClubs).map((city) => (
                         <div key={city} className="eventmain">
-                            <div className="flex flex-col gap-9">
+                            <div className="flex flex-col gap-6 sm:gap-9">
                                 {/* City Title */}
                                 <div className="title">
-                                    <h1 className="text-[#DFCB60] text-2xl font-bold">{city}</h1>
+                                    <h1 className="text-[#DFCB60] text-xl sm:text-2xl font-bold">{city}</h1>
                                 </div>
 
                                 {/* Clubs Container with Horizontal Scroll */}
-                                <div className="boxes flex overflow-x-auto space-x-20 pb-4 scrollbar-hide">
+                                <div className="boxes flex overflow-x-auto space-x-6 sm:space-x-20 pb-4 scrollbar-hide">
                                     {groupedClubs[city].map((club, index) => (
                                         <div
                                             key={index}
-                                            className="box bg-[#4F4F4F] h-56 w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
+                                            className="box bg-[#4F4F4F] h-52 sm:h-56 w-64 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
                                         >
                                             {/* Club Photo */}
-                                            <div className="photo h-full w-60 bg-black object-fill rounded-s-3xl"></div>
+                                            <div className="photo h-full w-40 sm:w-60 bg-black object-cover rounded-s-3xl overflow-hidden">
+                                                <img
+                                                    src={club.photo || photos} // Use club.photo if available, else fallback to photos
+                                                    alt={club.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
 
                                             {/* Club Info */}
-                                            <div className="info px-8 py-4 flex flex-col space-y-4">
-                                                <div className="title-description flex flex-col space-y-3">
+                                            <div className="info px-4 sm:px-8 py-4 flex flex-col space-y-2 sm:space-y-4">
+                                                <div className="title-description flex flex-col space-y-1 sm:space-y-3">
                                                     <div>
-                                                        <h1 className="title text-[#FFD700] font-semibold text-xl">
+                                                        <h1 className="title text-[#FFD700] font-semibold text-lg sm:text-xl">
                                                             {club.name}
                                                         </h1>
                                                     </div>
                                                     <div className="desc">
-                                                        <p className="description text-[#BFBFBF] text-base">
+                                                        <p className="description text-[#BFBFBF] text-sm sm:text-base line-clamp-3">
                                                             {club.description}
                                                         </p>
                                                     </div>
                                                 </div>
 
-                                                <div className="location-timing flex flex-col text-[#BFBFBF]">
-                                                    <p className="text-[#BFBFBF]">{club.location}</p>
-                                                    <div className="time flex flex-row text-[#DFCB60] font-bold">
-                                                        <p className="text-xs ">{club.opening_time}</p>
-                                                        <p className="text-xs ">-</p>
-                                                        <p className="text-xs ">{club.closing_time}</p>
+                                                {/* Location and Time with Icons */}
+                                                <div className="location-timing flex flex-col text-[#BFBFBF] space-y-2">
+                                                    <div className="flex items-center space-x-2">
+                                                        <MapPin size={16} className="text-[#DFCB60]" />
+                                                        <p className="text-sm sm:text-base">{club.location}</p>
+                                                    </div>
+                                                    <div className="flex items-center space-x-2">
+                                                        <Clock size={16} className="text-[#DFCB60]" />
+                                                        <p className="text-xs sm:text-sm font-bold text-[#DFCB60]">
+                                                            {club.opening_time} - {club.closing_time}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             {/* Enroll Button */}
                                             <div className="absolute bottom-0 right-0">
-                                                <button className="p-2 px-6 bg-[#312F2F] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-semibold text-xs">
+                                                <button className="p-2 px-4 sm:px-6 bg-[#312F2F] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-semibold text-xs sm:text-sm">
                                                     Enroll
                                                 </button>
                                             </div>
