@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Search, MapPin, Clock } from "lucide-react"; // Import Lucide icons
 import clubsData from '../club-api/clubsData.json'; // Import the JSON data
+import photos from '../../assets/1.png'; // Import the photo
 
 
 
-const clubphotos = [
-
-    require('../../assets/1.png'),
-    require('../../assets/2.png'),
-    require('../../assets/3.png'),
-    require('../../assets/4.png'),
-    require('../../assets/5.png'),
-    require('../../assets/6.png'),
-];
 const Events = () => {
     const [clubs, setClubs] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -52,10 +44,10 @@ const Events = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             {/* Search Icon */}
-                            <Search
+                            {/* <Search
                                 size={25}
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#FFD700]"
-                            />
+                            /> */}
                         </div>
                     </FormItem>
                 </div>
@@ -75,7 +67,7 @@ const Events = () => {
                                     {groupedClubs[city].map((club, index) => (
                                         <div
                                             key={index}
-                                            className="box bg-[#4F4F4F] h-52 sm:h-56 w-64 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
+                                            className="box bg-gray-900 h-52 sm:h-56 w-64 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
                                         >
                                             {/* Club Photo */}
                                             <div className="photo h-full w-40 sm:w-60 bg-black object-cover rounded-s-3xl overflow-hidden">
@@ -87,7 +79,7 @@ const Events = () => {
                                             </div>
 
                                             {/* Club Info */}
-                                            <div className="info px-4 sm:px-8 py-4 flex flex-col space-y-2 sm:space-y-4">
+                                            <div className="info px-4 sm:px-8 py-4 flex flex-col space-y-2 sm:space-y-7">
                                                 <div className="title-description flex flex-col space-y-1 sm:space-y-3">
                                                     <div>
                                                         <h1 className="title text-[#FFD700] font-semibold text-lg sm:text-xl">
@@ -95,7 +87,7 @@ const Events = () => {
                                                         </h1>
                                                     </div>
                                                     <div className="desc">
-                                                        <p className="description text-[#BFBFBF] text-sm sm:text-base line-clamp-3">
+                                                        <p className="description text-[#BFBFBF] text-sm sm:text-sm line-clamp-3">
                                                             {club.description}
                                                         </p>
                                                     </div>

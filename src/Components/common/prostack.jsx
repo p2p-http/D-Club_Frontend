@@ -36,6 +36,7 @@ const Prostack = () => {
                 <div className="profile_pic relative flex flex-col items-center sm:flex-row sm:items-start sm:justify-start w-full gap-3 sm:gap-11 p-3 sm:p-6">
                     {/* Profile Image Section */}
                     <div className="photo-icon relative w-20 h-20 sm:w-32 sm:h-32 flex items-center justify-center">
+                        
                         <img
                             className="w-full h-full rounded-full border-2 object-cover border-[#FFD700] p-1"
                             src={user?.avatar?.url || loginp} // Use user.avatar.url or fallback to loginp
