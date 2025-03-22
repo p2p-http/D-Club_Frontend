@@ -15,7 +15,7 @@ import { updateProfileImg } from "../../http/api";
 const updateProfile = async ({ formData, token }) => {
   const { data } = await updateProfileImg(formData, token);
   return data;
-};  
+};
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -223,13 +223,13 @@ const ProfilePage = () => {
         {/* Social Platforms */}
         <div className="socialp flex flex-col space-y-2">
           <div className="flex flex-row space-x-4">
-            <a href={user.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+            <a href={user.socialMedia ? user.socialMedia.instagram : ""} target="_blank" rel="noopener noreferrer">
               <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
             </a>
-            <a href={user.socialMedia.snapchat} target="_blank" rel="noopener noreferrer">
+            <a href={user.socialMedia ? user.socialMedia.snapchat : ""} target="_blank" rel="noopener noreferrer">
               <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
             </a>
-            <a href={user.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
+            <a href={user.socialMedia ? user.socialMedia.twitter : ""} target="_blank" rel="noopener noreferrer">
               <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
             </a>
           </div>
