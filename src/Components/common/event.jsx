@@ -3,8 +3,6 @@ import { Search, MapPin, Clock } from "lucide-react"; // Import Lucide icons
 import clubsData from '../club-api/clubsData.json'; // Import the JSON data
 import photos from '../../assets/1.png'; // Import the photo
 
-
-
 const Events = () => {
     const [clubs, setClubs] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -44,10 +42,10 @@ const Events = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             {/* Search Icon */}
-                            {/* <Search
+                            <Search
                                 size={25}
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#FFD700]"
-                            /> */}
+                            />
                         </div>
                     </FormItem>
                 </div>
@@ -67,19 +65,19 @@ const Events = () => {
                                     {groupedClubs[city].map((club, index) => (
                                         <div
                                             key={index}
-                                            className="box bg-gray-900 h-52 sm:h-56 w-64 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
+                                            className="box bg-gray-950 h-60 sm:h-60 w-72 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0 "
                                         >
                                             {/* Club Photo */}
-                                            <div className="photo h-full w-40 sm:w-60 bg-black object-cover rounded-s-3xl overflow-hidden">
+                                            <div className="photo h-full w-2/4 sm:w-1/4 bg-gray-500 object-cover rounded-s-3xl overflow-hidden">
                                                 <img
                                                     src={club.photo || photos} // Use club.photo if available, else fallback to photos
                                                     alt={club.name}
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                                                 />
                                             </div>
 
                                             {/* Club Info */}
-                                            <div className="info px-4 sm:px-8 py-4 flex flex-col space-y-2 sm:space-y-7">
+                                            <div className="info px-4 sm:px-6 py-4 flex flex-col space-y-2 sm:space-y-4 sm:w-3/5 w-3/4">
                                                 <div className="title-description flex flex-col space-y-1 sm:space-y-3">
                                                     <div>
                                                         <h1 className="title text-[#FFD700] font-semibold text-lg sm:text-xl">
@@ -110,7 +108,7 @@ const Events = () => {
 
                                             {/* Enroll Button */}
                                             <div className="absolute bottom-0 right-0">
-                                                <button className="p-2 px-4 sm:px-6 bg-[#312F2F] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-semibold text-xs sm:text-sm">
+                                                <button className="p-2 px-4 sm:px-6 bg-gray-900 border-[#32312d]  rounded-ee-3xl rounded-ss-3xl text-[#aaa589] font-semibold text-xs sm:text-sm hover:bg-[#84837b] hover:text-[#312F2F] transition-colors duration-300">
                                                     Enroll
                                                 </button>
                                             </div>
