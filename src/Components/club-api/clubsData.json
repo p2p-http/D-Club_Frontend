@@ -1,0 +1,463 @@
+[
+  {
+    "id": 1,
+    "name": "High Spirits",
+    "description": "High Spirits is one of Pune's most iconic nightclubs, known for its vibrant atmosphere, live music performances, and themed parties. The club features a spacious dance floor, a well-stocked bar, and a variety of music genres to cater to all tastes. Whether you're looking to dance the night away or enjoy a relaxed evening with friends, High Spirits is the place to be.",
+    "location": "Koregaon Park, Pune",
+    "opening_time": "7:00 PM",
+    "closing_time": "1:30 AM",
+    "city": "Pune",
+    "rating": 4.5,
+    "contact": "+91 1234567890",
+    "website": "https://highspiritspune.com",
+    "amenities": ["Dance Floor", "Live Music", "VIP Lounge", "Outdoor Seating"],
+    "events": ["Live DJ Night - Every Friday", "Bollywood Night - Every Saturday"],
+    "photos": [
+      "https://example.com/high-spirits-1.jpg",
+      "https://example.com/high-spirits-2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Swig",
+    "description": "Swig is a rooftop lounge and nightclub located in the heart of Pune. It offers stunning city views, a wide selection of drinks, and a mix of EDM and Bollywood music. The club is perfect for those who want to enjoy a night out with friends while soaking in the city's skyline. Swig also hosts special events and themed nights regularly.",
+    "location": "SB Road, Pune",
+    "opening_time": "6:00 PM",
+    "closing_time": "2:00 AM",
+    "city": "Pune",
+    "rating": 4.3,
+    "contact": "+91 9876543210",
+    "website": "https://swigpune.com",
+    "amenities": ["Rooftop Seating", "EDM Music", "Cocktail Bar", "Themed Nights"],
+    "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
+    "photos": [
+      "https://example.com/swig-1.jpg",
+      "https://example.com/swig-2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Club 9",
+    "description": "Club 9 is a premium nightclub in Kalyani Nagar, Pune, known for its luxurious ambiance and a mix of Bollywood and international music. The club attracts a young and energetic crowd, making it one of the most popular nightlife destinations in the city. With its state-of-the-art sound system and lively atmosphere, Club 9 guarantees an unforgettable experience.",
+    "location": "Kalyani Nagar, Pune",
+    "opening_time": "8:00 PM",
+    "closing_time": "2:30 AM",
+    "city": "Pune",
+    "rating": 4.6,
+    "contact": "+91 1122334455",
+    "website": "https://club9pune.com",
+    "amenities": ["Luxury Lounge", "Bollywood Music", "International DJs", "Private Cabins"],
+    "events": ["Bollywood Night - Every Friday", "International DJ Night - Every Saturday"],
+    "photos": [
+      "https://example.com/club9-1.jpg",
+      "https://example.com/club9-2.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Hype",
+    "description": "Hype is a trendy nightclub in Viman Nagar, Pune, known for its modern vibe and top DJs. The club hosts themed nights and special events, making it a favorite among party-goers. With its energetic atmosphere and great music, Hype is the perfect place to let loose and have fun.",
+    "location": "Viman Nagar, Pune",
+    "opening_time": "7:30 PM",
+    "closing_time": "1:00 AM",
+    "city": "Pune",
+    "rating": 4.4,
+    "contact": "+91 9988776655",
+    "website": "https://hypepune.com",
+    "amenities": ["Themed Nights", "Top DJs", "Dance Floor", "Cocktail Bar"],
+    "events": ["Retro Night - Every Wednesday", "Hip-Hop Night - Every Friday"],
+    "photos": [
+      "https://example.com/hype-1.jpg",
+      "https://example.com/hype-2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "The Urban Foundry",
+    "description": "The Urban Foundry is a gastro-bar and nightclub located in Kharadi, Pune. It offers a unique blend of great food, drinks, and music, making it a popular spot for both foodies and party enthusiasts. The club's industrial-themed decor and lively atmosphere make it a must-visit destination in Pune.",
+    "location": "Kharadi, Pune",
+    "opening_time": "6:00 PM",
+    "closing_time": "12:30 AM",
+    "city": "Pune",
+    "rating": 4.2,
+    "contact": "+91 6677889900",
+    "website": "https://theurbanfoundry.com",
+    "amenities": ["Gastro-Bar", "Live Music", "Industrial Decor", "Outdoor Seating"],
+    "events": ["Live Band Night - Every Tuesday", "Karaoke Night - Every Thursday"],
+    "photos": [
+      "https://example.com/urban-foundry-1.jpg",
+      "https://example.com/urban-foundry-2.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Tryst",
+    "description": "Tryst is a luxurious nightclub in Mumbai's Bandra Kurla Complex, known for its high-energy music, celebrity events, and glamorous crowd. The club features a state-of-the-art sound system, a spacious dance floor, and a variety of music genres to keep the party going all night long.",
+    "location": "Bandra Kurla Complex, Mumbai",
+    "opening_time": "8:00 PM",
+    "closing_time": "3:00 AM",
+    "city": "Mumbai",
+    "rating": 4.7,
+    "contact": "+91 1231231234",
+    "website": "https://trystmumbai.com",
+    "amenities": ["Celebrity Events", "VIP Lounge", "Dance Floor", "Cocktail Bar"],
+    "events": ["Celebrity Night - Every Friday", "EDM Night - Every Saturday"],
+    "photos": [
+      "https://example.com/tryst-1.jpg",
+      "https://example.com/tryst-2.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Kitty Su",
+    "description": "Kitty Su is an iconic nightclub located in The Lalit, Mumbai. Known for its underground vibe, international DJs, and themed parties, Kitty Su is a favorite among music lovers and party-goers. The club offers a unique experience with its state-of-the-art sound system and vibrant atmosphere.",
+    "location": "The Lalit, Mumbai",
+    "opening_time": "9:00 PM",
+    "closing_time": "3:30 AM",
+    "city": "Mumbai",
+    "rating": 4.8,
+    "contact": "+91 2345678901",
+    "website": "https://kittysumumbai.com",
+    "amenities": ["Underground Vibe", "International DJs", "Themed Parties", "VIP Lounge"],
+    "events": ["International DJ Night - Every Friday", "Themed Party - Every Saturday"],
+    "photos": [
+      "https://example.com/kitty-su-1.jpg",
+      "https://example.com/kitty-su-2.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "AER",
+    "description": "AER is a rooftop nightclub in Worli, Mumbai, offering breathtaking views of the city skyline. Known for its house and EDM music, AER is a popular destination for those looking to enjoy a night out with friends. The club also hosts special events and live DJ performances.",
+    "location": "Worli, Mumbai",
+    "opening_time": "7:00 PM",
+    "closing_time": "1:30 AM",
+    "city": "Mumbai",
+    "rating": 4.6,
+    "contact": "+91 3456789012",
+    "website": "https://aermumbai.com",
+    "amenities": ["Rooftop Seating", "House Music", "EDM Music", "Live DJs"],
+    "events": ["Sunset Party - Every Sunday", "House Music Night - Every Wednesday"],
+    "photos": [
+      "https://example.com/aer-1.jpg",
+      "https://example.com/aer-2.jpg"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Royalty",
+    "description": "Royalty is a high-end nightclub in Bandra, Mumbai, known for its royal ambiance and Bollywood and hip-hop music. The club attracts a glamorous crowd and offers a luxurious experience with its VIP lounge and state-of-the-art sound system.",
+    "location": "Bandra, Mumbai",
+    "opening_time": "8:30 PM",
+    "closing_time": "3:00 AM",
+    "city": "Mumbai",
+    "rating": 4.5,
+    "contact": "+91 4567890123",
+    "website": "https://royaltymumbai.com",
+    "amenities": ["Royal Ambiance", "Bollywood Music", "Hip-Hop Music", "VIP Lounge"],
+    "events": ["Bollywood Night - Every Friday", "Hip-Hop Night - Every Saturday"],
+    "photos": [
+      "https://example.com/royalty-1.jpg",
+      "https://example.com/royalty-2.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Trilogy",
+    "description": "Trilogy is a multi-level nightclub in Lower Parel, Mumbai, offering a mix of retro, Bollywood, and electronic music. The club is known for its vibrant atmosphere and is a favorite among party-goers. Trilogy also hosts special events and themed nights regularly.",
+    "location": "Lower Parel, Mumbai",
+    "opening_time": "9:00 PM",
+    "closing_time": "3:00 AM",
+    "city": "Mumbai",
+    "rating": 4.4,
+    "contact": "+91 5678901234",
+    "website": "https://trilogymumbai.com",
+    "amenities": ["Multi-Level", "Retro Music", "Bollywood Music", "Electronic Music"],
+    "events": ["Retro Night - Every Wednesday", "Bollywood Night - Every Friday"],
+    "photos": [
+      "https://example.com/trilogy-1.jpg",
+      "https://example.com/trilogy-2.jpg"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Skyye",
+    "description": "Skyye is a rooftop nightclub in UB City, Bangalore, offering panoramic views of the city. Known for its EDM and house music, Skyye is a popular destination for those looking to enjoy a night out with friends. The club also hosts special events and live DJ performances.",
+    "location": "UB City, Bangalore",
+    "opening_time": "6:30 PM",
+    "closing_time": "1:00 AM",
+    "city": "Bangalore",
+    "rating": 4.6,
+    "contact": "+91 6789012345",
+    "website": "https://skyye.com",
+    "amenities": ["Rooftop Seating", "EDM Music", "House Music", "Live DJs"],
+    "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
+    "photos": [
+      "https://example.com/skyye-1.jpg",
+      "https://example.com/skyye-2.jpg"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Social",
+    "description": "Social is a trendy club in Church Street, Bangalore, known for its co-working space by day and lively nightclub by night. The club offers a unique blend of work and play, making it a favorite among young professionals and party-goers.",
+    "location": "Church Street, Bangalore",
+    "opening_time": "7:00 PM",
+    "closing_time": "12:30 AM",
+    "city": "Bangalore",
+    "rating": 4.3,
+    "contact": "+91 7890123456",
+    "website": "https://socialbangalore.com",
+    "amenities": ["Co-Working Space", "Lively Nightclub", "Cocktail Bar", "Themed Nights"],
+    "events": ["Karaoke Night - Every Tuesday", "Themed Party - Every Friday"],
+    "photos": [
+      "https://example.com/social-1.jpg",
+      "https://example.com/social-2.jpg"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "The Biere Club",
+    "description": "The Biere Club is a brewery and nightclub in Vittal Mallya Road, Bangalore, offering craft beers, live music, and a relaxed vibe. The club is perfect for those who want to enjoy a night out with friends while sipping on some of the best craft beers in the city.",
+    "location": "Vittal Mallya Road, Bangalore",
+    "opening_time": "6:00 PM",
+    "closing_time": "1:00 AM",
+    "city": "Bangalore",
+    "rating": 4.2,
+    "contact": "+91 8901234567",
+    "website": "https://thebiereclub.com",
+    "amenities": ["Craft Beers", "Live Music", "Relaxed Vibe", "Outdoor Seating"],
+    "events": ["Live Band Night - Every Wednesday", "Beer Tasting - Every Saturday"],
+    "photos": [
+      "https://example.com/biere-club-1.jpg",
+      "https://example.com/biere-club-2.jpg"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Pecos",
+    "description": "Pecos is a retro-themed club in Brigade Road, Bangalore, known for its laid-back vibe and classic rock and blues music. The club is a favorite among music lovers and offers a unique experience with its retro decor and great music.",
+    "location": "Brigade Road, Bangalore",
+    "opening_time": "5:00 PM",
+    "closing_time": "11:30 PM",
+    "city": "Bangalore",
+    "rating": 4.1,
+    "contact": "+91 9012345678",
+    "website": "https://pecos.com",
+    "amenities": ["Retro Decor", "Classic Rock", "Blues Music", "Relaxed Vibe"],
+    "events": ["Classic Rock Night - Every Thursday", "Blues Night - Every Sunday"],
+    "photos": [
+      "https://example.com/pecos-1.jpg",
+      "https://example.com/pecos-2.jpg"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Fuga",
+    "description": "Fuga is a high-energy nightclub in Richmond Town, Bangalore, offering a mix of Bollywood, EDM, and international music. The club is known for its vibrant atmosphere and is a favorite among party-goers. Fuga also hosts special events and themed nights regularly.",
+    "location": "Richmond Town, Bangalore",
+    "opening_time": "8:00 PM",
+    "closing_time": "2:00 AM",
+    "city": "Bangalore",
+    "rating": 4.4,
+    "contact": "+91 0123456789",
+    "website": "https://fugabangalore.com",
+    "amenities": ["High-Energy", "Bollywood Music", "EDM Music", "International Music"],
+    "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
+    "photos": [
+      "https://example.com/fuga-1.jpg",
+      "https://example.com/fuga-2.jpg"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Pasha",
+    "description": "Pasha is a luxurious nightclub in Radisson Blu, Chennai, known for its Bollywood, Kollywood, and international music. The club offers a luxurious experience with its state-of-the-art sound system and vibrant atmosphere.",
+    "location": "Radisson Blu, Chennai",
+    "opening_time": "8:00 PM",
+    "closing_time": "2:00 AM",
+    "city": "Chennai",
+    "rating": 4.5,
+    "contact": "+91 1234567890",
+    "website": "https://pashachennai.com",
+    "amenities": ["Luxury Lounge", "Bollywood Music", "Kollywood Music", "International Music"],
+    "events": ["Bollywood Night - Every Friday", "Kollywood Night - Every Saturday"],
+    "photos": [
+      "https://example.com/pasha-1.jpg",
+      "https://example.com/pasha-2.jpg"
+    ]
+  },
+
+  {
+    "id": 17,
+    "name": "Zara The Tapas Bar",
+    "description": "Zara The Tapas Bar is a chic lounge and nightclub in RA Puram, Chennai, offering Spanish tapas and lively music. The club is perfect for those who want to enjoy a night out with friends while indulging in some delicious tapas and great music.",
+    "location": "RA Puram, Chennai",
+    "opening_time": "6:00 PM",
+    "closing_time": "1:00 AM",
+    "city": "Chennai",
+    "rating": 4.3,
+    "contact": "+91 2345678901",
+    "website": "https://zaratapasbar.com",
+    "amenities": ["Spanish Tapas", "Lively Music", "Outdoor Seating", "Cocktail Bar"],
+    "events": ["Tapas Night - Every Tuesday", "Live Music Night - Every Friday"],
+    "photos": [
+      "https://example.com/zara-1.jpg",
+      "https://example.com/zara-2.jpg"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "10 Downing Street",
+    "description": "10 Downing Street is a British-themed pub and nightclub in Nungambakkam, Chennai, offering a mix of retro and contemporary music. The club is known for its lively atmosphere and is a favorite among music lovers and party-goers.",
+    "location": "Nungambakkam, Chennai",
+    "opening_time": "5:00 PM",
+    "closing_time": "12:30 AM",
+    "city": "Chennai",
+    "rating": 4.2,
+    "contact": "+91 3456789012",
+    "website": "https://10downingstreetchennai.com",
+    "amenities": ["British Theme", "Retro Music", "Contemporary Music", "Pub Food"],
+    "events": ["Retro Night - Every Wednesday", "Pub Quiz - Every Sunday"],
+    "photos": [
+      "https://example.com/10downing-1.jpg",
+      "https://example.com/10downing-2.jpg"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Leather Bar",
+    "description": "Leather Bar is a stylish nightclub in Hyatt Regency, Chennai, known for its leather-themed decor and a mix of EDM and Bollywood music. The club offers a unique experience with its luxurious ambiance and great music.",
+    "location": "Hyatt Regency, Chennai",
+    "opening_time": "7:00 PM",
+    "closing_time": "1:30 AM",
+    "city": "Chennai",
+    "rating": 4.4,
+    "contact": "+91 4567890123",
+    "website": "https://leatherbarchennai.com",
+    "amenities": ["Leather Decor", "EDM Music", "Bollywood Music", "VIP Lounge"],
+    "events": ["EDM Night - Every Thursday", "Bollywood Night - Every Saturday"],
+    "photos": [
+      "https://example.com/leatherbar-1.jpg",
+      "https://example.com/leatherbar-2.jpg"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Gatsby 2000",
+    "description": "Gatsby 2000 is a retro-themed nightclub in OMR, Chennai, offering a 1920s vibe with classic hits and modern tracks. The club is perfect for those who want to experience the glamour of the 1920s while enjoying great music.",
+    "location": "OMR, Chennai",
+    "opening_time": "7:30 PM",
+    "closing_time": "1:00 AM",
+    "city": "Chennai",
+    "rating": 4.5,
+    "contact": "+91 5678901234",
+    "website": "https://gatsby2000.com",
+    "amenities": ["Retro Theme", "Classic Hits", "Modern Tracks", "VIP Lounge"],
+    "events": ["1920s Night - Every Friday", "Jazz Night - Every Sunday"],
+    "photos": [
+      "https://example.com/gatsby-1.jpg",
+      "https://example.com/gatsby-2.jpg"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Tabula Rasa",
+    "description": "Tabula Rasa is a high-end nightclub in Jubilee Hills, Hyderabad, known for its futuristic design and focus on electronic dance music. The club offers a luxurious experience with its state-of-the-art sound system and vibrant atmosphere.",
+    "location": "Jubilee Hills, Hyderabad",
+    "opening_time": "8:00 PM",
+    "closing_time": "2:30 AM",
+    "city": "Hyderabad",
+    "rating": 4.7,
+    "contact": "+91 6789012345",
+    "website": "https://tabularasahyderabad.com",
+    "amenities": ["Futuristic Design", "EDM Music", "VIP Lounge", "Dance Floor"],
+    "events": ["EDM Night - Every Friday", "Techno Night - Every Saturday"],
+    "photos": [
+      "https://example.com/tabularasa-1.jpg",
+      "https://example.com/tabularasa-2.jpg"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Air Lounge",
+    "description": "Air Lounge is a rooftop club in Banjara Hills, Hyderabad, offering a relaxed vibe with Bollywood and retro music. The club is perfect for those who want to enjoy a night out with friends while soaking in the city's skyline.",
+    "location": "Banjara Hills, Hyderabad",
+    "opening_time": "7:00 PM",
+    "closing_time": "1:00 AM",
+    "city": "Hyderabad",
+    "rating": 4.3,
+    "contact": "+91 7890123456",
+    "website": "https://airloungehyderabad.com",
+    "amenities": ["Rooftop Seating", "Bollywood Music", "Retro Music", "Cocktail Bar"],
+    "events": ["Sunset Party - Every Sunday", "Retro Night - Every Wednesday"],
+    "photos": [
+      "https://example.com/airlounge-1.jpg",
+      "https://example.com/airlounge-2.jpg"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Over The Moon",
+    "description": "Over The Moon is a rooftop nightclub in Jubilee Hills, Hyderabad, offering a mix of Bollywood, EDM, and international music. The club is known for its vibrant atmosphere and is a favorite among party-goers.",
+    "location": "Jubilee Hills, Hyderabad",
+    "opening_time": "7:30 PM",
+    "closing_time": "1:30 AM",
+    "city": "Hyderabad",
+    "rating": 4.6,
+    "contact": "+91 8901234567",
+    "website": "https://overthemoonhyderabad.com",
+    "amenities": ["Rooftop Seating", "Bollywood Music", "EDM Music", "International Music"],
+    "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
+    "photos": [
+      "https://example.com/overthemoon-1.jpg",
+      "https://example.com/overthemoon-2.jpg"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "The Moonshine Project",
+    "description": "The Moonshine Project is a trendy club in Madhapur, Hyderabad, offering a mix of live music, DJs, and a vibrant crowd. The club is perfect for those who want to enjoy a night out with friends while listening to great music.",
+    "location": "Madhapur, Hyderabad",
+    "opening_time": "6:00 PM",
+    "closing_time": "12:30 AM",
+    "city": "Hyderabad",
+    "rating": 4.4,
+    "contact": "+91 9012345678",
+    "website": "https://moonshineproject.com",
+    "amenities": ["Live Music", "DJs", "Vibrant Crowd", "Cocktail Bar"],
+    "events": ["Live Band Night - Every Thursday", "DJ Night - Every Saturday"],
+    "photos": [
+      "https://example.com/moonshine-1.jpg",
+      "https://example.com/moonshine-2.jpg"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Club 8",
+    "description": "Club 8 is a premium nightclub in Banjara Hills, Hyderabad, known for its luxurious ambiance and a mix of Bollywood and EDM music. The club offers a high-end experience with its state-of-the-art sound system and vibrant atmosphere.",
+    "location": "Banjara Hills, Hyderabad",
+    "opening_time": "8:00 PM",
+    "closing_time": "2:00 AM",
+    "city": "Hyderabad",
+    "rating": 4.7,
+    "contact": "+91 0123456789",
+    "website": "https://club8hyderabad.com",
+    "amenities": ["Luxury Lounge", "Bollywood Music", "EDM Music", "VIP Lounge"],
+    "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
+    "photos": [
+      "https://example.com/club8-1.jpg",
+      "https://example.com/club8-2.jpg"
+    ]
+  }
+  ]
+
+
+
+
+
+
+  
+  
+    
+  

@@ -36,13 +36,16 @@ const Navbar = () => {
           <span className="hover:text-gray-300 duration-100 cursor-default hover:bg-gray-800 px-3 py-2 text-gray-500 rounded-xl">
             Chat
           </span>
+         
           {authToken ? (
+             <div className="profileborder bg-gray-700 p-2 rounded-full">
             <img
               onClick={() => navigate("/dashboard/profile")}
-              className="w-10 h-10 cursor-pointer rounded-full object-cover border-2 border-[#FFD700] p-0"
+              className="w-8 h-8 cursor-pointer rounded-full object-cover border-2 border-[#FFD700] p-0"
               src={user?.avatar?.url || login} // Use user.avatar.url or fallback to login
               alt="Profile Icon"
             />
+            </div>
           ) : (
             <button onClick={() => navigate("/auth/login")}>Log in</button>
           )}
@@ -74,6 +77,8 @@ const Navbar = () => {
             Chat
           </span>
           {authToken ? (
+             <div className="profileborder bg-gray-700 p-2 rounded-full">
+
             <img
               onClick={() => {
                 setMenuOpen(false);
@@ -83,6 +88,7 @@ const Navbar = () => {
               src={user?.avatar?.url || login} // Use user.avatar.url or fallback to login
               alt="Profile Icon"
             />
+            </div>
           ) : (
             <button onClick={() => navigate("/auth/login")}>Log in</button>
           )}

@@ -32,3 +32,29 @@
 .animate-blink {
   animation: blink 1s 12;
 }
+
+/* Add this to your global CSS file */
+.boxes::-webkit-scrollbar {
+  height: 8px;
+}
+
+.boxes::-webkit-scrollbar-track {
+  background: #312F2F;
+  border-radius: 10px;
+}
+
+.boxes::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border-radius: 10px;
+}
+
+.boxes::-webkit-scrollbar-thumb:hover {
+  background: #DFCB60;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
