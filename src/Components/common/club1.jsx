@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import photos from '../../assets/club1bg.png';
 import clubsData from '../club-api/clubsData.json';
+import { MapPin, Clock, Phone } from 'lucide-react'; // Import icons
 
 const Club1 = () => {
     const { id } = useParams();
@@ -32,7 +33,7 @@ const Club1 = () => {
     }
 
     return (
-        <div className='pt-32 p-4 md:p-9 rounded-2xl'>
+        <div className='pt-24 md:pt-32 p-4 md:p-9 rounded-2xl'> {/* Adjusted top padding */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -81,18 +82,31 @@ const Club1 = () => {
                     </div>
                 </div>
 
-                {/* Responsive Contact Section */}
+                {/* Responsive Contact Section with Icons */}
                 <div className="contactmain px-4 md:px-9 pt-6 md:pt-12 pb-6">
-                    <div className="location-time-contact p-4 text-[#F0E3E3] space-y-2 bg-[#1b191b] rounded-3xl w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+                    <div className="location-time-contact p-4 text-[#F0E3E3] space-y-4 bg-[#1b191b] rounded-3xl w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                         <h1 className='text-[#868181] font-bold text-sm md:text-base'>Contact</h1>
-                        <div className="content px-2 md:px-4 pt-0 text-[#BFBFBF] text-xs md:text-sm">
-                            <p className="py-1">{club.location}</p>
-                            <p className="py-1">{club.contact}</p>
-                            <p className="py-1">{club.opening_time} - {club.closing_time}</p>
+                        <div className="content space-y-3 text-[#BFBFBF] text-xs md:text-sm font-bold">
+                            <div className="flex items-center space-x-2">
+                                <MapPin className="text-[#FFD700] w-4 h-4" />
+                                <p>{club.location}</p>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Phone className="text-[#FFD700] w-4 h-4" />
+                                <p>{club.contact}</p>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Clock className="text-[#FFD700] w-4 h-4" />
+                                <p>{club.opening_time} - {club.closing_time}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </motion.div>
+
+
+
+            
         </div>
     );
 };
