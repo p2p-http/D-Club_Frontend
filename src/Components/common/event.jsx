@@ -77,7 +77,7 @@ const Events = () => {
                                             </div>
 
                                             {/* Club Info */}
-                                            <div className="info px-4 sm:px-6 py-4 flex flex-col space-y-2 sm:space-y-4 sm:w-3/5 w-3/4">
+                                            <div className="info px-4 sm:px-6 py-4 sm:py-4 flex flex-col space-y-2 sm:space-y-4  w-3/4 ">
                                                 <div className="title-description flex flex-col space-y-1 sm:space-y-3">
                                                     <div>
                                                         <h1 className="title text-[#FFD700] font-semibold text-lg sm:text-xl">

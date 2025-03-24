@@ -8,8 +8,8 @@
     "closing_time": "1:30 AM",
     "city": "Pune",
     "rating": 4.5,
-    "contact": "+91 1234567890",
-    "website": "https://highspiritspune.com",
+    "contact": "+91 97654 00484",
+    "website": "http://www.highspiritspune.com",
     "amenities": ["Dance Floor", "Live Music", "VIP Lounge", "Outdoor Seating"],
     "events": ["Live DJ Night - Every Friday", "Bollywood Night - Every Saturday"],
     "photos": [
@@ -26,8 +26,8 @@
     "closing_time": "2:00 AM",
     "city": "Pune",
     "rating": 4.3,
-    "contact": "+91 9876543210",
-    "website": "https://swigpune.com",
+    "contact": "+91 98765 43210",
+    "website": "http://www.swigpune.com",
     "amenities": ["Rooftop Seating", "EDM Music", "Cocktail Bar", "Themed Nights"],
     "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
     "photos": [
@@ -44,8 +44,8 @@
     "closing_time": "2:30 AM",
     "city": "Pune",
     "rating": 4.6,
-    "contact": "+91 1122334455",
-    "website": "https://club9pune.com",
+    "contact": "+91 11223 34455",
+    "website": "http://www.club9pune.com",
     "amenities": ["Luxury Lounge", "Bollywood Music", "International DJs", "Private Cabins"],
     "events": ["Bollywood Night - Every Friday", "International DJ Night - Every Saturday"],
     "photos": [
@@ -62,8 +62,8 @@
     "closing_time": "1:00 AM",
     "city": "Pune",
     "rating": 4.4,
-    "contact": "+91 9988776655",
-    "website": "https://hypepune.com",
+    "contact": "+91 99887 76655",
+    "website": "http://www.hypepune.com",
     "amenities": ["Themed Nights", "Top DJs", "Dance Floor", "Cocktail Bar"],
     "events": ["Retro Night - Every Wednesday", "Hip-Hop Night - Every Friday"],
     "photos": [
@@ -80,8 +80,8 @@
     "closing_time": "12:30 AM",
     "city": "Pune",
     "rating": 4.2,
-    "contact": "+91 6677889900",
-    "website": "https://theurbanfoundry.com",
+    "contact": "+91 66778 89900",
+    "website": "http://www.theurbanfoundry.com",
     "amenities": ["Gastro-Bar", "Live Music", "Industrial Decor", "Outdoor Seating"],
     "events": ["Live Band Night - Every Tuesday", "Karaoke Night - Every Thursday"],
     "photos": [
@@ -98,8 +98,8 @@
     "closing_time": "3:00 AM",
     "city": "Mumbai",
     "rating": 4.7,
-    "contact": "+91 1231231234",
-    "website": "https://trystmumbai.com",
+    "contact": "+91 12312 31234",
+    "website": "http://www.trystmumbai.com",
     "amenities": ["Celebrity Events", "VIP Lounge", "Dance Floor", "Cocktail Bar"],
     "events": ["Celebrity Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
@@ -116,8 +116,8 @@
     "closing_time": "3:30 AM",
     "city": "Mumbai",
     "rating": 4.8,
-    "contact": "+91 2345678901",
-    "website": "https://kittysumumbai.com",
+    "contact": "+91 23456 78901",
+    "website": "http://www.kittysumumbai.com",
     "amenities": ["Underground Vibe", "International DJs", "Themed Parties", "VIP Lounge"],
     "events": ["International DJ Night - Every Friday", "Themed Party - Every Saturday"],
     "photos": [
@@ -134,8 +134,8 @@
     "closing_time": "1:30 AM",
     "city": "Mumbai",
     "rating": 4.6,
-    "contact": "+91 3456789012",
-    "website": "https://aermumbai.com",
+    "contact": "+91 34567 89012",
+    "website": "http://www.aermumbai.com",
     "amenities": ["Rooftop Seating", "House Music", "EDM Music", "Live DJs"],
     "events": ["Sunset Party - Every Sunday", "House Music Night - Every Wednesday"],
     "photos": [
@@ -152,8 +152,8 @@
     "closing_time": "3:00 AM",
     "city": "Mumbai",
     "rating": 4.5,
-    "contact": "+91 4567890123",
-    "website": "https://royaltymumbai.com",
+    "contact": "+91 45678 90123",
+    "website": "http://www.royaltymumbai.com",
     "amenities": ["Royal Ambiance", "Bollywood Music", "Hip-Hop Music", "VIP Lounge"],
     "events": ["Bollywood Night - Every Friday", "Hip-Hop Night - Every Saturday"],
     "photos": [
@@ -170,8 +170,8 @@
     "closing_time": "3:00 AM",
     "city": "Mumbai",
     "rating": 4.4,
-    "contact": "+91 5678901234",
-    "website": "https://trilogymumbai.com",
+    "contact": "+91 56789 01234",
+    "website": "http://www.trilogymumbai.com",
     "amenities": ["Multi-Level", "Retro Music", "Bollywood Music", "Electronic Music"],
     "events": ["Retro Night - Every Wednesday", "Bollywood Night - Every Friday"],
     "photos": [
@@ -188,8 +188,8 @@
     "closing_time": "1:00 AM",
     "city": "Bangalore",
     "rating": 4.6,
-    "contact": "+91 6789012345",
-    "website": "https://skyye.com",
+    "contact": "+91 67890 12345",
+    "website": "http://www.skyye.com",
     "amenities": ["Rooftop Seating", "EDM Music", "House Music", "Live DJs"],
     "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
     "photos": [
@@ -206,8 +206,8 @@
     "closing_time": "12:30 AM",
     "city": "Bangalore",
     "rating": 4.3,
-    "contact": "+91 7890123456",
-    "website": "https://socialbangalore.com",
+    "contact": "+91 78901 23456",
+    "website": "http://www.socialbangalore.com",
     "amenities": ["Co-Working Space", "Lively Nightclub", "Cocktail Bar", "Themed Nights"],
     "events": ["Karaoke Night - Every Tuesday", "Themed Party - Every Friday"],
     "photos": [
@@ -224,8 +224,8 @@
     "closing_time": "1:00 AM",
     "city": "Bangalore",
     "rating": 4.2,
-    "contact": "+91 8901234567",
-    "website": "https://thebiereclub.com",
+    "contact": "+91 89012 34567",
+    "website": "http://www.thebiereclub.com",
     "amenities": ["Craft Beers", "Live Music", "Relaxed Vibe", "Outdoor Seating"],
     "events": ["Live Band Night - Every Wednesday", "Beer Tasting - Every Saturday"],
     "photos": [
@@ -242,8 +242,8 @@
     "closing_time": "11:30 PM",
     "city": "Bangalore",
     "rating": 4.1,
-    "contact": "+91 9012345678",
-    "website": "https://pecos.com",
+    "contact": "+91 90123 45678",
+    "website": "http://www.pecos.com",
     "amenities": ["Retro Decor", "Classic Rock", "Blues Music", "Relaxed Vibe"],
     "events": ["Classic Rock Night - Every Thursday", "Blues Night - Every Sunday"],
     "photos": [
@@ -260,8 +260,8 @@
     "closing_time": "2:00 AM",
     "city": "Bangalore",
     "rating": 4.4,
-    "contact": "+91 0123456789",
-    "website": "https://fugabangalore.com",
+    "contact": "+91 01234 56789",
+    "website": "http://www.fugabangalore.com",
     "amenities": ["High-Energy", "Bollywood Music", "EDM Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
@@ -278,8 +278,8 @@
     "closing_time": "2:00 AM",
     "city": "Chennai",
     "rating": 4.5,
-    "contact": "+91 1234567890",
-    "website": "https://pashachennai.com",
+    "contact": "+91 12345 67890",
+    "website": "http://www.pashachennai.com",
     "amenities": ["Luxury Lounge", "Bollywood Music", "Kollywood Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "Kollywood Night - Every Saturday"],
     "photos": [
@@ -297,13 +297,13 @@
     "closing_time": "1:00 AM",
     "city": "Chennai",
     "rating": 4.3,
-    "contact": "+91 2345678901",
-    "website": "https://zaratapasbar.com",
+    "contact": "+91 9876543210",
+    "website": "https://www.zaratapasbar.com",
     "amenities": ["Spanish Tapas", "Lively Music", "Outdoor Seating", "Cocktail Bar"],
     "events": ["Tapas Night - Every Tuesday", "Live Music Night - Every Friday"],
     "photos": [
-      "https://example.com/zara-1.jpg",
-      "https://example.com/zara-2.jpg"
+      "https://www.zaratapasbar.com/photos/zara-1.jpg",
+      "https://www.zaratapasbar.com/photos/zara-2.jpg"
     ]
   },
   {
@@ -315,13 +315,13 @@
     "closing_time": "12:30 AM",
     "city": "Chennai",
     "rating": 4.2,
-    "contact": "+91 3456789012",
-    "website": "https://10downingstreetchennai.com",
+    "contact": "+91 8765432109",
+    "website": "https://www.10downingstreetchennai.com",
     "amenities": ["British Theme", "Retro Music", "Contemporary Music", "Pub Food"],
     "events": ["Retro Night - Every Wednesday", "Pub Quiz - Every Sunday"],
     "photos": [
-      "https://example.com/10downing-1.jpg",
-      "https://example.com/10downing-2.jpg"
+      "https://www.10downingstreetchennai.com/photos/10downing-1.jpg",
+      "https://www.10downingstreetchennai.com/photos/10downing-2.jpg"
     ]
   },
   {
@@ -333,13 +333,13 @@
     "closing_time": "1:30 AM",
     "city": "Chennai",
     "rating": 4.4,
-    "contact": "+91 4567890123",
-    "website": "https://leatherbarchennai.com",
+    "contact": "+91 7654321098",
+    "website": "https://www.leatherbarchennai.com",
     "amenities": ["Leather Decor", "EDM Music", "Bollywood Music", "VIP Lounge"],
     "events": ["EDM Night - Every Thursday", "Bollywood Night - Every Saturday"],
     "photos": [
-      "https://example.com/leatherbar-1.jpg",
-      "https://example.com/leatherbar-2.jpg"
+      "https://www.leatherbarchennai.com/photos/leatherbar-1.jpg",
+      "https://www.leatherbarchennai.com/photos/leatherbar-2.jpg"
     ]
   },
   {
@@ -351,13 +351,13 @@
     "closing_time": "1:00 AM",
     "city": "Chennai",
     "rating": 4.5,
-    "contact": "+91 5678901234",
-    "website": "https://gatsby2000.com",
+    "contact": "+91 6543210987",
+    "website": "https://www.gatsby2000.com",
     "amenities": ["Retro Theme", "Classic Hits", "Modern Tracks", "VIP Lounge"],
     "events": ["1920s Night - Every Friday", "Jazz Night - Every Sunday"],
     "photos": [
-      "https://example.com/gatsby-1.jpg",
-      "https://example.com/gatsby-2.jpg"
+      "https://www.gatsby2000.com/photos/gatsby-1.jpg",
+      "https://www.gatsby2000.com/photos/gatsby-2.jpg"
     ]
   },
   {
@@ -369,13 +369,13 @@
     "closing_time": "2:30 AM",
     "city": "Hyderabad",
     "rating": 4.7,
-    "contact": "+91 6789012345",
-    "website": "https://tabularasahyderabad.com",
+    "contact": "+91 5432109876",
+    "website": "https://www.tabularasahyderabad.com",
     "amenities": ["Futuristic Design", "EDM Music", "VIP Lounge", "Dance Floor"],
     "events": ["EDM Night - Every Friday", "Techno Night - Every Saturday"],
     "photos": [
-      "https://example.com/tabularasa-1.jpg",
-      "https://example.com/tabularasa-2.jpg"
+      "https://www.tabularasahyderabad.com/photos/tabularasa-1.jpg",
+      "https://www.tabularasahyderabad.com/photos/tabularasa-2.jpg"
     ]
   },
   {
@@ -387,13 +387,13 @@
     "closing_time": "1:00 AM",
     "city": "Hyderabad",
     "rating": 4.3,
-    "contact": "+91 7890123456",
-    "website": "https://airloungehyderabad.com",
+    "contact": "+91 4321098765",
+    "website": "https://www.airloungehyderabad.com",
     "amenities": ["Rooftop Seating", "Bollywood Music", "Retro Music", "Cocktail Bar"],
     "events": ["Sunset Party - Every Sunday", "Retro Night - Every Wednesday"],
     "photos": [
-      "https://example.com/airlounge-1.jpg",
-      "https://example.com/airlounge-2.jpg"
+      "https://www.airloungehyderabad.com/photos/airlounge-1.jpg",
+      "https://www.airloungehyderabad.com/photos/airlounge-2.jpg"
     ]
   },
   {
@@ -405,13 +405,13 @@
     "closing_time": "1:30 AM",
     "city": "Hyderabad",
     "rating": 4.6,
-    "contact": "+91 8901234567",
-    "website": "https://overthemoonhyderabad.com",
+    "contact": "+91 3210987654",
+    "website": "https://www.overthemoonhyderabad.com",
     "amenities": ["Rooftop Seating", "Bollywood Music", "EDM Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://example.com/overthemoon-1.jpg",
-      "https://example.com/overthemoon-2.jpg"
+      "https://www.overthemoonhyderabad.com/photos/overthemoon-1.jpg",
+      "https://www.overthemoonhyderabad.com/photos/overthemoon-2.jpg"
     ]
   },
   {
@@ -423,13 +423,13 @@
     "closing_time": "12:30 AM",
     "city": "Hyderabad",
     "rating": 4.4,
-    "contact": "+91 9012345678",
-    "website": "https://moonshineproject.com",
+    "contact": "+91 2109876543",
+    "website": "https://www.moonshineproject.com",
     "amenities": ["Live Music", "DJs", "Vibrant Crowd", "Cocktail Bar"],
     "events": ["Live Band Night - Every Thursday", "DJ Night - Every Saturday"],
     "photos": [
-      "https://example.com/moonshine-1.jpg",
-      "https://example.com/moonshine-2.jpg"
+      "https://www.moonshineproject.com/photos/moonshine-1.jpg",
+      "https://www.moonshineproject.com/photos/moonshine-2.jpg"
     ]
   },
   {
@@ -441,16 +441,31 @@
     "closing_time": "2:00 AM",
     "city": "Hyderabad",
     "rating": 4.7,
-    "contact": "+91 0123456789",
-    "website": "https://club8hyderabad.com",
+    "contact": "+91 1098765432",
+    "website": "https://www.club8hyderabad.com",
     "amenities": ["Luxury Lounge", "Bollywood Music", "EDM Music", "VIP Lounge"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://example.com/club8-1.jpg",
-      "https://example.com/club8-2.jpg"
+      "https://www.club8hyderabad.com/photos/club8-1.jpg",
+      "https://www.club8hyderabad.com/photos/club8-2.jpg"
     ]
   }
   ]
+
+
+
+
+
+
+
+
+    
+   
+
+
+  
+   
+  
 
 
 

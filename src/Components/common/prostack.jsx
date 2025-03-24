@@ -6,7 +6,6 @@ import { logout } from "../../store/slice/auth-slice"; // Logout action
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
-import { LogOut } from "lucide-react"; // Import the logout icon
 
 const Prostack = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -35,16 +34,9 @@ const Prostack = () => {
             <div className="flex flex-col w-full max-w-md md:max-w-2xl lg:max-w-4xl space-y-4 p-3 sm:p-4 rounded-2xl bg-[#312F2F] g-gradient-to-r from-gray-50 to-gray-100 shadow-md shadow-gray-800  ">
                 {/* Profile Card */}
                 <div className="profile_pic relative flex flex-col items-center sm:flex-row sm:items-start sm:justify-start w-full gap-3 sm:gap-11 p-3 sm:p-6">
-                    {/* Logout Icon */}
-                    <div
-                        className="absolute top-4 right-4 cursor-pointer"
-                        onClick={handleLogout}
-                    >
-                        <LogOut size={24} className="text-gray-400 hover:text-red-500 transition" />
-                    </div>
-
                     {/* Profile Image Section */}
                     <div className="photo-icon relative w-20 h-20 sm:w-32 sm:h-32 flex items-center justify-center">
+                        
                         <img
                             className="w-full h-full rounded-full border-2 object-cover border-[#FFD700] p-1"
                             src={user?.avatar?.url || loginp} // Use user.avatar.url or fallback to loginp
@@ -55,10 +47,7 @@ const Prostack = () => {
                     {/* Name, Bio & Button */}
                     <div className="name,bio,btn flex flex-col justify-start sm:items-start space-y-2 sm:text-start">
                         <div className="text-center sm:text-start">
-                            <h2
-                                onClick={() => navigate("/dashboard/profile")}
-                                className="text-[#F0E3E3] text-lg sm:text-2xl font-semibold hover:text-[#ffc45e] cursor-pointer"
-                            >
+                            <h2 onClick={() => navigate("/dashboard/profile")} className="text-[#F0E3E3] text-lg sm:text-2xl font-semibold hover:text-[#ffc45e] cursor-pointer"> 
                                 {user?.fullName || "User Name"}
                             </h2>
                             <p className="text-[#868181] text-xs sm:text-sm">
