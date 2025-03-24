@@ -160,7 +160,7 @@ const ProfilePage = () => {
             </label>
             <div className="flex gap-4 mt-2">
               <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
-                {user.isPartyMode || "Not Selected"}
+                { "Not Selected"}
               </div>
             </div>
           </div>

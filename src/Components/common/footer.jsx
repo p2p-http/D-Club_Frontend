@@ -25,7 +25,7 @@ const Footer = () => {
             <li><Link to="/" className="hover:text-white flex items-center gap-2"><Home size={16}/> Home</Link></li>
             <li><Link to="/we" className="hover:text-white flex items-center gap-2"><Info size={16}/> We</Link></li>
             <li><Link to="/events" className="hover:text-white flex items-center gap-2"><Users size={16}/> Event</Link></li>
-            <li><Link to="/support" className="hover:text-white flex items-center gap-2"><HelpCircle size={16}/> Support</Link></li>
+            <li><Link to="club1" className="hover:text-white flex items-center gap-2"><HelpCircle size={16}/> Support</Link></li>
           </ul>
         </div>
 

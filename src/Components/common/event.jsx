@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Search, MapPin, Clock } from "lucide-react"; // Import Lucide icons
 import clubsData from '../club-api/clubsData.json'; // Import the JSON data
 import photos from '../../assets/1.png'; // Import the photo
+import { useNavigate } from "react-router-dom";
 
 const Events = () => {
+    const navigate = useNavigate();
     const [clubs, setClubs] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -108,7 +110,7 @@ const Events = () => {
 
                                             {/* Enroll Button */}
                                             <div className="absolute bottom-0 right-0">
-                                                <button className="p-2 px-4 sm:px-6 bg-gray-900 border-[#32312d]  rounded-ee-3xl rounded-ss-3xl text-[#aaa589] font-semibold text-xs sm:text-sm hover:bg-[#84837b] hover:text-[#312F2F] transition-colors duration-300">
+                                                <button onClick={() => navigate(`/club1/${club.id}`)} className="p-2 px-4 sm:px-6 bg-gray-900 border-[#32312d]  rounded-ee-3xl rounded-ss-3xl text-[#aaa589] font-semibold text-xs sm:text-sm hover:bg-[#84837b] hover:text-[#312F2F] transition-colors duration-300">
                                                     Enroll
                                                 </button>
                                             </div>

@@ -25,8 +25,8 @@ import Terms from "./Components/term-privacy/terms";
 import Privacy from "./Components/term-privacy/privacy";
 import We from "./Components/common/we";
 import Events from './Components/common/event'
+import Club1 from "./Components/common/club1";
 
-// ✅ Page Transition Variants
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -36,15 +36,14 @@ const pageVariants = {
 function App() {
   const location = useLocation();
 
-  // ✅ Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  }, [location.pathname]); // Triggered when the route changes
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="bg-black min-h-screen w-screen">
       <Navbar />
-      <LoadingBar /> {/* ✅ Loading Bar for Page Transitions */}
+      <LoadingBar />
 
       <AnimatePresence mode="wait">
         <Routes key={location.pathname} location={location}>
@@ -59,10 +58,7 @@ function App() {
           />
 
           {/* Dashboard */}
-          <Route
-            path="dashboard"
-            element={<DashboardLayout />}
-          >
+          <Route path="dashboard" element={<DashboardLayout />}>
             <Route
               path="profile"
               element={
@@ -111,11 +107,21 @@ function App() {
             }
           />
 
+          {/* Updated Club1 Route with ID parameter */}
+          <Route
+            path="club1/:id"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Club1 />
+              </motion.div>
+            }
+          />
+
           <Route
             path="events"
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <Events/>
+                <Events />
               </motion.div>
             }
           />
@@ -128,6 +134,7 @@ function App() {
               </motion.div>
             }
           />
+          
           <Route
             path="terms"
             element={
@@ -173,20 +180,18 @@ function App() {
   );
 }
 
-// ✅ Component to Show Loader on Page Change
 const LoadingBar = () => {
   const location = useLocation();
 
   useEffect(() => {
     NProgress.configure({ showSpinner: false, speed: 500, trickleSpeed: 200 });
-    NProgress.start(); // Start loading bar
-    setTimeout(() => NProgress.done(), 500); // End loading after short delay
-  }, [location.pathname]); // Runs when route changes
+    NProgress.start();
+    setTimeout(() => NProgress.done(), 500);
+  }, [location.pathname]);
 
   return null;
 };
 
-// ✅ Wrapper for Animated Pages
 const AnimatedPage = ({ children }) => (
   <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
     {children}
