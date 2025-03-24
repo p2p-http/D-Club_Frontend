@@ -25,6 +25,7 @@ import Terms from "./Components/term-privacy/terms";
 import Privacy from "./Components/term-privacy/privacy";
 import We from "./Components/common/we";
 import Events from './Components/common/event'
+import Club1 from "./Components/common/club1";
 
 // ✅ Page Transition Variants
 const pageVariants = {
@@ -112,10 +113,19 @@ function App() {
           />
 
           <Route
+            path="club1"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Club1 />
+              </motion.div>
+            }
+          />
+
+          <Route
             path="events"
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <Events/>
+                <Events />
               </motion.div>
             }
           />
