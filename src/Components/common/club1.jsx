@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { MapPin, Clock, Phone } from 'lucide-react';
 import photos from '../../assets/club1bg.png';
 import clubsData from '../club-api/clubsData.json';
-import { MapPin, Clock, Phone } from 'lucide-react'; // Import icons
+import ss from '../../assets/ss.png';
+import s1 from '../../assets/kissna.png';
+import s2 from '../../assets/sahil.jpeg';
 
 const Club1 = () => {
     const { id } = useParams();
@@ -14,7 +17,6 @@ const Club1 = () => {
             const selectedClub = clubsData.find(club => club.id === parseInt(id));
             setClub(selectedClub);
         };
-
         fetchClub();
     }, [id]);
 
@@ -33,7 +35,8 @@ const Club1 = () => {
     }
 
     return (
-        <div className='pt-24 md:pt-32 p-4 md:p-9 rounded-2xl'> {/* Adjusted top padding */}
+        <div className='pt-24 md:pt-32 p-4 md:p-9 rounded-2xl flex flex-col space-y-10 md:space-y-20'>
+            {/* Club Information Section */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -72,7 +75,7 @@ const Club1 = () => {
                     </div>
                 </div>
 
-                {/* Events */}
+                {/* Events Section */}
                 <div className="eventmain px-4 md:px-9 pt-6 md:pt-9">
                     <div className="event w-full h-auto bg-[#1b191b] rounded-2xl">
                         <h1 className='px-4 md:px-5 py-2 text-lg md:text-xl text-[#868181] font-semibold'>Events</h1>
@@ -82,7 +85,7 @@ const Club1 = () => {
                     </div>
                 </div>
 
-                {/* Responsive Contact Section with Icons */}
+                {/* Contact Section with Icons */}
                 <div className="contactmain px-4 md:px-9 pt-6 md:pt-12 pb-6">
                     <div className="location-time-contact p-4 text-[#F0E3E3] space-y-4 bg-[#1b191b] rounded-3xl w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                         <h1 className='text-[#868181] font-bold text-sm md:text-base'>Contact</h1>
@@ -104,9 +107,36 @@ const Club1 = () => {
                 </div>
             </motion.div>
 
+            {/* Party Mode Section */}
+            <div className="partymode w-full">
+                <div className="box w-full bg-[#121112] rounded-3xl overflow-hidden">
+                    <div className="partymodeOn p-4 md:p-8 bg-[#1b191b]">
+                        <h1 className='text-[#FFD700] font-bold text-2xl md:text-3xl'>Party Mode On</h1>
+                    </div>
 
+                    <div className="photo-btn p-4 md:p-7 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+                        <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+                            {[ss, s1, s2].map((img, index) => (
+                                <div key={index} className="flex-shrink-0">
+                                    <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
+                                        <img 
+                                            src={img} 
+                                            alt="Party member" 
+                                            className="h-full w-full object-cover" 
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
 
-            
+                        <div className="btn w-full md:w-auto">
+                            <button className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300'>
+                                Find Partner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
