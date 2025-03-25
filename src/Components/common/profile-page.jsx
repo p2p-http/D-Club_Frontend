@@ -24,6 +24,9 @@ const ProfilePage = () => {
   const [isPartyModeOn, setIsPartyModeOn] = useState(false); // State for Party Mode toggle
   const { user, authToken } = useSelector((state) => state.auth);
 
+
+  console.log("User:", user); // ✅ Debugging (Check Console)
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/auth/login");
@@ -160,7 +163,9 @@ const ProfilePage = () => {
             </label>
             <div className="flex gap-4 mt-2">
               <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
-                { "Not Selected"}
+                {
+                  user.isPartyMode ? "On" : "Off"
+                }
               </div>
             </div>
           </div>

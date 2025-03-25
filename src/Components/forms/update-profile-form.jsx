@@ -1,4 +1,4 @@
-import { DatePicker, Form, Input, Radio, Select } from "antd";
+import { DatePicker, Form, Input, Radio, Select, Switch } from "antd";
 import React, { useEffect } from "react";
 import { InterestOptions, GenderOptions } from "../../constants/data";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ const UpdateProfileForm = ({ form }) => {
 
   useEffect(() => {
     console.log("User Interests:", user.interest); // ✅ Debugging (Check Console)
-  
+
     if (user) {
       form.setFieldsValue({
         fullName: user.fullName,
@@ -26,7 +26,7 @@ const UpdateProfileForm = ({ form }) => {
       });
     }
   }, [user, form]);
-  
+
 
 
   return (
@@ -109,6 +109,14 @@ const UpdateProfileForm = ({ form }) => {
         <Input placeholder="Enter Snapchat URL" />
       </Form.Item>
 
+      <Form.Item label="Do you want to on ParytMode" name="isPartyMode">
+        <Switch
+          defaultChecked={false}
+          onChange={() => { }}
+          checkedChildren="on"
+          unCheckedChildren="off"
+        />
+      </Form.Item>
 
     </>
   );
