@@ -26,3 +26,5 @@ export const updateProfileImg = (formData, token) =>
     },
   });
 
+export const getPartyModeUsersEnd = (params) =>
+  api.get("/profile", { params });

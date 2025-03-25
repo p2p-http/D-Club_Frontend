@@ -7,10 +7,26 @@ import clubsData from '../club-api/clubsData.json';
 import ss from '../../assets/ss.png';
 import s1 from '../../assets/kissna.png';
 import s2 from '../../assets/sahil.jpeg';
+import { useQuery } from '@tanstack/react-query';
+import { getPartyModeUsersEnd } from '../../http/api';
+
+
+const getPartyModeUsers = async () => {
+    const { data } = await getPartyModeUsersEnd({ params: { isPartyMode: true } });
+    return data;
+};
 
 const Club1 = () => {
     const { id } = useParams();
     const [club, setClub] = useState(null);
+
+    const { data } = useQuery({
+        queryKey: ["get-paryMode-users-profile"],
+        queryFn: getPartyModeUsers,
+    });
+
+
+    console.log("Party Mode Users:", data?.message.users);
 
     useEffect(() => {
         const fetchClub = () => {
@@ -116,13 +132,13 @@ const Club1 = () => {
 
                     <div className="photo-btn p-4 md:p-7 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                         <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                            {[ss, s1, s2].map((img, index) => (
+                            {data?.message.users.map((user, index) => (
                                 <div key={index} className="flex-shrink-0">
                                     <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
-                                        <img 
-                                            src={img} 
-                                            alt="Party member" 
-                                            className="h-full w-full object-cover" 
+                                        <img
+                                            src={user?.avatar?.url}
+                                            alt="Party member"
+                                            className="h-full w-full object-cover"
                                         />
                                     </div>
                                 </div>
