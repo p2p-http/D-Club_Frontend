@@ -146,26 +146,29 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="gender w-full sm:w-auto">
-            <label className="text-gray-300 text-sm sm:text-base font-medium">
-              Gender:
-            </label>
-            <div className="flex gap-4 mt-2">
-              <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
-                {user.gender || "Not Selected"}
+          <div className=" flex flex-row  gap-12">
+
+            <div className="gender w-full sm:w-auto">
+              <label className="text-gray-300 text-sm sm:text-base font-medium">
+                Gender:
+              </label>
+              <div className="flex gap-4 mt-2">
+                <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-auto">
+                  {user.gender || "Not Selected"}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="gender w-full sm:w-auto">
-            <label className="text-gray-300 text-sm sm:text-base font-medium">
-              Party Mode:
-            </label>
-            <div className="flex gap-4 mt-2">
-              <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-full sm:w-auto">
-                {
-                  user.isPartyMode ? "On" : "Off"
-                }
+            <div className="partyMode w-full sm:w-auto">
+              <label className="text-gray-300 text-sm sm:text-base font-medium">
+                Party Mode:
+              </label>
+              <div className="flex gap-4 mt-2">
+                <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-auto">
+                  {
+                    user.isPartyMode ? "On" : "Off"
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -226,18 +229,26 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* Account Creation Date */}
-      <div className="flex flex-col items-start w-full sm:w-3/4 text-[#868181] text-sm sm:text-base">
-        <p>
+      {/* Account Creation Date - Responsive Version */}
+      <div className="flex flex-col items-start w-full sm:w-3/4 text-[#868181] text-sm sm:text-sm md:text-base px-4 ">
+        <p className="whitespace-nowrap">
           Account Created with 💜 on{" "}
-          {user.createdAt
-            ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.createdAt))
+          {user?.createdAt
+            ? new Intl.DateTimeFormat("fr-CA", {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit'
+            }).format(new Date(user.createdAt))
             : "DD-MM-YYYY"}
         </p>
-        <p>
+        <p className="whitespace-nowrap">
           Last Updated on{" "}
-          {user.updatedAt
-            ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.updatedAt))
+          {user?.updatedAt
+            ? new Intl.DateTimeFormat("fr-CA", {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit'
+            }).format(new Date(user.updatedAt))
             : "DD-MM-YYYY"}
         </p>
       </div>
