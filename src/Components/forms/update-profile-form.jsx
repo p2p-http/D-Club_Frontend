@@ -48,7 +48,7 @@ const UpdateProfileForm = ({ form }) => {
         <Input.TextArea placeholder="Bio : Dance like nobody's watching, party like never before! 💫🍾" />
       </Form.Item>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between md:flex-row flex-col">
         <Form.Item
           label="Gender"
           name="gender"
@@ -65,6 +65,14 @@ const UpdateProfileForm = ({ form }) => {
           <DatePicker />
         </Form.Item>
       </div>
+      <Form.Item label="Do you want to on ParytMode" name="isPartyMode">
+        <Switch
+          defaultChecked={false}
+          onChange={() => { }}
+          checkedChildren="on"
+          unCheckedChildren="off"
+        />
+      </Form.Item>
 
       <Form.Item
         label="Interest"
@@ -109,14 +117,7 @@ const UpdateProfileForm = ({ form }) => {
         <Input placeholder="Enter Snapchat URL" />
       </Form.Item>
 
-      <Form.Item label="Do you want to on ParytMode" name="isPartyMode">
-        <Switch
-          defaultChecked={false}
-          onChange={() => { }}
-          checkedChildren="on"
-          unCheckedChildren="off"
-        />
-      </Form.Item>
+     
 
     </>
   );
