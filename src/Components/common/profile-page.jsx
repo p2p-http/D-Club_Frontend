@@ -11,6 +11,8 @@ import ProfileUpdateDrawer from "../drawer/profile-update-drawer";
 import { useMutation } from "@tanstack/react-query";
 import { message } from "antd";
 import { updateProfileImg } from "../../http/api";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const updateProfile = async ({ formData, token }) => {
   const { data } = await updateProfileImg(formData, token);
@@ -21,18 +23,18 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isPartyModeOn, setIsPartyModeOn] = useState(false); // State for Party Mode toggle
+  const [isPartyModeOn, setIsPartyModeOn] = useState(false);
   const { user, authToken } = useSelector((state) => state.auth);
 
-
-  console.log("User:", user); // ✅ Debugging (Check Console)
+  // Custom Loader Icon
+  const customLoader = <LoadingOutlined style={{ fontSize: 24, color: "#000000" }} spin />;
 
   const handleLogout = () => {
     dispatch(logout());
     navigate("/auth/login");
   };
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["update-profile"],
     mutationFn: updateProfile,
     onSuccess: (data) => {
@@ -69,12 +71,17 @@ const ProfilePage = () => {
           />
           {/* Camera Icon (For Image Upload) */}
           <label className="absolute bottom-2 right-2 bg-[#FFD700] p-2 rounded-full cursor-pointer hover:bg-[#e6c000] transition">
-            <Camera size={20} className="text-black" />
+            {isPending ? (
+              <Spin indicator={customLoader} />
+            ) : (
+              <Camera size={20} className="text-black" />
+            )}
             <input
               type="file"
               accept="image/*"
               className="hidden"
               onChange={handleImageChange}
+              disabled={isPending}
             />
           </label>
         </div>
@@ -230,7 +237,7 @@ const ProfilePage = () => {
       </div>
 
       {/* Account Creation Date - Responsive Version */}
-      <div className="flex flex-col items-start w-full sm:w-3/4 text-[#868181] text-sm sm:text-sm md:text-base px-4 ">
+      <div className="flex flex-col items-start w-full sm:w-3/4 text-[#868181] text-sm sm:text-sm md:text-base px-4 l">
         <p className="whitespace-nowrap">
           Account Created with 💜 on{" "}
           {user?.createdAt
