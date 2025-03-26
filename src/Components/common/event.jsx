@@ -44,10 +44,10 @@ const Events = () => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             {/* Search Icon */}
-                            <Search
+                            {/* <Search
                                 size={25}
-                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#FFD700]"
-                            />
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#FFD700] "
+                            /> */}
                         </div>
                     </FormItem>
                 </div>
