@@ -221,19 +221,26 @@ const ProfilePage = () => {
         </div>
 
         {/* Social Platforms */}
-        <div className="socialp flex flex-col space-y-2">
-          <div className="flex flex-row space-x-4">
-            <a href={user?.socialMedia?.instagram || "#"} target="_blank" rel="noopener noreferrer">
-              <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
-            </a>
-            <a href={user?.socialMedia?.snapchat || "#"} target="_blank" rel="noopener noreferrer">
-              <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
-            </a>
-            <a href={user?.socialMedia?.twitter || "#"} target="_blank" rel="noopener noreferrer">
-              <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
-            </a>
-          </div>
-        </div>
+<div className="social-btn flex flex-row justify-between items-center w-full">
+  <div className="socialp flex flex-col space-y-2">
+    <div className="flex flex-row space-x-4">
+      <a href={user?.socialMedia?.instagram || "#"} target="_blank" rel="noopener noreferrer">
+        <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
+      </a>
+      <a href={user?.socialMedia?.snapchat || "#"} target="_blank" rel="noopener noreferrer">
+        <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
+      </a>
+      <a href={user?.socialMedia?.twitter || "#"} target="_blank" rel="noopener noreferrer">
+        <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
+      </a>
+    </div>
+  </div>
+  <div className="btn">
+    <button className='px-4 py-3 text-[#FF9684] font-bold text-xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap'>
+      Find Partner
+    </button>
+  </div>
+</div>
       </div>
 
       {/* Account Creation Date - Responsive Version */}
