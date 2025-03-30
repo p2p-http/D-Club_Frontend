@@ -7,6 +7,7 @@ import Intro from "../home-ui/intro";
 import Working from "../home-ui/working";
 import Cammunityt from "../../assets/community.webp";
 import Prostack from "./prostack";
+import Testimonials from "../home-ui/Testimonials";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -132,6 +133,10 @@ const Home = () => {
           />
         </div>
       </section>
+
+
+
+      <Testimonials/>
 
     </div>
   );

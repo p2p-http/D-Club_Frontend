@@ -26,6 +26,7 @@ import Privacy from "./Components/term-privacy/privacy";
 import We from "./Components/common/we";
 import Events from './Components/common/event'
 import Club1 from "./Components/common/club1";
+import Testimonials from "./Components/home-ui/Testimonials";
 
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
@@ -103,6 +104,14 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Working />
+              </motion.div>
+            }
+          />
+          <Route
+            path="testimonials"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Testimonials/>
               </motion.div>
             }
           />
