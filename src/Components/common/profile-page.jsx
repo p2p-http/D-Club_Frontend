@@ -236,7 +236,7 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="btn">
-            <button className='md:px-4 md:py-3 px-2 py-2  text-[#FF9684] font-bold md:text-xl text-sm  bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap'>
+            <button onClick={() => navigate("/events")} className='md:px-4 md:py-3 px-2 py-2  text-[#FF9684] font-bold md:text-xl text-sm  bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap'>
               Find Partner
             </button>
           </div>
