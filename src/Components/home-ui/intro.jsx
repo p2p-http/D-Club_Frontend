@@ -16,7 +16,7 @@ const Intro = () => {
 
   const handleGetStarted = () => {
     if (isAuth) {
-      navigate("/events"); // Redirect to events if logged in
+      navigate("/dashboard/profile"); // Redirect to events if logged in
     } else {
       navigate("/auth/login"); // Redirect to login if not logged in
     }
