@@ -67,7 +67,9 @@ const Testimonials = () => {
                     Testimonials
                 </motion.h2>
 
-                <div className="w-full max-w-md sm:max-w-2xl lg:max-w-4xl relative mx-auto">
+                <div className="square-box h-56 w-56 rounded-[4rem] bg-[#F0E3E3]"></div>
+
+                <div className="w-full max-w-md sm:max-w-2xl lg:max-w-4xl relative mx-auto justify-center items-center">
                     {/* Testimonial Card with enhanced shadow and hover effect */}
                     <motion.div
                         key={testimonials[currentIndex].id}
@@ -76,7 +78,7 @@ const Testimonials = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.5 }}
                         whileHover={{ scale: 1.02 }}
-                        className="bg-[#2A2A2A] w-full h-auto min-h-[400px] p-8 sm:p-10 rounded-3xl shadow-xl border border-[#3D3D3D] hover:border-[#FFD700]/30 transition-all duration-300 backdrop-blur-sm"
+                        className="bg-[#2A2A2A] w-full h-auto min-h-[400px] justify-center items-center p-8 sm:p-10 rounded-3xl shadow-xl border border-[#3D3D3D] hover:border-[#FFD700]/30 transition-all duration-300 backdrop-blur-sm"
                     >
                         {/* Profile Section with better alignment */}
                         <div className="flex items-start gap-6 mb-8">
