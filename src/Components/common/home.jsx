@@ -136,7 +136,10 @@ const Home = () => {
 
 
 
-      <Testimonials/>
+     {/* Testimonials Section - Full Width */}
+<div className="w-full">
+  <Testimonials />
+</div>
 
     </div>
   );
