@@ -124,35 +124,54 @@ const Club1 = () => {
             </motion.div>
 
             {/* Party Mode Section */}
-            <div className="partymode w-full">
-                <div className="box w-full bg-[#121112] rounded-3xl overflow-hidden">
-                    <div className="partymodeOn p-4 md:p-8 bg-[#1b191b]">
-                        <h1 className='text-[#FFD700] font-bold text-2xl md:text-3xl'>Party Mode On</h1>
-                    </div>
-
-                    <div className="photo-btn p-4 md:p-7 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-                        <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                            {data?.message.users.map((user, index) => (
-                                <div key={index} className="flex-shrink-0">
-                                    <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
-                                        <img
-                                            src={user?.avatar?.url}
-                                            alt="Party member"
-                                            className="h-full w-full object-cover"
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="btn w-full md:w-auto">
-                            <button className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300'>
-                                Find Partner
-                            </button>
-                        </div>
-                    </div>
+<div className="partymode w-full">
+    <div className="box w-full bg-[#121112] rounded-3xl overflow-hidden">
+        <div className="partymodeOn p-4 md:p-8 bg-[#1b191b] flex items-center gap-3">
+            <h1 className='text-[#FFD700] font-bold text-2xl md:text-3xl'>Party Mode On</h1>
+            {!data && (
+                <div className="loader">
+                    <svg className="animate-spin h-5 w-5 text-[#FFD700]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
                 </div>
-            </div>
+            )}
+        </div>
+
+        <div className="photo-btn p-4 md:p-7 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            {data ? (
+                <>
+                    <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+                        {data.message.users.map((user, index) => (
+                            <div key={index} className="flex-shrink-0">
+                                <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
+                                    <img
+                                        src={user?.avatar?.url}
+                                        alt="Party member"
+                                        className="h-full w-full object-cover"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="btn w-full md:w-auto">
+                        <button className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300'>
+                            Find Partner
+                        </button>
+                    </div>
+                </>
+            ) : (
+                <div className="w-full flex justify-center py-8">
+                    <svg className="animate-spin h-8 w-8 text-[#FFD700]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+            )}
+        </div>
+    </div>
+</div>
         </div>
     );
 };
