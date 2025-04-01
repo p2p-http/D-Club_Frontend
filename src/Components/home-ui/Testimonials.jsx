@@ -46,14 +46,14 @@ const Testimonials = () => {
 
     return (
         <div className="relative min-h-screen text-white flex flex-col items-center justify-center px-4 py-8 sm:py-12 overflow-hidden w-full">
-            {/* Background square pattern */}
-            <div className="absolute inset-0 z-0 opacity-10 w-full ">
-                <div className="absolute inset-0 bg-[length:30px_30px] sm:bg-[length:40px_40px] bg-repeat" 
-                     style={{ 
-                         backgroundImage: 'linear-gradient(to right, #BFBFBF 1px, transparent 1px), linear-gradient(to bottom, #BFBFBF 1px, transparent 1px)' 
-                     }}>
-                </div>
-            </div>
+            {/* Background square pattern - hidden on mobile, visible on sm and up */}
+<div className="hidden sm:block absolute inset-0 z-0 opacity-10 w-full">
+    <div className="absolute inset-0 bg-[length:30px_30px] sm:bg-[length:40px_40px] bg-repeat" 
+         style={{ 
+             backgroundImage: 'linear-gradient(to right, #BFBFBF 1px, transparent 1px), linear-gradient(to bottom, #BFBFBF 1px, transparent 1px)' 
+         }}>
+    </div>
+</div>
 
             {/* Content */}
             <div className="relative z-10 w-full">
