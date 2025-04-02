@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
@@ -12,7 +13,7 @@ const PartnerMatch = () => {
     const { user } = useSelector((state) => state.auth);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Mock data for recommended profiles (replace with your actual data)
+    // Mock data for recommended profiles
     const recommendedProfiles = [
         {
             id: 1,
@@ -26,7 +27,8 @@ const PartnerMatch = () => {
                 snapchat: "#",
                 twitter: "#"
             },
-            avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+            avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+            matchScore: 80
         },
         {
             id: 2,
@@ -40,7 +42,8 @@ const PartnerMatch = () => {
                 snapchat: "#",
                 twitter: "#"
             },
-            avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+            avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+            matchScore: 75
         },
         {
             id: 3,
@@ -54,7 +57,8 @@ const PartnerMatch = () => {
                 snapchat: "#",
                 twitter: "#"
             },
-            avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+            avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+            matchScore: 85
         }
     ];
 
@@ -77,124 +81,144 @@ const PartnerMatch = () => {
     const currentProfile = recommendedProfiles[currentIndex];
 
     return (
-        <div className="main flex flex-col items-center justify-center min-h-[50vh] space-y-4 sm:space-y-8 pb-4 sm:pb-10 pt-32 sm:pt-8 px-3 sm:px-6 text-white">
-            <motion.h1
+        <div className="partner-match-container flex flex-col items-center justify-center min-h-screen bg-black text-white py-8 px-4 sm:px-6">
+            {/* Header Title */}
+            <motion.h1 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className='text-3xl text-[#94A3B8] font-bold text-center mb-8 pt-24'
+                transition={{ duration: 0.5 }}
+                className="text-2xl sm:text-3xl font-bold text-center text-[#94A3B8] mb-6 sm:mb-8 pt-16 sm:pt-24"
             >
-                TOP {recommendedProfiles.length} Recommendations Based on your Preference
+                TOP {recommendedProfiles.length} Recommendations
+                <br className="sm:hidden" />
+                <span className="text-[#94A3B8]">Based on your Preferences</span>
             </motion.h1>
 
-            {/* Profile Section */}
-            <motion.div
-                key={currentProfile.id}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="relative flex flex-col w-full max-w-md md:max-w-2xl lg:max-w-4xl space-y-4 p-3 sm:p-4 rounded-2xl bg-[#312F2F] shadow-md shadow-gray-800"
-            >
-                {/* Score div positioned at top right */}
-                <div className="absolute -top-0 -right-0 bg-[#4F4F4F] h-14 w-16 flex justify-center items-center rounded-se-2xl rounded-es-3xl z-10">
-                    <button className='font-bold text-[#FF9684] text-xl'>80%</button>
-                </div>
-                
+            {/* Profile Carousel Container */}
+            <div className="relative w-full max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
+                {/* Left Navigation Arrow */}
+                <button
+                    onClick={prevProfile}
+                    className="absolute left-0 sm:-left-12 md:-left-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
+                    aria-label="Previous profile"
+                >
+                    <ChevronLeft 
+                        size={28} 
+                        className="text-[#FFD700] hover:text-black" 
+                    />
+                </button>
+
                 {/* Profile Card */}
-                <div className="profile_pic relative flex flex-col items-center sm:flex-row sm:items-start sm:justify-start w-full gap-3 sm:gap-11 p-3 sm:p-6">
-                    {/* Profile Image Section */}
-                    <div className="photo-icon relative w-20 h-20 sm:w-32 sm:h-32 flex items-center justify-center">
-                        <img
-                            className="w-full h-full rounded-full border-2 object-cover border-[#FFD700] p-1"
-                            src={currentProfile.avatar || loginp}
-                            alt="Profile"
-                        />
+                <motion.div
+                    key={currentProfile.id}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.5 }}
+                    className="profile-card bg-[#312F2F] rounded-xl sm:rounded-2xl shadow-lg shadow-gray-800 overflow-hidden"
+                >
+                    {/* Match Score Badge */}
+                    <div className="absolute top-0 right-0 bg-[#4F4F4F] w-16 h-14 flex items-center justify-center rounded-es-xl rounded-se-xl z-10">
+                        <span className="text-[#FF9684] font-bold text-lg">
+                            {currentProfile.matchScore}%
+                        </span>
                     </div>
 
-                    {/* Name, Bio & Button */}
-                    <div className="name,bio,btn flex flex-col justify-start sm:items-start space-y-2 sm:text-start">
-                        <div className="text-center sm:text-start">
-                            <h2 className="text-[#F0E3E3] text-lg sm:text-2xl font-semibold">
-                                {currentProfile.fullName}
-                            </h2>
-                            <p className="text-[#868181] text-xs sm:text-sm">
-                                {currentProfile.bio}
+                    {/* Profile Content */}
+                    <div className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-14">
+                            {/* Profile Picture - Fixed Size */}
+                            <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 relative">
+                                <img
+                                    src={currentProfile.avatar || loginp}
+                                    alt={currentProfile.fullName}
+                                    className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]"
+                                    loading="lazy"
+                                />
+                            </div>
+
+                            {/* Profile Info */}
+                            <div className="flex-1 text-center sm:text-left">
+                                <h2 className="text-xl sm:text-2xl font-semibold text-[#F0E3E3]">
+                                    {currentProfile.fullName}
+                                </h2>
+                                <p className="text-sm text-[#868181] mt-1">
+                                    {currentProfile.bio}
+                                </p>
+                                
+                                <div className="flex justify-center sm:justify-start items-center gap-2 text-xs sm:text-sm text-[#868181] mt-2">
+                                    <span>
+                                        {currentProfile.dateOfBirth
+                                            ? new Intl.DateTimeFormat("fr-CA").format(new Date(currentProfile.dateOfBirth))
+                                            : "Select Age"}
+                                    </span>
+                                    <span>|</span>
+                                    <span>{currentProfile.gender}</span>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4">
+                                    <button className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300">
+                                        Connect {"<3"}
+                                    </button>
+                                    <button className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-e-xl sm:rounded-xl transition-all duration-300">
+                                        Not Interested
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* About Section */}
+                        <div className="mt-4 sm:mt-6 bg-[#1b191b] rounded-xl sm:rounded-xl p-3 sm:p-4">
+                            <h3 className="text-[#BFBFBF] font-semibold text-sm sm:text-base">
+                                About {currentProfile.fullName} 😌
+                            </h3>
+                            <p className="text-[#868181] text-xs sm:text-sm mt-1">
+                                {currentProfile.about}
                             </p>
-                        </div>
-
-                        {/* Gender and Date of Birth */}
-                        <div className="text-[#868181] justify-center items-center text-xs sm:text-sm flex flex-row gap-2">
-                            <p>
-                                {currentProfile.dateOfBirth
-                                    ? new Intl.DateTimeFormat("fr-CA").format(new Date(currentProfile.dateOfBirth))
-                                    : "Select Age"}
-                            </p>
-                            <p>|</p>
-                            <p>{currentProfile.gender}</p>
-                        </div>
-
-                        {/* Buttons */}
-                        <div className="btn flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                            <button
-                                className="p-2 text-xs sm:text-sm rounded-xl bg-[#FFD700] text-black w-full sm:w-32 hover:bg-[#e6c000] transition"
-                            >
-                                Connect {" <"}3
-                            </button>
-                            <button
-                                className="p-2 text-xs sm:text-sm rounded-xl bg-[#FFD700] text-black w-full sm:w-32 hover:bg-[#e6c000] transition"
-                            >
-                                Not Interested
-                            </button>
+                            
+                            {/* Social Links */}
+                            <div className="flex justify-end mt-3 sm:mt-4 gap-2 sm:gap-3">
+                                <a href={currentProfile.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+                                    <img src={insta} alt="Instagram" className="w-6 h-6 sm:w-7 sm:h-7" />
+                                </a>
+                                <a href={currentProfile.socialMedia.snapchat} target="_blank" rel="noopener noreferrer">
+                                    <img src={snap} alt="Snapchat" className="w-6 h-6 sm:w-7 sm:h-7" />
+                                </a>
+                                <a href={currentProfile.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
+                                    <img src={twiter} alt="Twitter" className="w-6 h-6 sm:w-7 sm:h-7" />
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* About Yourself Section */}
-                <div className="bg-[#1b191b] rounded-xl p-3 sm:p-6 text-center shadow-sm flex flex-col space-y-3">
-                    <h1 className="text-[#BFBFBF] text-sm sm:text-base font-semibold text-start">
-                        About {currentProfile.fullName} 😌
-                    </h1>
-                    <p className="text-[#868181] text-xs sm:text-sm text-start">
-                        {currentProfile.about}
-                    </p>
+                {/* Right Navigation Arrow */}
+                <button
+                    onClick={nextProfile}
+                    className="absolute right-0 sm:-right-12 md:-right-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
+                    aria-label="Next profile"
+                >
+                    <ChevronRight 
+                        size={28} 
+                        className="text-[#FFD700] hover:text-black" 
+                    />
+                </button>
+            </div>
 
-                    <div className="socialp flex flex-col items-end">
-                        <div className="flex flex-row space-x-3">
-                            <a
-                                href={currentProfile.socialMedia.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img className="h-7 w-7 rounded-full cursor-pointer" src={insta} alt="Instagram" />
-                            </a>
-                            <a
-                                href={currentProfile.socialMedia.snapchat}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img className="h-7 w-7 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
-                            </a>
-                            <a
-                                href={currentProfile.socialMedia.twitter}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img className="h-7 w-7 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
-
-            {/* Navigation dots */}
-            <div className="flex justify-center mt-6 sm:mt-8 space-x-2 sm:space-x-3">
+            {/* Navigation Dots */}
+            <div className="flex justify-center mt-6 sm:mt-8 gap-2 sm:gap-3">
                 {recommendedProfiles.map((_, index) => (
                     <motion.button
                         key={index}
                         onClick={() => goToProfile(index)}
                         whileHover={{ scale: 1.2 }}
-                        className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all ${currentIndex === index ? 'bg-[#FFD700] w-6 sm:w-8' : 'bg-[#4F4F4F] hover:bg-[#FFD700]/50'}`}
-                        aria-label={`Go to profile ${index + 1}`}
+                        className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all duration-300 ${
+                            currentIndex === index 
+                                ? 'bg-[#FFD700] w-6 sm:w-8' 
+                                : 'bg-[#4F4F4F] hover:bg-[#FFD700]/50'
+                        }`}
+                        aria-label={`View profile ${index + 1}`}
                     />
                 ))}
             </div>
