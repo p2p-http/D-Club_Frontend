@@ -28,6 +28,7 @@ import Events from './Components/common/event'
 import Club1 from "./Components/common/club1";
 import Testimonials from "./Components/home-ui/Testimonials";
 import Parternmatch from "./Components/common/parternmatch";
+import Matchedprofile from "./Components/common/matchedprofile";
 
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
@@ -142,6 +143,15 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Events />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="matchedprofile"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Matchedprofile />
               </motion.div>
             }
           />
