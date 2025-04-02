@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setUser } from "../../store/slice/auth-slice";
 import { useNavigate } from "react-router-dom";
@@ -23,10 +23,31 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isPartyModeOn, setIsPartyModeOn] = useState(false);
   const { user, authToken } = useSelector((state) => state.auth);
+  const [rgbColor, setRgbColor] = useState("rgb(255, 0, 0)");
+  const [isBlinking, setIsBlinking] = useState(true);
 
-  // Custom Loader Icon
+  // RGB Animation for Party Mode when ON
+  useEffect(() => {
+    if (user?.isPartyMode) {
+      const interval = setInterval(() => {
+        const r = Math.floor(Math.random() * 155) + 100; // 100-255
+        const g = Math.floor(Math.random() * 155) + 100;
+        const b = Math.floor(Math.random() * 155) + 100;
+        setRgbColor(`rgb(${r}, ${g}, ${b})`);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [user?.isPartyMode]);
+
+  // Blinking Animation for Find Partner Button
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsBlinking(prev => !prev);
+    }, 800);
+    return () => clearInterval(interval);
+  }, []);
+
   const customLoader = <LoadingOutlined style={{ fontSize: 24, color: "#000000" }} spin />;
 
   const handleLogout = () => {
@@ -59,7 +80,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-16 sm:pt-24 px-4 sm:px-0">
+    <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-16 sm:pt-24 px-4 sm:px-0 bg-black">
       {/* Profile Section */}
       <div className="profile_pic relative flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start w-full sm:w-3/4 h-auto sm:h-60 bg-[#121112] gap-6 sm:gap-28 rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] p-6 sm:p-10">
         {/* Profile Image Section */}
@@ -153,8 +174,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <div className=" flex flex-row  gap-12">
-
+          <div className="flex flex-row gap-12">
             <div className="gender w-full sm:w-auto">
               <label className="text-gray-300 text-sm sm:text-base font-medium">
                 Gender:
@@ -167,14 +187,21 @@ const ProfilePage = () => {
             </div>
 
             <div className="partyMode w-full sm:w-auto">
-              <label className="text-gray-300 text-sm sm:text-base font-medium">
-                Party Mode:
-              </label>
+              <div className="relative inline-block"> {/* Added relative container */}
+                <label className="text-gray-300 text-sm sm:text-base font-medium">
+                  Party Mode
+                </label>
+               
+                  <span className="absolute -top-3 -right-11 bg-[#FFD700] text-black text-xs font-bold px-2 py-0.5 rounded-full">
+                    NEW
+                  </span>
+              
+              </div>
               <div className="flex gap-4 mt-2">
                 <div className="box text-white bg-[#1b191b] py-2 px-4 rounded-xl w-auto">
-                  {
-                    user.isPartyMode ? "On" : "Off"
-                  }
+
+                  {user.isPartyMode ? "ON" : "off"}
+
                 </div>
               </div>
             </div>
@@ -236,7 +263,14 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="btn">
-            <button onClick={() => navigate("/events")} className='md:px-4 md:py-3 px-2 py-2  text-[#FF9684] font-bold md:text-xl text-sm  bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap'>
+            <button
+              onClick={() => navigate("/events")}
+              className={`md:px-4 md:py-3 px-2 py-2 text-[#FF9684] font-bold md:text-xl text-sm bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'
+                }`}
+              style={{
+                animation: 'pulse 1.5s infinite',
+              }}
+            >
               Find Partner
             </button>
           </div>
@@ -268,8 +302,21 @@ const ProfilePage = () => {
       </div>
 
       <ProfileUpdateDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-    </div >
+
+      {/* Add CSS animation for the button */}
+      <style jsx>{`
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
+    </div>
   );
 };
 
 export default ProfilePage;
+
+
+
+
