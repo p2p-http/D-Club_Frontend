@@ -81,7 +81,7 @@ const PartnerMatch = () => {
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className='text-3xl text-[#94A3B8] font-bold text-center mb-8 pt-44'
+                className='text-3xl text-[#94A3B8] font-bold text-center mb-8 pt-24'
             >
                 TOP {recommendedProfiles.length} Recommendations Based on your Preference
             </motion.h1>
