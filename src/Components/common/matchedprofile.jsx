@@ -11,7 +11,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 const Matchedprofile = () => {
     const navigate = useNavigate();
     const [isBlinking, setIsBlinking] = useState(true);
-
+ 
     // Mock user data - replace with actual data from props or API
     const user = {
         fullName: "Alex Johnson",
