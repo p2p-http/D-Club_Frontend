@@ -7,7 +7,7 @@ import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-
+ 
 const Matchedprofile = () => {
     const navigate = useNavigate();
     const [isBlinking, setIsBlinking] = useState(true);
