@@ -35,3 +35,7 @@ export const getUserByIdEnd = (params) => {
   return api.get(`/profile/${params.params}`);
 }
 
+
+export const sendRequestEnd = (credentials) => {
+  return api.post('/profile/sendRequestForPartner', credentials);
+}

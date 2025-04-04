@@ -7,8 +7,10 @@ import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { getUserByIdEnd } from "../../http/api";
-import { useQuery } from "@tanstack/react-query";
+import { getUserByIdEnd, sendRequestEnd } from "../../http/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 
 const getUserById = async (id) => {
@@ -17,12 +19,17 @@ const getUserById = async (id) => {
 };
 
 
+const sendRequest = async (credentials) => {
+    const { data } = await sendRequestEnd(credentials);
+    return data;
+};
+
 const Matchedprofile = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [isBlinking, setIsBlinking] = useState(true);
+    const { user: SenderUser } = useSelector((state) => state.auth);
 
-    // Move useEffect before any conditional returns
     useEffect(() => {
         const interval = setInterval(() => {
             setIsBlinking(prev => !prev);
@@ -36,7 +43,13 @@ const Matchedprofile = () => {
         enabled: !!id,
     });
 
-    console.log("User Data:", data?.message?.user);
+    const { mutate } = useMutation({
+        mutationKey: ['send-request'],
+        mutationFn: sendRequest,
+        onSuccess: async () => {
+            toast.success("Request sent!!!");
+        },
+    });
 
     const customLoader = <LoadingOutlined style={{ fontSize: 24, color: "#000000" }} spin />;
 
@@ -49,6 +62,17 @@ const Matchedprofile = () => {
     }
 
     const user = data?.message.user || {};
+
+
+    const handleOnSendRequest = (fullName, senderName, email, sendId) => {
+        const credentials = {
+            senderName: fullName,
+            fullName: senderName,
+            email: email,
+            senderId: sendId,
+        };
+        mutate(credentials);
+    }
 
     return (
         <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-16 sm:pt-24 px-4 sm:px-0 bg-black">
@@ -160,7 +184,7 @@ const Matchedprofile = () => {
                     </div>
                     <div className="btn">
                         <button
-                            onClick={() => navigate("/events")}
+                            onClick={() => handleOnSendRequest(SenderUser.fullName, user.fullName, user.email, SenderUser._id)}
                             className={`md:px-4 md:py-3 px-2 py-2 text-[#FF9684] font-bold md:text-xl text-sm bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'}`}
                             style={{
                                 animation: 'pulse 1.5s infinite',
