@@ -54,7 +54,11 @@ const Matchedprofile = () => {
     const customLoader = <LoadingOutlined style={{ fontSize: 24, color: "#000000" }} spin />;
 
     if (isLoading) {
-        return <div className="text-white">Loading...</div>;
+        return (
+            <div className="flex justify-center items-center pt-44 min-h-screen bg-black">
+                <Spin indicator={customLoader} />
+            </div>
+        );
     }
 
     if (isError || !data?.message?.user) {
@@ -97,9 +101,9 @@ const Matchedprofile = () => {
                             {user.bio}
                         </p>
                         <div className="gender-age text-[#868181] flex gap-3 pt-2 justify-center sm:justify-start">
-                            <p>{user.dateOfBirth}</p>
+                            <p>{user.dateOfBirth || 'Not Selected'}</p>
                             <p>|</p>
-                            <p>{user.gender}</p>
+                            <p>{user.gender || 'Not Selected'}</p>
                         </div>
                     </div>
 
@@ -109,7 +113,7 @@ const Matchedprofile = () => {
                             onClick={() => navigate(-1)}  // Go back to previous page
                             className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
-                            {" < "} Back to Matches
+                            {" < "} Go Back 
                         </button>
                         <button
                             type="button"
@@ -155,7 +159,7 @@ const Matchedprofile = () => {
                 <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
                     <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">About Yourself 😌</h1>
                     <p className="text-[#868181] text-sm sm:text-base">
-                        {user.about}
+                        {user.about || 'User does not Write a few lines about themself.'}
                     </p>
                 </div>
 
@@ -163,7 +167,7 @@ const Matchedprofile = () => {
                 <div className="Looking_for flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
                     <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">Looking For..? 👀</h1>
                     <p className="text-[#868181] text-sm sm:text-base">
-                        {user.lookingFor}
+                        {user.lookingFor || 'User does not tells us who they would like to meet and why. Specify wishes for a partner. '}
                     </p>
                 </div>
 
