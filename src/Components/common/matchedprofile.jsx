@@ -101,7 +101,9 @@ const Matchedprofile = () => {
                             {user.bio}
                         </p>
                         <div className="gender-age text-[#868181] flex gap-3 pt-2 justify-center sm:justify-start">
-                            <p>{user.dateOfBirth || 'Not Selected'}</p>
+                            <p>{user.dateOfBirth
+                  ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
+                  : "Not Selected"}</p>
                             <p>|</p>
                             <p>{user.gender || 'Not Selected'}</p>
                         </div>
