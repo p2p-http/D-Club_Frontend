@@ -11,14 +11,14 @@ import { getUserByIdEnd, sendRequestEnd } from "../../http/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-
  
+  
 const getUserById = async (id) => {
     const { data } = await getUserByIdEnd({ params: id });
     return data;
 };
 
-
+ 
 const sendRequest = async (credentials) => {
     const { data } = await sendRequestEnd(credentials);
     return data;
