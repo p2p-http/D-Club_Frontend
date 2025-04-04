@@ -148,7 +148,7 @@ function App() {
           />
 
           <Route
-            path="matchedprofile"
+            path="profile/:id"
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Matchedprofile />
