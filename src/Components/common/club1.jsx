@@ -9,6 +9,7 @@ import s1 from '../../assets/kissna.png';
 import s2 from '../../assets/sahil.jpeg';
 import { useQuery } from '@tanstack/react-query';
 import { getPartyModeUsersEnd } from '../../http/api';
+import { useSelector } from 'react-redux';
 
 
 const getPartyModeUsers = async () => {
@@ -20,6 +21,8 @@ const Club1 = () => {
     const { id } = useParams();
     const [club, setClub] = useState(null);
 
+    const { user } = useSelector(state => state.auth);
+
     const navigate = useNavigate();
 
     const { data } = useQuery({
@@ -27,8 +30,60 @@ const Club1 = () => {
         queryFn: getPartyModeUsers,
     });
 
+    console.log("user -", user);
 
-    console.log("Party Mode Users:", data?.message.users);
+    console.log("user gender -", user?.gender);
+
+    const hasCommonInterest = (interests1, interests2) => {
+        console.log("INTERESTS1 -", interests1);
+        console.log("INTERESTS2 -", interests2);
+        if (!interests1 || !interests2 || !Array.isArray(interests1) || !Array.isArray(interests2)) {
+            return false;
+        }
+        if (interests1.length === 0 || interests2.length === 0) {
+            return false;
+        }
+        const hasCommon = interests1.some(interest => interests2.includes(interest));
+        console.log("Has common interest:", hasCommon);
+        return hasCommon;
+    };
+
+    const filteredUsers = data?.message?.users?.filter(u => {
+        console.log("FILTERED USER -", u._id, u.fullName, u.gender);
+
+        // Skip current user
+        if (u._id === user?._id) {
+            console.log("Skipping current user");
+            return false;
+        }
+
+        // Skip users without gender
+        if (!u.gender || !user?.gender) {
+            console.log("Skipping due to missing gender");
+            return false;
+        }
+
+        // Log gender comparison
+        console.log("Gender comparison:",
+            u.fullName,
+            "u.gender:", u.gender.toLowerCase(),
+            "user.gender:", user.gender.toLowerCase(),
+            "Same?:", u.gender.toLowerCase() === user.gender.toLowerCase()
+        );
+
+        // Skip same gender
+        if (u.gender.toLowerCase() === user.gender.toLowerCase()) {
+            console.log("Skipping same gender");
+            return false;
+        }
+
+        // Check common interests
+        const hasCommon = hasCommonInterest(user.interest, u.interest);
+        console.log("Common interests with", u.fullName, ":", hasCommon);
+        return hasCommon;
+    }).slice(0, 5); // Limit to 5 recommendations
+
+    console.log("Filtered Party Mode Users:", filteredUsers);
 
     useEffect(() => {
         const fetchClub = () => {
@@ -144,7 +199,7 @@ const Club1 = () => {
                         {data ? (
                             <>
                                 <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                                    {data.message.users.map((user, index) => (
+                                    {filteredUsers.map((user, index) => (
                                         <div key={index} className="flex-shrink-0 cursor-pointer" onClick={() => navigate(`/profile/${user._id}`)}>'
                                             <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
                                                 <img
