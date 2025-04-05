@@ -29,6 +29,7 @@ import Club1 from "./Components/common/club1";
 import Testimonials from "./Components/home-ui/Testimonials";
 import Parternmatch from "./Components/common/parternmatch";
 import Matchedprofile from "./Components/common/matchedprofile";
+import Acceptedpro from "./Components/common/acceptedprofile";
 
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
@@ -161,6 +162,14 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Prostack />
+              </motion.div>
+            }
+          />
+          <Route
+            path="accepted"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Acceptedpro />
               </motion.div>
             }
           />
