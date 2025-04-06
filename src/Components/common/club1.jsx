@@ -157,7 +157,7 @@ const Club1 = () => {
                     <div className="photo-btn p-4 md:p-7 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                         {data ? (
                             <>
-                                <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+                                <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-[calc(100%-200px)] pb-2 md:pb-0 scrollbar-hide">
                                     {oppositeGenderUsers?.map((user, index) => (
                                         <div key={index} className="flex-shrink-0 cursor-pointer" onClick={() => navigate(`/profile/${user._id}`)}>
                                             <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
@@ -171,11 +171,11 @@ const Club1 = () => {
                                     ))}
                                 </div>
 
-                                <div className="btn w-full md:w-auto">
+                                <div className="btn w-full md:w-[210px] flex-shrink-0 pl-4"> {/* Fixed width for desktop */}
                                     <button
                                         onClick={handleClick}
                                         disabled={isLoading}
-                                        className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300 flex items-center justify-center gap-2'
+                                        className='w-full px-4 py-3 text-[#FF9684] font-bold text-2xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300 flex items-center justify-center gap-2 whitespace-nowrap'
                                     >
                                         {isLoading ? (
                                             <>

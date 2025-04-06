@@ -11,13 +11,12 @@ import { getUserByIdEnd, sendRequestEnd } from "../../http/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-
+import { message } from "antd";
 
 const getUserById = async (id) => {
     const { data } = await getUserByIdEnd({ params: id });
     return data;
 };
-
 
 const sendRequest = async (credentials) => {
     const { data } = await sendRequestEnd(credentials);
@@ -29,7 +28,20 @@ const Matchedprofile = () => {
     const navigate = useNavigate();
     const [isBlinking, setIsBlinking] = useState(true);
     const { user: SenderUser } = useSelector((state) => state.auth);
+    const [rgbColor, setRgbColor] = useState("rgb(255, 0, 0)");
 
+    // RGB Animation if user has party mode on
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const r = Math.floor(Math.random() * 155) + 100;
+            const g = Math.floor(Math.random() * 155) + 100;
+            const b = Math.floor(Math.random() * 155) + 100;
+            setRgbColor(`rgb(${r}, ${g}, ${b})`);
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Blinking Animation for Request Button
     useEffect(() => {
         const interval = setInterval(() => {
             setIsBlinking(prev => !prev);
@@ -49,38 +61,37 @@ const Matchedprofile = () => {
         onSuccess: async () => {
             toast.success("Request sent!!!");
         },
+        onError: (error) => {
+            message.error(error.response?.data?.message || "Failed to send request");
+        }
     });
 
     if (isLoading) {
         return (
             <div className="flex justify-center items-center pt-44 min-h-screen">
-                <svg className="animate-spin h-8 w-8 text-[#FFD700]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+                <Spin indicator={<LoadingOutlined style={{ fontSize: 24, color: "#FFD700" }} spin />} />
             </div>
         );
     }
 
     if (isError || !data?.message?.user) {
-        return <div className="text-red-500">User not found</div>;
+        return <div className="text-red-500 flex justify-center items-center min-h-screen">User not found</div>;
     }
 
     const user = data?.message.user || {};
 
-
-    const handleOnSendRequest = (fullName, senderName, email, sendId) => {
+    const handleOnSendRequest = () => {
         const credentials = {
-            senderName: senderName,
-            fullName: fullName,
-            email: email,
-            senderId: sendId,
+            senderName: SenderUser.fullName,
+            fullName: user.fullName,
+            email: user.email,
+            senderId: SenderUser._id,
         };
         mutate(credentials);
     }
 
     return (
-        <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-16 sm:pt-24 px-4 sm:px-0 bg-black">
+        <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-24 sm:pt-24 px-4 sm:px-0 bg-black">
             {/* Profile Section */}
             <div className="profile_pic relative flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start w-full sm:w-3/4 h-auto sm:h-60 bg-[#121112] gap-6 sm:gap-28 rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] p-6 sm:p-10">
                 {/* Profile Image Section */}
@@ -93,34 +104,34 @@ const Matchedprofile = () => {
                 </div>
 
                 {/* Name, Bio & Button */}
-                <div className="name_bio_btn space-y-4  text-center sm:text-left">
+                <div className="name_bio_btn space-y-4 sm:space-y-2 text-center sm:text-left">
                     <div className="name_bio flex flex-col">
                         <h2 className="text-[#F0E3E3] text-2xl sm:text-3xl font-semibold">
                             {user.fullName}
                         </h2>
                         <p className="text-[#868181] text-sm sm:text-base">
-                            {user.bio}
+                            {user.bio || "This user hasn't added a bio yet."}
                         </p>
-                        <div className="gender-age text-[#868181] flex gap-3 pt-2 justify-center sm:justify-start">
-                            <p>{user.dateOfBirth
-                                ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
-                                : "Not Selected"}</p>
-                            <p>|</p>
-                            <p>{user.gender || 'Not Selected'}</p>
-                        </div>
+                    </div>
+                    <div className="DOB-Gender flex flex-row space-x-3 text-[#868181] font-medium pb-2 justify-center items-center sm:justify-start sm:items-start">
+                        <p>{user.dateOfBirth
+                            ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
+                            : "Not Selected"}</p>
+                            <p> | </p>
+                            <p> {user.gender || "Not Selected"}</p>
                     </div>
 
                     <div className="btn flex flex-col sm:flex-row gap-2 sm:gap-1">
                         <button
                             type="button"
-                            onClick={() => navigate(-1)}  // Go back to previous page
-                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+                            onClick={() => navigate(-1)}
+                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
                             {" < "} Go Back
                         </button>
                         <button
                             type="button"
-                            onClick={() => navigate("/chat")}  // Navigate to chat
+                            onClick={() => navigate("/chat")}
                             className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
                             Start Chat
@@ -136,6 +147,8 @@ const Matchedprofile = () => {
                         Personal Information
                     </h1>
                 </div>
+
+                
 
                 {/* Interest */}
                 <div className="flex flex-col w-full space-y-2">
@@ -162,7 +175,7 @@ const Matchedprofile = () => {
                 <div className="About_yourself flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
                     <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">About Yourself 😌</h1>
                     <p className="text-[#868181] text-sm sm:text-base">
-                        {user.about || 'User does not Write a few lines about themself.'}
+                        {user.about || "This user hasn't shared anything about themselves yet."}
                     </p>
                 </div>
 
@@ -170,7 +183,7 @@ const Matchedprofile = () => {
                 <div className="Looking_for flex flex-col w-full bg-[#1b191b] rounded-xl shadow-md p-4 sm:p-6 space-y-4">
                     <h1 className="text-[#BFBFBF] text-xl sm:text-2xl">Looking For..? 👀</h1>
                     <p className="text-[#868181] text-sm sm:text-base">
-                        {user.lookingFor || 'User does not tells us who they would like to meet and why. Specify wishes for a partner. '}
+                        {user.lookingFor || "This user hasn't specified what they're looking for yet."}
                     </p>
                 </div>
 
@@ -178,29 +191,44 @@ const Matchedprofile = () => {
                 <div className="social-btn flex flex-row justify-between items-center w-full">
                     <div className="socialp flex flex-col space-y-2">
                         <div className="flex flex-row space-x-4">
-                            <a href={user.socialMedia?.instagram} target="_blank" rel="noopener noreferrer">
+                            <a href={user.socialMedia?.instagram || "#"} target="_blank" rel="noopener noreferrer">
                                 <img className="h-8 w-8 rounded-full cursor-pointer" src={insta} alt="Instagram" />
                             </a>
-                            <a href={user.socialMedia?.snapchat} target="_blank" rel="noopener noreferrer">
+                            <a href={user.socialMedia?.snapchat || "#"} target="_blank" rel="noopener noreferrer">
                                 <img className="h-8 w-8 rounded-full cursor-pointer" src={snap} alt="Snapchat" />
                             </a>
-                            <a href={user.socialMedia?.twitter} target="_blank" rel="noopener noreferrer">
+                            <a href={user.socialMedia?.twitter || "#"} target="_blank" rel="noopener noreferrer">
                                 <img className="h-8 w-8 rounded-full cursor-pointer" src={twiter} alt="Twitter" />
                             </a>
                         </div>
                     </div>
                     <div className="btn">
                         <button
-                            onClick={() => handleOnSendRequest(user.fullName, SenderUser.fullName, user.email, SenderUser._id)}
-                            className={`md:px-4 md:py-3 px-2 py-2 text-[#FF9684] font-bold md:text-xl text-sm bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'}`}
+                            onClick={handleOnSendRequest}
+                            className={`p-2 sm:p-3 text-[#FF9684] font-bold text-sm sm:text-base bg-[#4F4F4F] rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'
+                                }`}
                             style={{
                                 animation: 'pulse 1.5s infinite',
                             }}
                         >
-                            Request
+                            Send Request
                         </button>
                     </div>
                 </div>
+            </div>
+
+            {/* Account Creation Date */}
+            <div className="flex flex-col items-start w-full sm:w-3/4 text-[#868181] text-sm sm:text-sm md:text-base px-4">
+                <p className="whitespace-nowrap">
+                    Member since{" "}
+                    {user?.createdAt
+                        ? new Intl.DateTimeFormat("fr-CA", {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        }).format(new Date(user.createdAt))
+                        : "DD-MM-YYYY"}
+                </p>
             </div>
 
             {/* Add CSS animation for the button */}
