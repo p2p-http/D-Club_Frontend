@@ -39,18 +39,14 @@ const PartnerMatch = () => {
             return false;
         }
         const hasCommon = interests1.some(interest => interests2.includes(interest));
-        console.log("Has common interest:", hasCommon);
         return hasCommon;
     };
 
     const recommendedProfiles = useMemo(() => {
         const filtered = data?.message?.users?.filter(u => {
             if (u._id === user?._id) return false;
-
             if (!u.gender || !user?.gender) return false;
-
             if (u.gender.toLowerCase() === user.gender.toLowerCase()) return false;
-
             return hasCommonInterest(user.interest, u.interest);
         }) || [];
 
@@ -59,17 +55,15 @@ const PartnerMatch = () => {
                 ...profile,
                 matchScore: Math.floor(Math.random() * 21) + 78 // Random 78-98
             }))
-            .sort((a, b) => b.matchScore - a.matchScore) // Descending order
-            .slice(0, 5); // Top 5
+            .sort((a, b) => b.matchScore - a.matchScore)
+            .slice(0, 5);
     }, [data, user]);
-
-    console.log("Recommended Profiles with Scores:", recommendedProfiles);
 
     const { mutate, isPending } = useMutation({
         mutationKey: ['send-request'],
         mutationFn: sendRequest,
         onSuccess: async () => {
-            toast.success("Request sent!!!");
+            toast.success("Request sent successfully!");
             nextProfile();
         },
     });
@@ -107,13 +101,13 @@ const PartnerMatch = () => {
     const currentProfile = recommendedProfiles[currentIndex];
 
     return (
-        <div className="partner-match-container flex flex-col items-center justify-center min-h-screen bg-black text-white py-8 px-4 sm:px-6">
-            {/* Header Title */}
+        <div className="partner-match-container flex flex-col items-center justify-center min-h-screen bg-black text-white py-8 px-4 sm:px-6 pt-28">
+            {/* Header */}
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl sm:text-3xl font-bold text-center text-[#94A3B8] mb-6 sm:mb-8 pt-16 sm:pt-24"
+                className="text-2xl sm:text-3xl font-bold text-center text-[#94A3B8] mb-6 sm:mb-8"
             >
                 TOP {recommendedProfiles.length} Recommendations
                 <br className="sm:hidden" />
@@ -129,10 +123,7 @@ const PartnerMatch = () => {
                         className="absolute left-0 sm:-left-12 md:-left-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
                         aria-label="Previous profile"
                     >
-                        <ChevronLeft
-                            size={28}
-                            className="text-[#FFD700] hover:text-black"
-                        />
+                        <ChevronLeft size={28} className="text-[#FFD700] hover:text-black" />
                     </button>
 
                     {/* Profile Card */}
@@ -142,10 +133,10 @@ const PartnerMatch = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -50 }}
                         transition={{ duration: 0.5 }}
-                        className="profile-card bg-[#312F2F] rounded-xl sm:rounded-2xl shadow-lg shadow-gray-800 overflow-hidden"
+                        className="profile-card bg-[#312F2F] rounded-xl sm:rounded-2xl shadow-lg shadow-gray-800 overflow-hidden relative"
                     >
-                        {/* Match Score Badge */}
-                        <div className="absolute top-0 right-0 bg-[#4F4F4F] w-16 h-14 flex items-center justify-center rounded-es-xl rounded-se-xl z-10">
+                        {/* Match Score Badge - Properly positioned */}
+                        <div className="absolute top-0 right-0 bg-[#4F4F4F] w-16 h-14 flex items-center justify-center rounded-es-xl rounded-se-xl z-10 shadow-md shadow-black/50">
                             <span className="text-[#FF9684] font-bold text-lg">
                                 {currentProfile.matchScore}%
                             </span>
@@ -176,7 +167,7 @@ const PartnerMatch = () => {
                                         {currentProfile.fullName}
                                     </h2>
                                     <p className="text-sm text-[#868181] mt-1">
-                                        {currentProfile.bio}
+                                        {currentProfile.bio || "User has not updated bio"}
                                     </p>
 
                                     <div className="flex justify-center sm:justify-start items-center gap-2 text-xs sm:text-sm text-[#868181] mt-2">
@@ -193,12 +184,10 @@ const PartnerMatch = () => {
                                     <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4">
                                         <button
                                             onClick={() => navigateToProfile(currentProfile._id)}
-                                            disabled={isPending}
-                                            className={`bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isPending ? 'opacity-70 cursor-not-allowed' : ''
-                                                }`}
+                                           
+                                            className={`bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isPending ? 'opacity-70 cursor-not-allowed' : ''}`}
                                         >
-
-                                            {'Connect <3'}
+                                            Connect {'<'}3
                                         </button>
 
                                         <button
@@ -217,7 +206,7 @@ const PartnerMatch = () => {
                                     About {currentProfile.fullName} 😌
                                 </h3>
                                 <p className="text-[#868181] text-xs sm:text-sm mt-1">
-                                    {currentProfile.about}
+                                    {currentProfile.about || 'User not added About!'}
                                 </p>
 
                                 {/* Social Links */}
@@ -242,15 +231,36 @@ const PartnerMatch = () => {
                         className="absolute right-0 sm:-right-12 md:-right-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
                         aria-label="Next profile"
                     >
-                        <ChevronRight
-                            size={28}
-                            className="text-[#FFD700] hover:text-black"
-                        />
+                        <ChevronRight size={28} className="text-[#FFD700] hover:text-black" />
                     </button>
                 </div>
             ) : (
-                <div className="text-center py-12">
-                    <p className="text-lg text-[#94A3B8]">No matching profiles found</p>
+                <div className="text-center px-4 py-12 max-w-md mx-auto">
+                    <div className="mb-8">
+                        <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+
+                    <h3 className="text-xl font-medium text-gray-300 mb-3">No matching profiles found</h3>
+
+                    <p className="text-gray-400 mb-6">We couldn't find any profiles that match your criteria.</p>
+
+                    <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4 mb-6">
+                        <p className="text-gray-300 mb-2">Improve your matches by updating:</p>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            <span className="px-3 py-1 bg-gray-700 rounded-full text-sm text-amber-200">Date of Birth</span>
+                            <span className="px-3 py-1 bg-gray-700 rounded-full text-sm text-amber-200">Gender</span>
+                            <span className="px-3 py-1 bg-gray-700 rounded-full text-sm text-amber-200">Interests</span>
+                        </div>
+                    </div>
+
+                    <button 
+                        className="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors"
+                        onClick={() => navigate("/dashboard/profile")}
+                    >
+                        Update Profile
+                    </button>
                 </div>
             )}
 
