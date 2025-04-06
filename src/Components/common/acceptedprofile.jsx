@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Camera, LogOut, Pencil } from "lucide-react";
 import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 import { getUserByIdEnd } from "../../http/api";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
@@ -81,7 +78,7 @@ const Acceptedpro = () => {
                             onClick={() => navigate(-1)}
                             className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
-                            {" < "} Go Back 
+                            {" < "} Go Back
                         </button>
                         <button
                             type="button"
@@ -154,7 +151,7 @@ const Acceptedpro = () => {
                             </a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
