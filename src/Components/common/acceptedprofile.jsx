@@ -55,9 +55,7 @@ const Acceptedprofile = () => {
                         src={user.avatar?.url || loginp}
                         alt="Profile"
                     />
-                    <div className="absolute bottom-0 right-0 bg-[#4CAF50] rounded-full p-2">
-                        <Camera className="h-4 w-4 text-white" />
-                    </div>
+                   
                 </div>
 
                 {/* Name, Bio & Button */}
