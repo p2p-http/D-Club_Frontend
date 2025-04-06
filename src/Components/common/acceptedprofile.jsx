@@ -10,7 +10,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { getUserByIdEnd } from "../../http/api";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-
+ 
 const getUserById = async (id) => {
     const { data } = await getUserByIdEnd({ params: id });
     return data;
@@ -51,7 +51,7 @@ const Acceptedprofile = () => {
                 {/* Profile Image Section */}
                 <div className="relative w-32 h-32 sm:w-44 sm:h-44">
                     <img
-                        className="w-full h-full rounded-full object-cover border-2 border-[#4CAF50] p-1"
+                        className="w-full h-full rounded-full object-cover border-2 border-[#FFD700] p-1"
                         src={user.avatar?.url || loginp}
                         alt="Profile"
                     />
@@ -80,14 +80,14 @@ const Acceptedprofile = () => {
                         <button
                             type="button"
                             onClick={() => navigate(-1)}
-                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-semibold bg-[#4CAF50] text-white w-full sm:w-40 hover:bg-[#3e8e41] transition"
+                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-semibold bg-[#FFD700] text-gray-700 w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
                             {" < "} Go Back 
                         </button>
                         <button
                             type="button"
                             onClick={() => navigate("/chat")}
-                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-semibold bg-[#4CAF50] text-white w-full sm:w-40 hover:bg-[#3e8e41] transition"
+                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-semibold bg-[#FFD700] text-gray-700 w-full sm:w-40 hover:bg-[#3e8e41] transition"
                         >
                             Start Chat
                         </button>
@@ -98,7 +98,7 @@ const Acceptedprofile = () => {
             {/* Personal Information Section */}
             <div className="personal_info flex flex-col items-start w-full sm:w-3/4 bg-[#121112] rounded-xl shadow-[12px_12px_20px_rgba(49,47,47,0.6)] p-6 sm:p-10 space-y-6 sm:space-y-10">
                 <div className="flex items-center space-x-2">
-                    <h1 className="text-[#4CAF50] text-lg sm:text-xl font-semibold">
+                    <h1 className="text-[#e6c000] text-lg sm:text-xl font-semibold">
                         Personal Information
                     </h1>
                 </div>
@@ -112,7 +112,8 @@ const Acceptedprofile = () => {
                                 user.interest.map((tag, index) => (
                                     <p
                                         key={index}
-                                        className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-gray-400 border border-gray-400 px-3 py-1 rounded-xl"
+                                        className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 px-3 py-1 rounded-xl"
+
                                     >
                                         {tag}
                                     </p>
