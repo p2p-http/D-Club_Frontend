@@ -7,60 +7,148 @@ import loginp from "../../assets/user.png";
 import insta from "../../assets/instagram.png";
 import snap from "../../assets/snap.png";
 import twiter from "../../assets/twitter.png";
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { getPartyModeUsersEnd, sendRequestEnd } from '../../http/api';
+import toast from 'react-hot-toast';
+
+const getPartyModeUsers = async () => {
+    const { data } = await getPartyModeUsersEnd({ params: { isPartyMode: true } });
+    return data;
+};
+
+const sendRequest = async (credentials) => {
+    const { data } = await sendRequestEnd(credentials);
+    return data;
+};
 
 const PartnerMatch = () => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Mock data for recommended profiles
-    const recommendedProfiles = [
-        {
-            id: 1,
-            fullName: "Alex Johnson",
-            bio: "Love EDM and techno nights! Looking for party buddies",
-            dateOfBirth: "1995-05-15",
-            gender: "Male",
-            about: "Professional DJ on weekends, always up for underground parties",
-            socialMedia: {
-                instagram: "#",
-                snapchat: "#",
-                twitter: "#"
-            },
-            avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-            matchScore: 80
-        },
-        {
-            id: 2,
-            fullName: "Sarah Miller",
-            bio: "Weekend warrior looking for clubbing partners",
-            dateOfBirth: "1993-08-22",
-            gender: "Female",
-            about: "Work hard, party harder! Prefer cocktail bars and lounge music",
-            socialMedia: {
-                instagram: "#",
-                snapchat: "#",
-                twitter: "#"
-            },
-            avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-            matchScore: 75
-        },
-        {
-            id: 3,
-            fullName: "Mike Chen",
-            bio: "Basshead looking for festival buddies",
-            dateOfBirth: "1990-11-05",
-            gender: "Male",
-            about: "EDM festival regular, love meeting new people in the scene",
-            socialMedia: {
-                instagram: "#",
-                snapchat: "#",
-                twitter: "#"
-            },
-            avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-            matchScore: 85
+    const { data } = useQuery({
+        queryKey: ["get-paryMode-users-profile"],
+        queryFn: getPartyModeUsers,
+    });
+
+
+    const hasCommonInterest = (interests1, interests2) => {
+        if (!interests1 || !interests2 || !Array.isArray(interests1) || !Array.isArray(interests2)) {
+            return false;
         }
-    ];
+        if (interests1.length === 0 || interests2.length === 0) {
+            return false;
+        }
+        const hasCommon = interests1.some(interest => interests2.includes(interest));
+        console.log("Has common interest:", hasCommon);
+        return hasCommon;
+    };
+
+    const recommendedProfiles = data?.message?.users?.filter(u => {
+        console.log("FILTERED USER -", u._id, u.fullName, u.gender);
+
+        // Skip current user
+        if (u._id === user?._id) {
+            console.log("Skipping current user");
+            return false;
+        }
+
+        // Skip users without gender
+        if (!u.gender || !user?.gender) {
+            console.log("Skipping due to missing gender");
+            return false;
+        }
+
+        // Log gender comparison
+        console.log("Gender comparison:",
+            u.fullName,
+            "u.gender:", u.gender.toLowerCase(),
+            "user.gender:", user.gender.toLowerCase(),
+            "Same?:", u.gender.toLowerCase() === user.gender.toLowerCase()
+        );
+
+        // Skip same gender
+        if (u.gender.toLowerCase() === user.gender.toLowerCase()) {
+            console.log("Skipping same gender");
+            return false;
+        }
+
+        // Check common interests
+        const hasCommon = hasCommonInterest(user.interest, u.interest);
+        console.log("Common interests with", u.fullName, ":", hasCommon);
+        return hasCommon;
+    }).slice(0, 5); // Limit to 5 recommendations
+
+    console.log("Filtered Party Mode Users:", recommendedProfiles);
+
+    // Mock data for recommended profiles
+    // const recommendedProfiles = [
+    //     {
+    //         id: 1,
+    //         fullName: "Alex Johnson",
+    //         bio: "Love EDM and techno nights! Looking for party buddies",
+    //         dateOfBirth: "1995-05-15",
+    //         gender: "Male",
+    //         about: "Professional DJ on weekends, always up for underground parties",
+    //         socialMedia: {
+    //             instagram: "#",
+    //             snapchat: "#",
+    //             twitter: "#"
+    //         },
+    //         avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    //         matchScore: 80
+    //     },
+    //     {
+    //         id: 2,
+    //         fullName: "Sarah Miller",
+    //         bio: "Weekend warrior looking for clubbing partners",
+    //         dateOfBirth: "1993-08-22",
+    //         gender: "Female",
+    //         about: "Work hard, party harder! Prefer cocktail bars and lounge music",
+    //         socialMedia: {
+    //             instagram: "#",
+    //             snapchat: "#",
+    //             twitter: "#"
+    //         },
+    //         avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    //         matchScore: 75
+    //     },
+    //     {
+    //         id: 3,
+    //         fullName: "Mike Chen",
+    //         bio: "Basshead looking for festival buddies",
+    //         dateOfBirth: "1990-11-05",
+    //         gender: "Male",
+    //         about: "EDM festival regular, love meeting new people in the scene",
+    //         socialMedia: {
+    //             instagram: "#",
+    //             snapchat: "#",
+    //             twitter: "#"
+    //         },
+    //         avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+    //         matchScore: 85
+    //     }
+    // ];
+
+    const { mutate, isPending } = useMutation({
+        mutationKey: ['send-request'],
+        mutationFn: sendRequest,
+        onSuccess: async () => {
+            toast.success("Request sent!!!");
+        },
+    });
+
+
+
+    const handleOnSendRequest = (fullName, senderName, email, sendId) => {
+        const credentials = {
+            senderName: fullName,
+            fullName: senderName,
+            email: email,
+            senderId: sendId,
+        };
+        mutate(credentials);
+    }
 
     const nextProfile = () => {
         setCurrentIndex((prevIndex) =>
@@ -83,7 +171,7 @@ const PartnerMatch = () => {
     return (
         <div className="partner-match-container flex flex-col items-center justify-center min-h-screen bg-black text-white py-8 px-4 sm:px-6">
             {/* Header Title */}
-            <motion.h1 
+            <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -102,9 +190,9 @@ const PartnerMatch = () => {
                     className="absolute left-0 sm:-left-12 md:-left-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
                     aria-label="Previous profile"
                 >
-                    <ChevronLeft 
-                        size={28} 
-                        className="text-[#FFD700] hover:text-black" 
+                    <ChevronLeft
+                        size={28}
+                        className="text-[#FFD700] hover:text-black"
                     />
                 </button>
 
@@ -130,7 +218,7 @@ const PartnerMatch = () => {
                             {/* Profile Picture - Fixed Size */}
                             <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 relative">
                                 <img
-                                    src={currentProfile.avatar || loginp}
+                                    src={currentProfile?.avatar?.url || loginp}
                                     alt={currentProfile.fullName}
                                     className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]"
                                     loading="lazy"
@@ -145,7 +233,7 @@ const PartnerMatch = () => {
                                 <p className="text-sm text-[#868181] mt-1">
                                     {currentProfile.bio}
                                 </p>
-                                
+
                                 <div className="flex justify-center sm:justify-start items-center gap-2 text-xs sm:text-sm text-[#868181] mt-2">
                                     <span>
                                         {currentProfile.dateOfBirth
@@ -158,9 +246,48 @@ const PartnerMatch = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4">
-                                    <button className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300">
-                                        Connect {"<3"}
+                                    <button
+                                        onClick={() =>
+                                            handleOnSendRequest(
+                                                currentProfile.fullName,
+                                                user.fullName,
+                                                user.email,
+                                                currentProfile._id
+                                            )
+                                        }
+                                        disabled={isPending}
+                                        className={`bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isPending ? 'opacity-70 cursor-not-allowed' : ''
+                                            }`}
+                                    >
+                                        {isPending ? (
+                                            <>
+                                                <svg
+                                                    className="animate-spin h-5 w-5 text-black"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <circle
+                                                        className="opacity-25"
+                                                        cx="12"
+                                                        cy="12"
+                                                        r="10"
+                                                        stroke="currentColor"
+                                                        strokeWidth="4"
+                                                    />
+                                                    <path
+                                                        className="opacity-75"
+                                                        fill="currentColor"
+                                                        d="M4 12a8 8 0 018-8v8H4z"
+                                                    />
+                                                </svg>
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            'Connect <3'
+                                        )}
                                     </button>
+
                                     <button className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-e-xl sm:rounded-xl transition-all duration-300">
                                         Not Interested
                                     </button>
@@ -176,7 +303,7 @@ const PartnerMatch = () => {
                             <p className="text-[#868181] text-xs sm:text-sm mt-1">
                                 {currentProfile.about}
                             </p>
-                            
+
                             {/* Social Links */}
                             <div className="flex justify-end mt-3 sm:mt-4 gap-2 sm:gap-3">
                                 <a href={currentProfile.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
@@ -199,9 +326,9 @@ const PartnerMatch = () => {
                     className="absolute right-0 sm:-right-12 md:-right-14 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-[#2A2A2A] hover:bg-[#FFD700] transition-all duration-300"
                     aria-label="Next profile"
                 >
-                    <ChevronRight 
-                        size={28} 
-                        className="text-[#FFD700] hover:text-black" 
+                    <ChevronRight
+                        size={28}
+                        className="text-[#FFD700] hover:text-black"
                     />
                 </button>
             </div>
@@ -213,11 +340,10 @@ const PartnerMatch = () => {
                         key={index}
                         onClick={() => goToProfile(index)}
                         whileHover={{ scale: 1.2 }}
-                        className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all duration-300 ${
-                            currentIndex === index 
-                                ? 'bg-[#FFD700] w-6 sm:w-8' 
-                                : 'bg-[#4F4F4F] hover:bg-[#FFD700]/50'
-                        }`}
+                        className={`h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full transition-all duration-300 ${currentIndex === index
+                            ? 'bg-[#FFD700] w-6 sm:w-8'
+                            : 'bg-[#4F4F4F] hover:bg-[#FFD700]/50'
+                            }`}
                         aria-label={`View profile ${index + 1}`}
                     />
                 ))}

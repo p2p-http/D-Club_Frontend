@@ -4,9 +4,6 @@ import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone } from 'lucide-react';
 import photos from '../../assets/club1bg.png';
 import clubsData from '../club-api/clubsData.json';
-import ss from '../../assets/ss.png';
-import s1 from '../../assets/kissna.png';
-import s2 from '../../assets/sahil.jpeg';
 import { useQuery } from '@tanstack/react-query';
 import { getPartyModeUsersEnd } from '../../http/api';
 import { useSelector } from 'react-redux';
@@ -22,6 +19,7 @@ const getPartyModeUsers = async () => {
 const Club1 = () => {
     const { id } = useParams();
     const [club, setClub] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const { user } = useSelector(state => state.auth);
 
@@ -31,61 +29,6 @@ const Club1 = () => {
         queryKey: ["get-paryMode-users-profile"],
         queryFn: getPartyModeUsers,
     });
-
-    console.log("user -", user);
-
-    console.log("user gender -", user?.gender);
-
-    const hasCommonInterest = (interests1, interests2) => {
-        console.log("INTERESTS1 -", interests1);
-        console.log("INTERESTS2 -", interests2);
-        if (!interests1 || !interests2 || !Array.isArray(interests1) || !Array.isArray(interests2)) {
-            return false;
-        }
-        if (interests1.length === 0 || interests2.length === 0) {
-            return false;
-        }
-        const hasCommon = interests1.some(interest => interests2.includes(interest));
-        console.log("Has common interest:", hasCommon);
-        return hasCommon;
-    };
-
-    const filteredUsers = data?.message?.users?.filter(u => {
-        console.log("FILTERED USER -", u._id, u.fullName, u.gender);
-
-        // Skip current user
-        if (u._id === user?._id) {
-            console.log("Skipping current user");
-            return false;
-        }
-
-        // Skip users without gender
-        if (!u.gender || !user?.gender) {
-            console.log("Skipping due to missing gender");
-            return false;
-        }
-
-        // Log gender comparison
-        console.log("Gender comparison:",
-            u.fullName,
-            "u.gender:", u.gender.toLowerCase(),
-            "user.gender:", user.gender.toLowerCase(),
-            "Same?:", u.gender.toLowerCase() === user.gender.toLowerCase()
-        );
-
-        // Skip same gender
-        if (u.gender.toLowerCase() === user.gender.toLowerCase()) {
-            console.log("Skipping same gender");
-            return false;
-        }
-
-        // Check common interests
-        const hasCommon = hasCommonInterest(user.interest, u.interest);
-        console.log("Common interests with", u.fullName, ":", hasCommon);
-        return hasCommon;
-    }).slice(0, 5); // Limit to 5 recommendations
-
-    console.log("Filtered Party Mode Users:", filteredUsers);
 
     useEffect(() => {
         const fetchClub = () => {
@@ -108,6 +51,15 @@ const Club1 = () => {
             </div>
         );
     }
+
+    const handleClick = () => {
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setIsLoading(false);
+            navigate('/partnermatch');
+        }, 5000);
+    };
 
     return (
         <div className='pt-24 md:pt-32 p-4 md:p-9 rounded-2xl flex flex-col space-y-10 md:space-y-20'>
@@ -202,7 +154,7 @@ const Club1 = () => {
                         {data ? (
                             <>
                                 <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                                    {filteredUsers.map((user, index) => (
+                                    {data?.message?.users.map((user, index) => (
                                         <div key={index} className="flex-shrink-0 cursor-pointer" onClick={() => navigate(`/profile/${user._id}`)}>
                                             <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
                                                 <img
@@ -216,8 +168,22 @@ const Club1 = () => {
                                 </div>
 
                                 <div className="btn w-full md:w-auto">
-                                    <button className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300'>
-                                        Find Partner
+                                    <button
+                                        onClick={handleClick}
+                                        disabled={isLoading}
+                                        className='w-full md:w-auto px-4 py-3 md:px-6 md:py-5 text-[#FF9684] font-bold text-xl md:text-3xl bg-[#4F4F4F] rounded-3xl hover:bg-[#5a5a5a] transition-colors duration-300 flex items-center justify-center gap-2'
+                                    >
+                                        {isLoading ? (
+                                            <>
+                                                <svg className="animate-spin h-6 w-6 text-[#FF9684]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                                </svg>
+                                                Loading...
+                                            </>
+                                        ) : (
+                                            'Find Partner'
+                                        )}
                                     </button>
                                 </div>
                             </>
