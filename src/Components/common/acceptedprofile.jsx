@@ -22,7 +22,7 @@ const Acceptedprofile = () => {
       twitter: "https://twitter.com"
     }
   };
-
+ 
   return (
     <div className="main flex flex-col items-center justify-center min-h-screen space-y-8 sm:space-y-12 pb-16 sm:pb-32 pt-16 sm:pt-24 px-4 sm:px-0 bg-black">
       {/* Profile Section */}
