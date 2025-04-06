@@ -51,7 +51,7 @@ const Testimonials = () => {
                 <div 
                     className="absolute inset-0 bg-[length:40px_40px] bg-repeat"
                     style={{ 
-                        backgroundImage: 'linear-gradient(to right, #FFD700 3px, transparent 3px), linear-gradient(to bottom, #e6c000 2px, transparent 2px)' 
+                        backgroundImage: 'linear-gradient(to right, #FFFFFF 1px, transparent 1px), linear-gradient(to bottom, #FFFFFF 2px, transparent 2px)' 
                     }}
                 />
             </div>
