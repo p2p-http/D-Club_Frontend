@@ -103,8 +103,8 @@ const Matchedprofile = () => {
                         </p>
                         <div className="gender-age text-[#868181] flex gap-3 pt-2 justify-center sm:justify-start">
                             <p>{user.dateOfBirth
-                  ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
-                  : "Not Selected"}</p>
+                                ? new Intl.DateTimeFormat("fr-CA").format(new Date(user.dateOfBirth))
+                                : "Not Selected"}</p>
                             <p>|</p>
                             <p>{user.gender || 'Not Selected'}</p>
                         </div>
@@ -116,7 +116,7 @@ const Matchedprofile = () => {
                             onClick={() => navigate(-1)}  // Go back to previous page
                             className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-sm font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
-                            {" < "} Go Back 
+                            {" < "} Go Back
                         </button>
                         <button
                             type="button"
@@ -191,7 +191,7 @@ const Matchedprofile = () => {
                     </div>
                     <div className="btn">
                         <button
-                            onClick={() => handleOnSendRequest(SenderUser.fullName, user.fullName, user.email, SenderUser._id)}
+                            onClick={() => handleOnSendRequest(user.fullName, SenderUser.fullName, SenderUser.email, user._id)}
                             className={`md:px-4 md:py-3 px-2 py-2 text-[#FF9684] font-bold md:text-xl text-sm bg-[#4F4F4F] md:rounded-3xl rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'}`}
                             style={{
                                 animation: 'pulse 1.5s infinite',
