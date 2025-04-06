@@ -30,6 +30,7 @@ import Testimonials from "./Components/home-ui/Testimonials";
 import Parternmatch from "./Components/common/parternmatch";
 import Matchedprofile from "./Components/common/matchedprofile";
 import Acceptedpro from "./Components/common/acceptedprofile";
+import Loading1 from "./Components/home-ui/loading1";
 
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
@@ -179,6 +180,14 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Terms />
+              </motion.div>
+            }
+          />
+          <Route
+            path="loading1"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Loading1 />
               </motion.div>
             }
           />
