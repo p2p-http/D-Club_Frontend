@@ -43,23 +43,17 @@ const PartnerMatch = () => {
         return hasCommon;
     };
 
-    // Generate random scores between 78-98 and sort profiles by score
     const recommendedProfiles = useMemo(() => {
         const filtered = data?.message?.users?.filter(u => {
-            // Skip current user
             if (u._id === user?._id) return false;
-            
-            // Skip users without gender
+
             if (!u.gender || !user?.gender) return false;
-            
-            // Skip same gender
+
             if (u.gender.toLowerCase() === user.gender.toLowerCase()) return false;
-            
-            // Check common interests
+
             return hasCommonInterest(user.interest, u.interest);
         }) || [];
 
-        // Add random match scores and sort
         return filtered
             .map(profile => ({
                 ...profile,
@@ -76,7 +70,7 @@ const PartnerMatch = () => {
         mutationFn: sendRequest,
         onSuccess: async () => {
             toast.success("Request sent!!!");
-            nextProfile(); // Move to next profile after successful request
+            nextProfile();
         },
     });
 
@@ -161,7 +155,7 @@ const PartnerMatch = () => {
                         <div className="p-4 sm:p-6">
                             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-14">
                                 {/* Profile Picture */}
-                                <div 
+                                <div
                                     className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 relative"
                                     onClick={() => navigateToProfile(currentProfile._id)}
                                 >
@@ -175,7 +169,7 @@ const PartnerMatch = () => {
 
                                 {/* Profile Info */}
                                 <div className="flex-1 text-center sm:text-left">
-                                    <h2 
+                                    <h2
                                         className="text-xl sm:text-2xl font-semibold text-[#F0E3E3] hover:text-[#FFD700] cursor-pointer"
                                         onClick={() => navigateToProfile(currentProfile._id)}
                                     >
@@ -203,36 +197,11 @@ const PartnerMatch = () => {
                                             className={`bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isPending ? 'opacity-70 cursor-not-allowed' : ''
                                                 }`}
                                         >
-                                            {isPending ? (
-                                                <>
-                                                    <svg
-                                                        className="animate-spin h-5 w-5 text-black"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <circle
-                                                            className="opacity-25"
-                                                            cx="12"
-                                                            cy="12"
-                                                            r="10"
-                                                            stroke="currentColor"
-                                                            strokeWidth="4"
-                                                        />
-                                                        <path
-                                                            className="opacity-75"
-                                                            fill="currentColor"
-                                                            d="M4 12a8 8 0 018-8v8H4z"
-                                                        />
-                                                    </svg>
-                                                    Sending...
-                                                </>
-                                            ) : (
-                                                'Connect <3'
-                                            )}
+
+                                            {'Connect <3'}
                                         </button>
 
-                                        <button 
+                                        <button
                                             onClick={nextProfile}
                                             className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-e-xl sm:rounded-xl transition-all duration-300"
                                         >
