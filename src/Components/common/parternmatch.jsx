@@ -76,6 +76,7 @@ const PartnerMatch = () => {
         mutationFn: sendRequest,
         onSuccess: async () => {
             toast.success("Request sent!!!");
+            nextProfile(); // Move to next profile after successful request
         },
     });
 
@@ -105,6 +106,10 @@ const PartnerMatch = () => {
         setCurrentIndex(index);
     };
 
+    const navigateToProfile = (userId) => {
+        navigate(`/profile/${userId}`);
+    };
+
     const currentProfile = recommendedProfiles[currentIndex];
 
     return (
@@ -118,7 +123,7 @@ const PartnerMatch = () => {
             >
                 TOP {recommendedProfiles.length} Recommendations
                 <br className="sm:hidden" />
-                <span className="text-[#94A3B8]">Based on your Preferences</span>
+                <span className="text-[#94A3B8]"> Based on your Preferences</span>
             </motion.h1>
 
             {/* Profile Carousel Container */}
@@ -156,18 +161,24 @@ const PartnerMatch = () => {
                         <div className="p-4 sm:p-6">
                             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-14">
                                 {/* Profile Picture */}
-                                <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 relative">
+                                <div 
+                                    className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 relative"
+                                    onClick={() => navigateToProfile(currentProfile._id)}
+                                >
                                     <img
                                         src={currentProfile?.avatar?.url || loginp}
                                         alt={currentProfile.fullName}
-                                        className="w-full h-full rounded-full object-cover border-2 border-[#FFD700]"
+                                        className="w-full h-full rounded-full object-cover border-2 border-[#FFD700] cursor-pointer"
                                         loading="lazy"
                                     />
                                 </div>
 
                                 {/* Profile Info */}
                                 <div className="flex-1 text-center sm:text-left">
-                                    <h2 className="text-xl sm:text-2xl font-semibold text-[#F0E3E3]">
+                                    <h2 
+                                        className="text-xl sm:text-2xl font-semibold text-[#F0E3E3] hover:text-[#FFD700] cursor-pointer"
+                                        onClick={() => navigateToProfile(currentProfile._id)}
+                                    >
                                         {currentProfile.fullName}
                                     </h2>
                                     <p className="text-sm text-[#868181] mt-1">
@@ -187,14 +198,7 @@ const PartnerMatch = () => {
                                     {/* Action Buttons */}
                                     <div className="flex flex-col sm:flex-row gap-2 mt-3 sm:mt-4">
                                         <button
-                                            onClick={() =>
-                                                handleOnSendRequest(
-                                                    currentProfile.fullName,
-                                                    user.fullName,
-                                                    user.email,
-                                                    currentProfile._id
-                                                )
-                                            }
+                                            onClick={() => navigateToProfile(currentProfile._id)}
                                             disabled={isPending}
                                             className={`bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-s-xl sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2 ${isPending ? 'opacity-70 cursor-not-allowed' : ''
                                                 }`}
@@ -228,7 +232,10 @@ const PartnerMatch = () => {
                                             )}
                                         </button>
 
-                                        <button className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-e-xl sm:rounded-xl transition-all duration-300">
+                                        <button 
+                                            onClick={nextProfile}
+                                            className="bg-[#FFD700] hover:bg-[#e6c000] text-black text-sm sm:text-base py-2 px-4 rounded-e-xl sm:rounded-xl transition-all duration-300"
+                                        >
                                             Not Interested
                                         </button>
                                     </div>
