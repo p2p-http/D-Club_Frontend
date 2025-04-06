@@ -166,7 +166,7 @@ function App() {
             }
           />
           <Route
-            path="accepted"
+            path="accepted/:id"
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Acceptedpro />
