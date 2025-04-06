@@ -45,13 +45,13 @@ const Testimonials = () => {
     };
 
     return (
-        <div className="relative min-h-screen text-white flex flex-col items-center justify-center w-full overflow-x-hidden bg-black py-12">
+        <div className="relative min-h-screen  flex flex-col items-center justify-center w-full overflow-x-hidden bg-black py-12">
             {/* Background pattern - visible only on desktop */}
             <div className="hidden sm:block absolute inset-0 z-0 opacity-10 overflow-hidden">
                 <div 
                     className="absolute inset-0 bg-[length:40px_40px] bg-repeat"
                     style={{ 
-                        backgroundImage: 'linear-gradient(to right, #BFBFBF 1px, transparent 1px), linear-gradient(to bottom, #BFBFBF 1px, transparent 1px)' 
+                        backgroundImage: 'linear-gradient(to right, #FFD700 3px, transparent 3px), linear-gradient(to bottom, #e6c000 2px, transparent 2px)' 
                     }}
                 />
             </div>

@@ -110,7 +110,7 @@ const Events = () => {
                                         <div className="absolute bottom-0 right-0">
                                             <button 
                                                 onClick={() => handleEnrollClick(club.id)}
-                                                className="p-2 px-4 sm:px-6 bg-gray-900 border-[#32312d] rounded-ee-3xl rounded-ss-3xl text-[#aaa589] font-semibold text-xs sm:text-sm hover:bg-[#84837b] hover:text-[#312F2F] transition-colors duration-300"
+                                                className="p-2 px-4 sm:px-6 bg-gray-900 border-[#32312d] rounded-ee-3xl rounded-ss-3xl text-[#aaa589] font-semibold text-xs sm:text-sm hover:bg-[#313130] hover:text-[#8f8f8f] transition-colors duration-300"
                                             >
                                                 Enroll
                                             </button>
