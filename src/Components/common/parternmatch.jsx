@@ -81,54 +81,6 @@ const PartnerMatch = () => {
 
     console.log("Filtered Party Mode Users:", recommendedProfiles);
 
-    // Mock data for recommended profiles
-    // const recommendedProfiles = [
-    //     {
-    //         id: 1,
-    //         fullName: "Alex Johnson",
-    //         bio: "Love EDM and techno nights! Looking for party buddies",
-    //         dateOfBirth: "1995-05-15",
-    //         gender: "Male",
-    //         about: "Professional DJ on weekends, always up for underground parties",
-    //         socialMedia: {
-    //             instagram: "#",
-    //             snapchat: "#",
-    //             twitter: "#"
-    //         },
-    //         avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    //         matchScore: 80
-    //     },
-    //     {
-    //         id: 2,
-    //         fullName: "Sarah Miller",
-    //         bio: "Weekend warrior looking for clubbing partners",
-    //         dateOfBirth: "1993-08-22",
-    //         gender: "Female",
-    //         about: "Work hard, party harder! Prefer cocktail bars and lounge music",
-    //         socialMedia: {
-    //             instagram: "#",
-    //             snapchat: "#",
-    //             twitter: "#"
-    //         },
-    //         avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    //         matchScore: 75
-    //     },
-    //     {
-    //         id: 3,
-    //         fullName: "Mike Chen",
-    //         bio: "Basshead looking for festival buddies",
-    //         dateOfBirth: "1990-11-05",
-    //         gender: "Male",
-    //         about: "EDM festival regular, love meeting new people in the scene",
-    //         socialMedia: {
-    //             instagram: "#",
-    //             snapchat: "#",
-    //             twitter: "#"
-    //         },
-    //         avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-    //         matchScore: 85
-    //     }
-    // ];
 
     const { mutate, isPending } = useMutation({
         mutationKey: ['send-request'],
@@ -137,8 +89,6 @@ const PartnerMatch = () => {
             toast.success("Request sent!!!");
         },
     });
-
-
 
     const handleOnSendRequest = (fullName, senderName, email, sendId) => {
         const credentials = {

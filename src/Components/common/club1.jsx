@@ -30,6 +30,10 @@ const Club1 = () => {
         queryFn: getPartyModeUsers,
     });
 
+    const oppositeGenderUsers = data?.message?.users?.filter(
+        (profile) => profile.gender !== user.gender
+    );
+
     useEffect(() => {
         const fetchClub = () => {
             const selectedClub = clubsData.find(club => club.id === parseInt(id));
@@ -154,7 +158,7 @@ const Club1 = () => {
                         {data ? (
                             <>
                                 <div className="allphoto flex flex-row space-x-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-                                    {data?.message?.users.map((user, index) => (
+                                    {oppositeGenderUsers?.map((user, index) => (
                                         <div key={index} className="flex-shrink-0 cursor-pointer" onClick={() => navigate(`/profile/${user._id}`)}>
                                             <div className="circle h-20 w-20 md:h-28 md:w-28 rounded-full bg-[#312F2F] shadow-xl flex items-center justify-center border-2 border-[#FFD700] overflow-hidden">
                                                 <img
