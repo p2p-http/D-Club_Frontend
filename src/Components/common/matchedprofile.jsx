@@ -71,8 +71,8 @@ const Matchedprofile = () => {
 
     const handleOnSendRequest = (fullName, senderName, email, sendId) => {
         const credentials = {
-            senderName: fullName,
-            fullName: senderName,
+            senderName: senderName,
+            fullName: fullName,
             email: email,
             senderId: sendId,
         };
