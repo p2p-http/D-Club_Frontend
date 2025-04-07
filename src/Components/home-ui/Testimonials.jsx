@@ -10,17 +10,19 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            quote: "As someone new to the city, D-Club helped me discover amazing nightlife spots and make friends who love to party as much as I do!",
+            quote: "D-Club changed the way I party! I used to struggle with solo entries, but now I can easily find like-minded club partners. Safe, fun, and hassle-free!",
             author: "Aditya D",
-            date: "05-05-2025",
+            date: "18-03-2025",
             avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1742954428/t6wdkddj2bnsiusvt8br"
+
         },
         {
             id: 2,
-            quote: "D-Club changed the way I party! I used to struggle with solo entries, but now I can easily find like-minded club partners. Safe, fun, and hassle-free!",
-            author: "Sahil C",
-            date: "18-03-2025",
-            avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1742954428/ibnns4lne6vhjcqrhi7u"
+            quote: "As someone new to the city, D-Club helped me discover amazing nightlife spots and make friends who love to party as much as I do!",
+            author: "Mayuri S",
+            date: "05-05-2025",
+            avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1744032575/psxuuuevoffjybrpf3bs.png"
+
         },
         {
             id: 3,
@@ -32,9 +34,10 @@ const Testimonials = () => {
         {
             id: 4,
             quote: "As someone new to the city, D-Club helped me discover amazing nightlife spots and make friends who love to party as much as I do!",
-            author: "Ganesh P",
+            author: "Ishwari P",
             date: "05-05-2025",
-            avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1742954428/t6wdkddj2bnsiusvt8br"
+            avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1744032271/zpke4pru9e6obb9sdc6p.jpg"
+
         }
     ];
 
