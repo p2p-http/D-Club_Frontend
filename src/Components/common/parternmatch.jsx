@@ -256,7 +256,7 @@ const PartnerMatch = () => {
                     </div>
 
                     <button 
-                        className="px-6 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors"
+                        className="px-6 py-2 bg-amber-700 hover:bg-amber-900 text-gray-200 font-medium rounded-xl transition-colors"
                         onClick={() => navigate("/dashboard/profile")}
                     >
                         Update Profile
