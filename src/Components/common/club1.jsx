@@ -66,7 +66,8 @@ const Club1 = () => {
     };
 
     return (
-        <div className='pt-24 md:pt-32 p-4 md:p-9 rounded-2xl flex flex-col space-y-10 md:space-y-20'>
+        <div className='pt-24 md:pt-28 p-4 md:p-9 rounded-2xl flex flex-col space-y-10 md:space-y-20'>
+            
             {/* Club Information Section */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -74,6 +75,9 @@ const Club1 = () => {
                 transition={{ duration: 0.5 }}
                 className="club h-auto w-full bg-[#121112] rounded-2xl"
             >
+                <div onClick={() => navigate(-1)} className="back cursor-pointer text-[#FFD700] font-extrabold text-3xl bg-gray-600 py-2 px-1 rounded-xl  w-10  mb-4 flex items-center justify-center">
+                {"< "}
+            </div>
                 {/* Club Photo */}
                 <div className="photo w-full h-32 md:h-48 bg-white rounded-t-2xl overflow-hidden">
                     <img
@@ -87,7 +91,7 @@ const Club1 = () => {
                 <div className="title-des px-4 md:px-9 py-4 flex flex-col space-y-6">
                     <div className="flex items-center justify-between">
                         <h1 className='clubs-name text-[#FFD700] font-bold text-2xl md:text-3xl'>{club.name}</h1>
-                        <div className='rating text-[#FF9684] font-bold bg-[#1b191b] p-2 rounded-3xl w-12 flex justify-center items-center'>
+                        <div className='rating text-[#FF9684] font-bold bg-[#4F4F4F] p-1 rounded-2xl sm:rounded-xl w-12 flex justify-center items-center'>
                             {club.rating}
                         </div>
                     </div>
