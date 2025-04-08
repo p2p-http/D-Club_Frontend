@@ -114,11 +114,13 @@ const Support = () => {
                         <div className="flex flex-col mt-4 sm:mt-5">
                             <button
                                 type="submit"
-                                className="w-full p-2 sm:p-3 rounded-xl bg-[#FFD700] text-black hover:bg-[#e6c000] transition"
+                                className={`w-full p-2 sm:p-3 rounded-xl transition font-medium ${isPending ? "bg-gray-500 text-white cursor-not-allowed" : "bg-[#FFD700] text-black hover:bg-[#e6c000]"
+                                    }`}
                                 disabled={isPending}
                             >
                                 {isPending ? "Sending..." : "Send Message"}
                             </button>
+
                         </div>
                     </form>
                 </div>
