@@ -14,7 +14,6 @@ const Testimonials = () => {
             author: "Aditya D",
             date: "18-03-2025",
             avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1742954428/t6wdkddj2bnsiusvt8br"
-
         },
         {
             id: 2,
@@ -22,7 +21,6 @@ const Testimonials = () => {
             author: "Mayuri S",
             date: "05-05-2025",
             avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1744032575/psxuuuevoffjybrpf3bs.png"
-
         },
         {
             id: 3,
@@ -37,11 +35,9 @@ const Testimonials = () => {
             author: "Ishwari P",
             date: "05-05-2025",
             avatar: "https://res.cloudinary.com/dkv6tb2fq/image/upload/v1744032271/zpke4pru9e6obb9sdc6p.jpg"
-
         }
     ];
 
-    // Auto-rotate testimonials every 15 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setDirection(1);
@@ -62,7 +58,6 @@ const Testimonials = () => {
         navigate('/support');
     };
 
-    // Animation variants
     const variants = {
         enter: (direction) => ({
             x: direction > 0 ? 1000 : -1000,
@@ -80,7 +75,6 @@ const Testimonials = () => {
 
     return (
         <div className="relative min-h-screen flex flex-col items-center justify-center w-full overflow-x-hidden bg-black py-12">
-            {/* Background pattern - visible only on desktop */}
             <div className="hidden sm:block absolute inset-0 z-0 opacity-10 overflow-hidden">
                 <div
                     className="absolute inset-0 bg-[length:40px_40px] bg-repeat"
@@ -90,9 +84,7 @@ const Testimonials = () => {
                 />
             </div>
 
-            {/* Main content container */}
             <div className="relative z-10 w-full px-4 sm:px-6 mx-auto max-w-7xl">
-                {/* Section title */}
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -102,12 +94,9 @@ const Testimonials = () => {
                     Testimonials
                 </motion.h2>
 
-                {/* Testimonial card container */}
                 <div className="w-full max-w-4xl relative mx-auto">
-                    {/* Decorative square */}
                     <div className="absolute -top-8 -right-8 sm:-top-12 sm:-right-12 md:-top-16 md:-right-16 h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 rounded-[2.5rem] sm:rounded-[3rem] bg-[#F0E3E3] opacity-80 z-0" />
 
-                    {/* Animated testimonial card */}
                     <div className="relative h-[300px] sm:h-[350px]">
                         <AnimatePresence custom={direction} initial={false}>
                             <motion.div
@@ -124,7 +113,6 @@ const Testimonials = () => {
                                 whileHover={{ scale: 1.02 }}
                                 className="bg-[#2A2A2A] w-full min-h-[250px] sm:min-h-[300px] p-6 sm:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-[#3D3D3D] hover:border-[#FFD700]/30 transition-all duration-300 backdrop-blur-sm absolute inset-0"
                             >
-                                {/* Profile section */}
                                 <div className="flex items-start gap-4 sm:gap-6 mb-4 sm:mb-6">
                                     <div className="relative">
                                         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-4 border-[#FFD700] flex-shrink-0 shadow-lg">
@@ -152,7 +140,6 @@ const Testimonials = () => {
                                     </div>
                                 </div>
 
-                                {/* Quote section */}
                                 <div className="relative">
                                     <p className="text-sm sm:text-base md:text-lg text-[#BFBFBF] font-normal leading-relaxed sm:pl-4">
                                         "{testimonials[currentIndex].quote}"
@@ -163,7 +150,6 @@ const Testimonials = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Navigation dots */}
                     <div className="flex justify-center mt-6 sm:mt-8 space-x-2 sm:space-x-3">
                         {testimonials.map((_, index) => (
                             <motion.button
@@ -175,16 +161,15 @@ const Testimonials = () => {
                             />
                         ))}
                     </div>
-  
-                    {/* Add Testimonial Button */}
+
                     <motion.button
                         onClick={handleAddTestimonial}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="mt-8 mx-auto flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-black font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="mt-8 mx-auto flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-sm sm:text-base text-black font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                         <span className="mr-2">Add Your Testimonial</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
                         </svg>
                     </motion.button>
