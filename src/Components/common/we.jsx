@@ -26,7 +26,7 @@ const We = () => {
                     <h1 className='text-center text-2xl text-[#FFFFFF] mb-1 md:text-5xl md:mb-2'>Onkar Dhotarkar</h1>
                     <p className='text-center text-lg text-gray-500 md:text-2xl'>
                         <Typewriter
-                            words={['Frontend Developer', 'UI Designer', 'Web Developer']}
+                            words={['UI Designer','Frontend Developer', 'Backend Developer', 'Web Developer','Full Stack Developer']}
                             loop={true}
                             cursor
                             cursorStyle='_'
