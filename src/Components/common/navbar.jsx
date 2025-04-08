@@ -33,7 +33,9 @@ const Navbar = () => {
               {link.title}
             </Link>
           ))}
-          <span className="hover:text-gray-300 duration-100 cursor-default hover:bg-gray-800 px-3 py-2 text-gray-500 rounded-xl">
+          <span
+          onClick={() => navigate("/chat")}
+          className="hover:text-gray-300 duration-100 cursor-default hover:bg-gray-800 px-3 py-2 text-gray-500 rounded-xl">
             Chat
           </span>
          
@@ -73,7 +75,7 @@ const Navbar = () => {
               {link.title}
             </Link>
           ))}
-          <span className="hover:text-gray-300 cursor-default hover:bg-gray-800 px-3 py-2 text-gray-500 rounded-xl">
+          <span onClick={() => navigate("/chat")} className="hover:text-gray-300 cursor-default hover:bg-gray-800 px-3 py-2 text-gray-500 rounded-xl">
             Chat
           </span>
           {authToken ? (

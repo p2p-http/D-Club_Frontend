@@ -31,6 +31,7 @@ import Parternmatch from "./Components/common/parternmatch";
 import Matchedprofile from "./Components/common/matchedprofile";
 import Acceptedpro from "./Components/common/acceptedprofile";
 import Loading1 from "./Components/home-ui/loading1";
+import Chat from "./Components/common/chat";
 
 const pageVariants = {
   initial: { opacity: 0, y: 50 },
@@ -80,6 +81,16 @@ function App() {
             element={
               <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
                 <Support />
+              </motion.div>
+            }
+          />
+
+          {/* Chat */}
+          <Route
+            path="chat"
+            element={
+              <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Chat />
               </motion.div>
             }
           />
