@@ -125,16 +125,16 @@ const Matchedprofile = () => {
                         <button
                             type="button"
                             onClick={() => navigate(-1)}
-                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-s-xl text-sm sm:text-base font-medium bg-[#FFD700] text-gray-800w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
                             {" < "} Go Back
                         </button>
                         <button
                             type="button"
-                            onClick={() => navigate("/chat")}
-                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-normal bg-[#FFD700] text-black w-full sm:w-40 hover:bg-[#e6c000] transition"
+                            onClick={handleOnSendRequest}
+                            className="p-2 flex gap-2 justify-center items-center sm:p-3 rounded-r-xl text-sm sm:text-base font-semibold bg-[#FFD700] text-gray-800 w-full sm:w-40 hover:bg-[#e6c000] transition"
                         >
-                            Start Chat
+                            Send Request
                         </button>
                     </div>
                 </div>
@@ -204,14 +204,15 @@ const Matchedprofile = () => {
                     </div>
                     <div className="btn">
                         <button
-                            onClick={handleOnSendRequest}
+                            
+                            onClick={() => navigate("/chat")}
                             className={`p-2 sm:p-3 text-[#FF9684] font-bold text-sm sm:text-base bg-[#4F4F4F] rounded-xl hover:bg-[#5a5a5a] transition-colors duration-300 whitespace-nowrap ${isBlinking ? 'opacity-100' : 'opacity-70'
                                 }`}
                             style={{
                                 animation: 'pulse 1.5s infinite',
                             }}
                         >
-                            Send Request
+                            Start Chat
                         </button>
                     </div>
                 </div>
