@@ -174,8 +174,8 @@
     "amenities": ["Rooftop Seating", "EDM Music", "House Music", "Live DJs"],
     "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
     "photos": [
-      "https://example.com/skyye-1.jpg",
-      "https://example.com/skyye-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744272693/20200216-190129-largejpg_eyuyte.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744272694/f8f80jxwa8la3doht2b0_eee5zp.jpg"
     ]
   },
   {
@@ -192,8 +192,8 @@
     "amenities": ["Co-Working Space", "Lively Nightclub", "Cocktail Bar", "Themed Nights"],
     "events": ["Karaoke Night - Every Tuesday", "Themed Party - Every Friday"],
     "photos": [
-      "https://example.com/social-1.jpg",
-      "https://example.com/social-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273091/social-offline_pb3y6y.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744272927/5b3385b0f937b8bb5fc8efa7815e7ea6.jpg_drucfc.avif"
     ]
   },
   {
@@ -210,8 +210,8 @@
     "amenities": ["Craft Beers", "Live Music", "Relaxed Vibe", "Outdoor Seating"],
     "events": ["Live Band Night - Every Wednesday", "Beer Tasting - Every Saturday"],
     "photos": [
-      "https://example.com/biere-club-1.jpg",
-      "https://example.com/biere-club-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273280/unnamed_iyxiar.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273280/unnamed_iyxiar.jpg"
     ]
   },
   {
@@ -228,8 +228,8 @@
     "amenities": ["Retro Decor", "Classic Rock", "Blues Music", "Relaxed Vibe"],
     "events": ["Classic Rock Night - Every Thursday", "Blues Night - Every Sunday"],
     "photos": [
-      "https://example.com/pecos-1.jpg",
-      "https://example.com/pecos-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273409/pecos-brigade-brigade-road-bangalore-home-delivery-restaurants-2gcc1cq.jpg_iyy3xi.webp",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273410/WhatsApp-Image-2021-10-01-at-1.04.13-PM_j6qnmr.jpg"
     ]
   },
   {
