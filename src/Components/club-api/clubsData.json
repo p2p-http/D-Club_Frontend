@@ -409,8 +409,8 @@
     "amenities": ["Live Music", "DJs", "Vibrant Crowd", "Cocktail Bar"],
     "events": ["Live Band Night - Every Thursday", "DJ Night - Every Saturday"],
     "photos": [
-      "https://www.moonshineproject.com/photos/moonshine-1.jpg",
-      "https://www.moonshineproject.com/photos/moonshine-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275194/2024-05-28_zdu2ul.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275207/IMG_20210831_165040_xntybv.jpg"
     ]
   },
   {
@@ -427,8 +427,8 @@
     "amenities": ["Luxury Lounge", "Bollywood Music", "EDM Music", "VIP Lounge"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://www.club8hyderabad.com/photos/club8-1.jpg",
-      "https://www.club8hyderabad.com/photos/club8-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275345/hyderabad-night-club-banjara-hills-hyderabad-night-clubs-avohw4gtry-250_kwv2zg.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275340/3c560971e52f7f8ab4d01b729698c68c_featured_v2.jpg_yqdfi4.avif"
     ]
   }
   ]
