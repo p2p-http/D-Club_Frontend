@@ -246,8 +246,8 @@
     "amenities": ["High-Energy", "Bollywood Music", "EDM Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://example.com/fuga-1.jpg",
-      "https://example.com/fuga-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273768/arvind-atom-ganigarpet-bangalore-night-clubs-knwxvuypre.jpg_gtjjkx.webp",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273769/b109ba7be1827cf89e2b44498d7db834.jpg_zaspyq.avif"
     ]
   },
   {
