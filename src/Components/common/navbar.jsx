@@ -60,7 +60,7 @@ const Navbar = () => {
             </div>
           ) : (
             <button
-              className="text-base border px-3 py-1 rounded-xl hover:bg-yellow-400 hover:font-medium hover:text-black duration-200"
+              className="text-base cursor-pointer border px-3 py-1 rounded-xl hover:bg-yellow-400 hover:font-medium hover:text-black duration-200"
               onClick={() => navigate("/auth/login")}
             >
               Log in
