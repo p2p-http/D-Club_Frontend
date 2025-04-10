@@ -13,10 +13,10 @@
     "amenities": ["Dance Floor", "Live Music", "VIP Lounge", "Outdoor Seating"],
     "events": ["Live DJ Night - Every Friday", "Bollywood Night - Every Saturday"],
     "photos": [
-      "https://example.com/high-spirits-1.jpg",
-      "https://example.com/high-spirits-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744263614/p1.1_kp799u.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744263615/p1.2_mxonik.jpg"
     ]
-  }, 
+  },
   {
     "id": 2,
     "name": "Swig",
@@ -31,8 +31,8 @@
     "amenities": ["Rooftop Seating", "EDM Music", "Cocktail Bar", "Themed Nights"],
     "events": ["Sunset Party - Every Sunday", "EDM Night - Every Thursday"],
     "photos": [
-      "https://example.com/swig-1.jpg",
-      "https://example.com/swig-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744263851/p2.1.jpeg_uuwo2d.avif",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744263851/p2.2_fdsyik.jpg"
     ]
   },
   {
@@ -49,26 +49,7 @@
     "amenities": ["Luxury Lounge", "Bollywood Music", "International DJs", "Private Cabins"],
     "events": ["Bollywood Night - Every Friday", "International DJ Night - Every Saturday"],
     "photos": [
-      "https://example.com/club9-1.jpg",
-      "https://example.com/club9-2.jpg"
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Hype",
-    "description": "Hype is a trendy nightclub in Viman Nagar, Pune, known for its modern vibe and top DJs. The club hosts themed nights and special events, making it a favorite among party-goers. With its energetic atmosphere and great music, Hype is the perfect place to let loose and have fun.",
-    "location": "Viman Nagar, Pune",
-    "opening_time": "7:30 PM",
-    "closing_time": "1:00 AM",
-    "city": "Pune",
-    "rating": 4.4,
-    "contact": "+91 99887 76655",
-    "website": "http://www.hypepune.com",
-    "amenities": ["Themed Nights", "Top DJs", "Dance Floor", "Cocktail Bar"],
-    "events": ["Retro Night - Every Wednesday", "Hip-Hop Night - Every Friday"],
-    "photos": [
-      "https://example.com/hype-1.jpg",
-      "https://example.com/hype-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744264131/3.1_cgcmsi.jpg"
     ]
   },
   {
@@ -85,8 +66,8 @@
     "amenities": ["Gastro-Bar", "Live Music", "Industrial Decor", "Outdoor Seating"],
     "events": ["Live Band Night - Every Tuesday", "Karaoke Night - Every Thursday"],
     "photos": [
-      "https://example.com/urban-foundry-1.jpg",
-      "https://example.com/urban-foundry-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744264345/5.1_f1ig9c.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744264347/5.2_clfdda.jpg"
     ]
   },
   {
@@ -103,8 +84,8 @@
     "amenities": ["Celebrity Events", "VIP Lounge", "Dance Floor", "Cocktail Bar"],
     "events": ["Celebrity Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://example.com/tryst-1.jpg",
-      "https://example.com/tryst-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267081/m1.1_deadbi.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267082/m1.2_cyrpma.webp"
     ]
   },
   {
@@ -121,8 +102,8 @@
     "amenities": ["Underground Vibe", "International DJs", "Themed Parties", "VIP Lounge"],
     "events": ["International DJ Night - Every Friday", "Themed Party - Every Saturday"],
     "photos": [
-      "https://example.com/kitty-su-1.jpg",
-      "https://example.com/kitty-su-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267348/m2.1_vqpxyg.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267350/m2.2.jpg_audlhu.avif"
     ]
   },
   {
@@ -139,8 +120,8 @@
     "amenities": ["Rooftop Seating", "House Music", "EDM Music", "Live DJs"],
     "events": ["Sunset Party - Every Sunday", "House Music Night - Every Wednesday"],
     "photos": [
-      "https://example.com/aer-1.jpg",
-      "https://example.com/aer-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267523/m3.1_hlgr2j.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267523/m3.1_hlgr2j.jpg"
     ]
   },
   {
@@ -157,8 +138,8 @@
     "amenities": ["Royal Ambiance", "Bollywood Music", "Hip-Hop Music", "VIP Lounge"],
     "events": ["Bollywood Night - Every Friday", "Hip-Hop Night - Every Saturday"],
     "photos": [
-      "https://example.com/royalty-1.jpg",
-      "https://example.com/royalty-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267836/images_ow5sag.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744267836/images_ow5sag.jpg"
     ]
   },
   {
@@ -175,8 +156,8 @@
     "amenities": ["Multi-Level", "Retro Music", "Bollywood Music", "Electronic Music"],
     "events": ["Retro Night - Every Wednesday", "Bollywood Night - Every Friday"],
     "photos": [
-      "https://example.com/trilogy-1.jpg",
-      "https://example.com/trilogy-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744268367/m5.1_ff2kxk.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744268367/m5.2_qjpyxn.jpg"
     ]
   },
   {
@@ -472,7 +453,4 @@
 
 
 
-  
-  
     
-  
