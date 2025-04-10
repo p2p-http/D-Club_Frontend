@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone } from 'lucide-react';
-import photos from '../../assets/club1bg.png';
+import { MapPin, Clock, Phone, X } from 'lucide-react';
+import clubDefaultImage from '../../assets/club1bg.png';
 import clubsData from '../club-api/clubsData.json';
 import { useQuery } from '@tanstack/react-query';
 import { getPartyModeUsersEnd } from '../../http/api';
 import { useSelector } from 'react-redux';
 import loginp from "../../assets/user.png";
-
-
 
 const getPartyModeUsers = async () => {
     const { data } = await getPartyModeUsersEnd({ params: { isPartyMode: true } });
@@ -20,9 +18,9 @@ const Club1 = () => {
     const { id } = useParams();
     const [club, setClub] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null); // For fullscreen image
 
     const { user } = useSelector(state => state.auth);
-
     const navigate = useNavigate();
 
     const { data } = useQuery({
@@ -42,6 +40,14 @@ const Club1 = () => {
         fetchClub();
     }, [id]);
 
+    const handleClick = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            navigate('/partnermatch');
+        }, 5000);
+    };
+
     if (!club) {
         return (
             <div className="pt-32 p-9 text-white">
@@ -56,42 +62,63 @@ const Club1 = () => {
         );
     }
 
-    const handleClick = () => {
-        setIsLoading(true);
-
-        setTimeout(() => {
-            setIsLoading(false);
-            navigate('/partnermatch');
-        }, 5000);
-    };
-
     return (
         <div className='pt-24 md:pt-28 p-4 md:p-9 rounded-2xl flex flex-col space-y-10 md:space-y-20'>
-            
-            {/* Club Information Section */}
+
+            {/* Fullscreen Image Modal */}
+            {selectedImage && (
+                <div
+                    className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex items-center justify-center z-50"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <button
+                        className="absolute top-5 right-5 hover:font-extrabold text-[#FF9684] bg-[#4F4F4F] rounded-full p-2 hover:scale-105 duration-200"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage(null);
+                        }}
+                    >
+                        <X size={28} />
+                    </button>
+                    <img src={selectedImage} alt="Full View" className="max-h-[90%] max-w-[90%] object-contain rounded-xl" />
+                </div>
+            )}
+
+            {/* Club Info Section */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 className="club h-auto w-full bg-[#121112] rounded-2xl"
             >
-                <div onClick={() => navigate(-1)} className="back cursor-pointer text-[#FFD700] font-extrabold text-3xl bg-gray-600 py-2 px-1 rounded-xl  w-10  mb-4 flex items-center justify-center">
-                {"< "}
-            </div>
-                {/* Club Photo */}
-                <div className="photo w-full h-32 md:h-48 bg-white rounded-t-2xl overflow-hidden">
+                <div onClick={() => navigate(-1)} className="back cursor-pointer text-[#FFD700] font-extrabold text-3xl bg-gray-700 hover:bg-gray-800 transition duration-100 py-2 px-1 rounded-xl w-10 mb-4 flex items-center justify-center">
+                    {"< "}
+                </div>
+
+                {/* Club Photo Section */}
+                <div
+                    className="photos-container w-full h-32 md:h-48 bg-white rounded-t-2xl overflow-hidden cursor-pointer"
+                    onClick={() => {
+                        if (club.photos && club.photos.length > 1) {
+                            setSelectedImage(club.photos[1]);
+                        }
+                    }}
+                >
                     <img
-                        src={photos}
-                        alt={club.name}
-                        className="w-full h-full object-cover"
+                        src={club.photos?.[1] || clubDefaultImage}
+                        alt={`${club.name} 2`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                            e.target.src = clubDefaultImage;
+                        }}
                     />
                 </div>
 
-                {/* Club Info */}
+                {/* Club Details */}
                 <div className="title-des px-4 md:px-9 py-4 flex flex-col space-y-6">
                     <div className="flex items-center justify-between">
                         <h1 className='clubs-name text-[#FFD700] font-bold text-2xl md:text-3xl'>{club.name}</h1>
-                        <div className='rating text-[#FF9684] font-bold bg-[#4F4F4F] p-1 rounded-2xl sm:rounded-xl w-12 flex justify-center items-center'>
+                        <div className='rating text-[#FF9684] font-bold bg-[#4F4F4F] p-1 rounded-2xl w-12 flex justify-center items-center'>
                             {club.rating}
                         </div>
                     </div>
@@ -99,10 +126,7 @@ const Club1 = () => {
                         <p className='club-description text-[#BFBFBF] text-sm md:text-base pe-4'>{club.description}</p>
                         <div className="amenities flex flex-row flex-wrap gap-2 md:gap-3">
                             {club.amenities?.map((amenity, index) => (
-                                <div
-                                    key={index}
-                                    className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 text-xs md:text-sm px-2 md:px-3 py-1 rounded-xl"
-                                >
+                                <div key={index} className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-gray-400 border border-gray-400 text-xs md:text-sm px-2 md:px-3 py-1 rounded-xl">
                                     {amenity}
                                 </div>
                             ))}
@@ -110,7 +134,7 @@ const Club1 = () => {
                     </div>
                 </div>
 
-                {/* Events Section */}
+                {/* Events */}
                 <div className="eventmain px-4 md:px-9 pt-6 md:pt-9">
                     <div className="event w-full h-auto bg-[#1b191b] rounded-2xl">
                         <h1 className='px-4 md:px-5 py-2 text-lg md:text-xl text-[#868181] font-semibold'>Events</h1>
@@ -120,7 +144,7 @@ const Club1 = () => {
                     </div>
                 </div>
 
-                {/* Contact Section with Icons */}
+                {/* Contact */}
                 <div className="contactmain px-4 md:px-9 pt-6 md:pt-12 pb-6">
                     <div className="location-time-contact p-4 text-[#F0E3E3] space-y-4 bg-[#1b191b] rounded-3xl w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                         <h1 className='text-[#868181] font-bold text-sm md:text-base'>Contact</h1>
@@ -145,14 +169,13 @@ const Club1 = () => {
             {/* Party Mode Section */}
             <div className="partymode w-full">
                 <div className="box w-full bg-[#121112] rounded-3xl overflow-hidden">
-                    {/* Set a fixed height for this div using h-[value] */}
                     <div className="partymodeOn p-4 md:p-8 bg-[#1b191b] flex items-center gap-3 h-20 md:h-24">
                         <h1 className='text-[#FFD700] font-bold text-2xl md:text-3xl'>Party Mode On</h1>
                         {!data && (
                             <div className="loader">
                                 <svg className="animate-spin h-5 w-5 text-[#FFD700]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                                 </svg>
                             </div>
                         )}
@@ -175,7 +198,7 @@ const Club1 = () => {
                                     ))}
                                 </div>
 
-                                <div className="btn w-full md:w-[210px] flex-shrink-0 pl-4"> {/* Fixed width for desktop */}
+                                <div className="btn w-full md:w-[210px] flex-shrink-0 pl-4">
                                     <button
                                         onClick={handleClick}
                                         disabled={isLoading}
@@ -199,7 +222,7 @@ const Club1 = () => {
                             <div className="w-full flex justify-center py-8">
                                 <svg className="animate-spin h-8 w-8 text-[#FFD700]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                                 </svg>
                             </div>
                         )}

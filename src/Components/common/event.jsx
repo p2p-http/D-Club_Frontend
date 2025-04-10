@@ -69,20 +69,25 @@ const Events = () => {
                                 {groupedClubs[city].map((club, index) => (
                                     <div
                                         key={index}
-                                        className="box bg-gray-950 h-60 sm:h-60 w-72 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
+                                        className="box bg-[#121112] h-60 sm:h-60 w-72 sm:w-96 rounded-3xl border-gray-800 border-2 flex flex-row relative flex-shrink-0"
                                     >
-                                        <div className="photo h-full w-2/4 sm:w-1/4 bg-gray-500 object-cover rounded-s-3xl overflow-hidden">
-                                            <img onClick={() => handleEnrollClick(club.id)}
-                                                src={club.photo || photos}
+                                        <div className="photo h-full w-2/4 sm:w-1/4 bg-gray-700 object-cover rounded-s-3xl overflow-hidden">
+                                            <img
+                                                onClick={() => handleEnrollClick(club.id)}
+                                                src={(club.photos && club.photos[0]) || photos}
                                                 alt={club.name}
                                                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 cursor-pointer"
+                                                onError={(e) => {
+                                                    e.target.src = photos; // fallback to default if image fails to load
+                                                }}
                                             />
+
                                         </div>
 
                                         <div className="info px-4 sm:px-6 py-4 sm:py-4 flex flex-col space-y-2 sm:space-y-4 w-3/4">
                                             <div className="title-description flex flex-col space-y-1 sm:space-y-3">
                                                 <div onClick={() => handleEnrollClick(club.id)} className=" cursor-pointer" >
-                                                    <h1  className="title text-[#FFD700] hover:text-[#FF9684] font-semibold text-lg sm:text-xl duration-200">
+                                                    <h1 className="title text-[#FFD700] hover:text-[#FF9684] font-semibold text-lg sm:text-xl duration-200">
                                                         {club.name}
                                                     </h1>
                                                 </div>
@@ -110,7 +115,7 @@ const Events = () => {
                                         <div className="absolute bottom-0 right-0">
                                             <button
                                                 onClick={() => handleEnrollClick(club.id)}
-                                                className="p-2 px-6 sm:px-8 border-[#32312d] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-bold text-xs sm:text-sm transition-colors duration-1000 animate-blink bg-gray-700 hover:bg-gray-900"
+                                                className="p-2 px-6 sm:px-8 border-[#32312d] rounded-ee-3xl rounded-ss-3xl text-[#FFD700] font-bold text-xs sm:text-sm transition-colors duration-1000 animate-blink bg-[#312F2F] hover:bg-gray-900"
                                             >
                                                 Enroll
                                             </button>
