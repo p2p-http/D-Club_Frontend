@@ -337,8 +337,8 @@
     "amenities": ["Retro Theme", "Classic Hits", "Modern Tracks", "VIP Lounge"],
     "events": ["1920s Night - Every Friday", "Jazz Night - Every Sunday"],
     "photos": [
-      "https://www.gatsby2000.com/photos/gatsby-1.jpg",
-      "https://www.gatsby2000.com/photos/gatsby-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274604/Gatsby2000-i1_vu63st.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274597/chennai-madras_epu9ah.jpg"
     ]
   },
   {
@@ -355,8 +355,8 @@
     "amenities": ["Futuristic Design", "EDM Music", "VIP Lounge", "Dance Floor"],
     "events": ["EDM Night - Every Friday", "Techno Night - Every Saturday"],
     "photos": [
-      "https://www.tabularasahyderabad.com/photos/tabularasa-1.jpg",
-      "https://www.tabularasahyderabad.com/photos/tabularasa-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274748/tabula-rasa-the-bar-jubilee-hills-hyderabad-restaurants-2yc475kxzp-250.jpg_j22lvn.webp",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274753/d684e46f6c3790e22cae3eb5f63606d7.jpg_kuipbm.avif"
     ]
   },
   {
@@ -373,8 +373,8 @@
     "amenities": ["Rooftop Seating", "Bollywood Music", "Retro Music", "Cocktail Bar"],
     "events": ["Sunset Party - Every Sunday", "Retro Night - Every Wednesday"],
     "photos": [
-      "https://www.airloungehyderabad.com/photos/airlounge-1.jpg",
-      "https://www.airloungehyderabad.com/photos/airlounge-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274893/zing-sky-bar-lounge_g1z5y4.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274893/zing-sky-bar-lounge_g1z5y4.jpg"
     ]
   },
   {
@@ -391,8 +391,8 @@
     "amenities": ["Rooftop Seating", "Bollywood Music", "EDM Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "EDM Night - Every Saturday"],
     "photos": [
-      "https://www.overthemoonhyderabad.com/photos/overthemoon-1.jpg",
-      "https://www.overthemoonhyderabad.com/photos/overthemoon-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275043/overthemoon-banner1_gylysl.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744275045/overthemoon-banner2_qcr8l8.jpg"
     ]
   },
   {
