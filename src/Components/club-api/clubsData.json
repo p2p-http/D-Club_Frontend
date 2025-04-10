@@ -264,8 +264,8 @@
     "amenities": ["Luxury Lounge", "Bollywood Music", "Kollywood Music", "International Music"],
     "events": ["Bollywood Night - Every Friday", "Kollywood Night - Every Saturday"],
     "photos": [
-      "https://example.com/pasha-1.jpg",
-      "https://example.com/pasha-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273899/pasha-chennai-nightlife-couples-hotel-rooms_oar1mz.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744273902/pasha-the-nightclub-at_qcskie.jpg"
     ]
   },
 
@@ -283,8 +283,8 @@
     "amenities": ["Spanish Tapas", "Lively Music", "Outdoor Seating", "Cocktail Bar"],
     "events": ["Tapas Night - Every Tuesday", "Live Music Night - Every Friday"],
     "photos": [
-      "https://www.zaratapasbar.com/photos/zara-1.jpg",
-      "https://www.zaratapasbar.com/photos/zara-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274026/Sera-The-Tapas-Bar_qykula.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274028/stunning-woodwork-at_b89yiy.jpg"
     ]
   },
   {
@@ -301,8 +301,8 @@
     "amenities": ["British Theme", "Retro Music", "Contemporary Music", "Pub Food"],
     "events": ["Retro Night - Every Wednesday", "Pub Quiz - Every Sunday"],
     "photos": [
-      "https://www.10downingstreetchennai.com/photos/10downing-1.jpg",
-      "https://www.10downingstreetchennai.com/photos/10downing-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274335/10-downing-street_cxghi0.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274301/restaurant-613818-restaurant120160805183052_utvr55.jpg"
     ]
   },
   {
@@ -319,8 +319,8 @@
     "amenities": ["Leather Decor", "EDM Music", "Bollywood Music", "VIP Lounge"],
     "events": ["EDM Night - Every Thursday", "Bollywood Night - Every Saturday"],
     "photos": [
-      "https://www.leatherbarchennai.com/photos/leatherbar-1.jpg",
-      "https://www.leatherbarchennai.com/photos/leatherbar-2.jpg"
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274512/HERO-SHOT-The-Leather-Bar_eldje9.jpg",
+      "https://res.cloudinary.com/db79u2fg6/image/upload/v1744274504/56e1e3045e46b60883f010d1c347b27b.jpg_q2mvqe.avif"
     ]
   },
   {
